@@ -1,1 +1,68 @@
-# To be defined
+#!/bin/bash
+
+case ${1} in
+    create:template) 
+        if [ -z ${2} ]; then echo "Define a template name!"; exit; fi
+        if [ -d "client/templates/$2" ]; then echo "Remove the existing template ($2) folder manually!"; exit; fi
+        # Create folder
+        mkdir -p client/templates/${2}
+        # Create files
+        touch client/templates/${2}/${2}.js
+        touch client/templates/${2}/${2}.less
+        touch client/templates/${2}/${2}.html
+        # Fill files
+        echo "<template name=\"${2}\">" >> client/templates/${2}/${2}.html
+        echo "    <p>Template ${2}</p>" >> client/templates/${2}/${2}.html
+        echo "</template>"              >> client/templates/${2}/${2}.html
+        echo "Template.${2}.helpers({"  >> client/templates/${2}/${2}.js
+        echo "});"                      >> client/templates/${2}/${2}.js
+        echo ""                         >> client/templates/${2}/${2}.js
+        echo "Template.${2}.events({"   >> client/templates/${2}/${2}.js
+        echo "});"                      >> client/templates/${2}/${2}.js
+        # Succesful
+        echo "Successfully created a template called \"${2}\""
+        ;;
+    create:model)
+        if [ -z ${2} ]; then echo "Define a model name!"; exit; fi
+        if [ -f "model/$2.js" ]; then echo "Remove the existing model $2 manually!"; exit; fi
+        h2="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}";
+        # Create file
+        touch model/${2}.js
+        # Fill files
+        echo "$h2 = new Meteor.Collection('${2}');"     >> model/${2}.js
+        echo ""                                         >> model/${2}.js
+        echo "$h2.allow({"                              >> model/${2}.js
+        echo "    insert : function () {"               >> model/${2}.js
+        echo "        return true;"                     >> model/${2}.js
+        echo "    },"                                   >> model/${2}.js
+        echo "    update : function () {"               >> model/${2}.js
+        echo "        return true;"                     >> model/${2}.js
+        echo "    },"                                   >> model/${2}.js
+        echo "    remove : function () {"               >> model/${2}.js
+        echo "        return true;"                     >> model/${2}.js
+        echo "    }"                                    >> model/${2}.js
+        echo "});"                                      >> model/${2}.js
+        echo ""                                         >> model/${2}.js
+        echo "Meteor.publish('${2}', function () {"     >> model/${2}.js
+        echo "    return $h2.find();"                   >> model/${2}.js
+        echo "});"                                      >> model/${2}.js
+        echo ""                                         >> model/${2}.js
+        echo "Meteor.methods({"                         >> model/${2}.js
+        echo "});"                                      >> model/${2}.js
+        # Succesful
+        echo "Successfully created a model called \"${2}\""
+        echo "Don't forget to add a Meteor.subscribe statement to the client/client.js file!"
+        ;;
+    *)
+        if [ -z ${1} ]; then
+            echo ""
+        else
+            echo "Could not find the command!"
+            echo ""
+        fi
+        echo "List of possible operations: "
+        echo "create:model      - Create a model which sets up a basic javascript file under /model"
+        echo "create:template   - Create a template folder under /client/templates with html, js and less files in it"
+        echo ""
+        ;;
+esac
