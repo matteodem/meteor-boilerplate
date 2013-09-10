@@ -1,3 +1,4 @@
 Meteor.Router.add({
-    '/' : 'default'
+    '/' : 'default',
+    '*' : 'notfound'
 });
