@@ -19,7 +19,7 @@ case ${1} in
         echo ""                         >> client/templates/${2}/${2}.js
         echo "Template.${2}.events({"   >> client/templates/${2}/${2}.js
         echo "});"                      >> client/templates/${2}/${2}.js
-        echo "@import '../../less/variables.less';" >> client/templates/${2}/${2}.less
+        echo "@import '../../global/less/variables.less';" >> client/templates/${2}/${2}.less
         # Succesful
         echo "Successfully created a template called \"${2}\""
         ;;

@@ -1,5 +1,5 @@
-Template.notfound.helpers({
+Template.notFound.helpers({
 });
 
-Template.notfound.events({
+Template.notFound.events({
 });

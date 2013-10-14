@@ -1,0 +1,29 @@
+<template name="layout">
+    <div class="navbar">
+        <div class="navbar-inner">
+        <ul class="nav">
+            <li class="{{isActive 'default'}}">
+                <a href="/">Home</a>
+            </li>
+            <li class="{{isActive 'about'}}">
+                <a href="/about">About</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <div id="main">
+        <div class="row">
+            <aside class="span4">
+                {{yield 'sidebar'}}
+            </aside>
+
+            <div id="content" class="span8">
+                {{yield}}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        {{yield 'footer'}}
+    </footer>
+</template>
