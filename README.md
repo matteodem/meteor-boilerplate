@@ -23,7 +23,7 @@ This boilerplate doesn't have anything than a basic folder structure and pre-def
 client/ 				# Client folder
 	global/				# Global less, js and html files
 		less/			# Main less file & variables
-		js/			# Main javascript files
+		js/				# Main javascript files
 			client.js	# Client.js for global javascript stuff
 			router.js	# Router definitions
 		html/			# General purpose html templates
@@ -32,7 +32,7 @@ client/ 				# Client folder
 model/  				# Model files, for each Meteor.Collection
 server/					# Server folder
 tests/					# Test files
-meteor-boilerplate  			# Command line tool
+meteor-boilerplate		# Command line tool
 ```
 
 ### Packages used
