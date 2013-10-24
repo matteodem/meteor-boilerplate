@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Meteor Boilerplate by matteodem</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/matteodem/meteor-boilerplate">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Meteor Boilerplate</h1>
+            <h2>A typical boilerplate for meteorjs projects</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/matteodem/meteor-boilerplate/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/matteodem/meteor-boilerplate/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="meteor-boilerplate" class="anchor" href="#meteor-boilerplate"><span class="octicon octicon-link"></span></a>meteor-boilerplate</h1>
+
+<p>I created this repository because I always reconstructed a similiar directory structure when starting a new Meteorjs Project. This boilerplate has different packages that I use regularly &amp; a little command line tool.</p>
+
+<h2>
+<a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install</h2>
+
+<pre><code>mrt install
+meteor
+</code></pre>
+
+<h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<pre><code>./meteor-boilerplate # Lists all possible commands 
+</code></pre>
+
+<h2>
+<a name="what-is-in-this-boilerplate" class="anchor" href="#what-is-in-this-boilerplate"><span class="octicon octicon-link"></span></a>What is in this boilerplate</h2>
+
+<p>This boilerplate doesn't have anything than a basic folder structure and pre-defined packages. The "insecure" and "autopublish" packages are removed by default.</p>
+
+<h3>
+<a name="folder-structure" class="anchor" href="#folder-structure"><span class="octicon octicon-link"></span></a>Folder structure</h3>
+
+<pre><code>client/                 # Client folder
+    global/             # Global less, js and html files
+        less/           # Main less file &amp; variables
+        js/             # Main javascript files
+            client.js   # Client.js for global javascript stuff
+            router.js   # Router definitions
+        html/           # General purpose html templates
+    templates/          # Contains all templates
+    index.html          # Basic index.html with a {{renderPage}} for the router
+model/                  # Model files, for each Meteor.Collection
+server/                 # Server folder
+tests/                  # Test files
+meteor-boilerplate      # Command line tool
+</code></pre>
+
+<h3>
+<a name="packages-used" class="anchor" href="#packages-used"><span class="octicon octicon-link"></span></a>Packages used</h3>
+
+<ul>
+<li>less</li>
+<li>jQuery</li>
+<li>bootstrap</li>
+<li>Router (Smart Package)</li>
+</ul>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/matteodem">matteodem</a> can be found on <a href="https://github.com/matteodem/meteor-boilerplate">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-45133006-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
