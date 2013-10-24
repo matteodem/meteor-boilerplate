@@ -20,17 +20,19 @@ This boilerplate doesn't have anything than a basic folder structure and pre-def
 ### Folder structure
 
 ```
-client/ 			# Client folder
-	less/			# Main less file & variables
-	templates/		# Contains all templates
-	index.html		# Basic index.html with a {{renderPage}} for the router
-	client.js		# Client.js for global javascript stuff
-	router.js		# Router definitions
-
-model/  			# Model files, for each Meteor.Collection
-server/				# Server folder
-tests/				# Test files
-meteor-boilerplate  # Command line tool
+client/ 				# Client folder
+	global/				# Global less, js and html files
+		less/			# Main less file & variables
+		js/				# Main javascript files
+			client.js	# Client.js for global javascript stuff
+			router.js	# Router definitions
+		html/			# General purpose html templates
+	templates/			# Contains all templates
+	index.html			# Basic index.html with a {{renderPage}} for the router
+model/  				# Model files, for each Meteor.Collection
+server/					# Server folder
+tests/					# Test files
+meteor-boilerplate		# Command line tool
 ```
 
 ### Packages used
