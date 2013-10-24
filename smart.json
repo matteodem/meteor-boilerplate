@@ -2,6 +2,7 @@
   "packages": {
     "router": {},
     "iron-router": {},
-    "handlebar-helpers": {}
+    "handlebar-helpers": {},
+    "bootstrap3-less": {}
   }
 }

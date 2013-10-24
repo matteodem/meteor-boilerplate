@@ -1,0 +1,11 @@
+<template name="searchbar">
+    <input id="globalSearchbar" type="text" placeholder="Search for Sites..." />
+    <div class="dropdown">
+        <!-- Link or button to toggle dropdown -->
+        <ul>
+            {{#each foundSite}}
+            <li><a href="{{originalPath}}">{{name}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+</template>

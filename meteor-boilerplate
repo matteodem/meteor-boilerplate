@@ -1,34 +1,106 @@
 #!/bin/bash
 
+# Overall check
+if [ ! -d ".meteor" ]
+    then echo 'Please use the meteor-boilerplate cli tool out of your project root (./meteor-boilerplate)'
+    exit
+fi
+
 case ${1} in
-    create:template) 
-        if [ -z ${2} ]; then echo "Define a template name!"; exit; fi
-        if [ -d "client/templates/$2" ]; then echo "Remove the existing template ($2) folder manually!"; exit; fi
+    create:view)
+        if [ -z ${2} ]; then echo "Define a view name!"; exit; fi
+        if [ -d "client/views/$2" ]; then echo "Remove the existing view ($2) folder manually!"; exit; fi
+        if [ -d "client/ui-elements/$2" ]; then echo "There's already a ui-element called $2!"; exit; fi
         # Create folder
-        mkdir -p client/templates/${2}
+        mkdir -p client/views/${2}
         # Create files
-        touch client/templates/${2}/${2}.js
-        touch client/templates/${2}/${2}.less
-        touch client/templates/${2}/${2}.html
+        touch client/views/${2}/${2}.js
+        touch client/views/${2}/${2}.less
+        touch client/views/${2}/${2}.html
         # Fill files
-        echo "<template name=\"${2}\">" >> client/templates/${2}/${2}.html
-        echo "    <p>Template ${2}</p>" >> client/templates/${2}/${2}.html
-        echo "</template>"              >> client/templates/${2}/${2}.html
-        echo "Template.${2}.helpers({"  >> client/templates/${2}/${2}.js
-        echo "});"                      >> client/templates/${2}/${2}.js
-        echo ""                         >> client/templates/${2}/${2}.js
-        echo "Template.${2}.events({"   >> client/templates/${2}/${2}.js
-        echo "});"                      >> client/templates/${2}/${2}.js
-        echo "@import '../../global/less/variables.less';" >> client/templates/${2}/${2}.less
+        echo "<template name=\"${2}\">" >> client/views/${2}/${2}.html
+        echo "    <p>Template ${2}</p>" >> client/views/${2}/${2}.html
+        echo "</template>"              >> client/views/${2}/${2}.html
+        echo ""                         >> client/views/${2}/${2}.html
+        echo "Template.${2}.helpers({"  >> client/views/${2}/${2}.js
+        echo "});"                      >> client/views/${2}/${2}.js
+        echo ""                         >> client/views/${2}/${2}.js
+        echo "Template.${2}.events({"   >> client/views/${2}/${2}.js
+        echo "});"                      >> client/views/${2}/${2}.js
+        echo ""                         >> client/views/${2}/${2}.js
+        echo "@import '../../global/less/variables.less';"  >> client/views/${2}/${2}.less
+        echo ""                                             >> client/views/${2}/${2}.less
         # Succesful
-        echo "Successfully created a template called \"${2}\""
+        echo "Successfully created a view called \"${2}\""
+        ;;
+    create:route)
+        if [ -z ${2} ] || [ -z ${3} ]; then echo "The first parameter is the route / template name and the second one the path (e. g. create:route home /)"; exit; fi
+        h2="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}";
+        if [ -f "client/routes/${h2}Route.js" ]; then echo "Remove the existing route :$2 manually!"; exit; fi
+
+        # Create file
+        touch client/routes/${h2}Route.js
+
+        # Fill files
+        echo "${h2}Controller = RouteController.extend({"                       >> client/routes/${h2}Route.js
+        echo "    template: '${2}'"                                             >> client/routes/${h2}Route.js
+        echo "});"                                                              >> client/routes/${h2}Route.js
+        echo ""                                                                 >> client/routes/${h2}Route.js
+        echo "Router.map(function () {"                                         >> client/routes/${h2}Route.js
+        echo "    this.route('${2}', {"                                         >> client/routes/${h2}Route.js
+        echo "        path :  '${3}',"                                          >> client/routes/${h2}Route.js
+        echo "        controller :  ${h2}Controller"                            >> client/routes/${h2}Route.js
+        echo "    });"                                                          >> client/routes/${h2}Route.js
+        echo "});"                                                              >> client/routes/${h2}Route.js
+        echo ""                                                                 >> client/routes/${h2}Route.js
+
+        # Succesful
+        echo "Successfully created a route called \"${h2}Route\" and the has the path ${3}"
+        ;;
+    create:element)
+        if [ -z ${2} ]; then echo "Define a ui-element name!"; exit; fi
+        if [ -d "client/ui-elements/$2" ]; then echo "Remove the existing ui-element ($2) folder manually!"; exit; fi
+        if [ -d "client/views/$2" ]; then echo "There's already a view called $2!"; exit; fi
+
+        # Create folder
+        mkdir -p client/ui-elements/${2}
+
+        # Create files
+        touch client/ui-elements/${2}/${2}.js
+        touch client/ui-elements/${2}/${2}.less
+        touch client/ui-elements/${2}/${2}.html
+
+        # Fill files
+        echo "<template name=\"${2}\">" >> client/ui-elements/${2}/${2}.html
+        echo "    <p>Template ${2}</p>" >> client/ui-elements/${2}/${2}.html
+        echo "</template>"              >> client/ui-elements/${2}/${2}.html
+        echo ""                         >> client/ui-elements/${2}/${2}.html
+
+        echo "Template.${2}.helpers({"  >> client/ui-elements/${2}/${2}.js
+        echo "});"                      >> client/ui-elements/${2}/${2}.js
+        echo ""                         >> client/ui-elements/${2}/${2}.js
+        echo "Template.${2}.events({"   >> client/ui-elements/${2}/${2}.js
+        echo "});"                      >> client/ui-elements/${2}/${2}.js
+        echo ""                         >> client/ui-elements/${2}/${2}.js
+
+        echo "@import '../../global/less/variables.less';"  >> client/ui-elements/${2}/${2}.less
+        echo ""                                             >> client/ui-elements/${2}/${2}.less
+
+        # Succesful
+        echo "Successfully created a ui element called \"${2}\""
         ;;
     create:model)
         if [ -z ${2} ]; then echo "Define a model name!"; exit; fi
         if [ -f "model/$2.js" ]; then echo "Remove the existing model $2 manually!"; exit; fi
+        if [ -f "server/publications/$2.js" ]; then echo "Remove the existing publication file $2 manually!"; exit; fi
+        if [ -f "client/global/js/subscriptions/$2.js" ]; then echo "Remove the existing subscription file $2 manually!"; exit; fi
         h2="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}";
+
         # Create file
         touch model/${2}.js
+        touch server/publications/$2.js
+        touch client/global/js/subscriptions/$2.js
+
         # Fill files
         echo "$h2 = new Meteor.Collection('${2}');"     >> model/${2}.js
         echo ""                                         >> model/${2}.js
@@ -44,16 +116,21 @@ case ${1} in
         echo "    }"                                    >> model/${2}.js
         echo "});"                                      >> model/${2}.js
         echo ""                                         >> model/${2}.js
-        echo "Meteor.publish('${2}', function () {"     >> model/${2}.js
-        echo "    return $h2.find();"                   >> model/${2}.js
-        echo "});"                                      >> model/${2}.js
-        echo ""                                         >> model/${2}.js
         echo "// Use Meteor.methods for db operations"  >> model/${2}.js
         echo "Meteor.methods({"                         >> model/${2}.js
         echo "});"                                      >> model/${2}.js
+        echo ""                                         >> model/${2}.js
+
+        echo "Meteor.publish('${2}', function () {"     >> server/publications/${2}.js
+        echo "    return $h2.find();"                   >> server/publications/${2}.js
+        echo "});"                                      >> server/publications/${2}.js
+        echo ""                                         >> server/publications/${2}.js
+
+        echo "Meteor.subscribe('${2}');"                >> client/global/js/subscriptions/${2}.js
+        echo ""                                         >> client/global/js/subscriptions/${2}.js
+
         # Succesful
-        echo "Successfully created a model called \"${2}\""
-        echo "Don't forget to add a Meteor.subscribe statement to the client/client.js file!"
+        echo "Successfully created a model called \"${2}\" (with files in model, client/global/subscriptions and server/publications)"
         ;;
     *)
         if [ -z ${1} ]; then
@@ -63,8 +140,10 @@ case ${1} in
             echo ""
         fi
         echo "List of possible operations: "
-        echo "create:model      - Create a model which sets up a basic javascript file under /model"
-        echo "create:template   - Create a template folder under /client/templates with html, js and less files in it"
+        echo -e "create:view       - Create a view folder under /client/views with html, js and less files in it"
+        echo -e "create:route      - Create a route javascript file under /client/routes"
+        echo -e "create:model      - Create a model which sets up basic javascript files under model, client/global/subscriptions and server/publications"
+        echo -e "create:element    - Create a ui element, such as a searchbar, form etc."
         echo ""
         ;;
 esac

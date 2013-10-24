@@ -8,6 +8,6 @@ preserve-inputs
 less
 jquery
 underscore
-bootstrap
-iron-router
 handlebar-helpers
+iron-router
+bootstrap3-less
