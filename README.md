@@ -55,7 +55,7 @@ tests/					# Test files, can be run with laika
 meteor-boilerplate		# Command line tool
 ```
 
-* = the command line tool creates files in these folders
+(*) = the command line tool creates files in these folders
 
 ### Packages used
 
