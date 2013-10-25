@@ -11,8 +11,10 @@ case ${1} in
         if [ -z ${2} ]; then echo "Define a view name!"; exit; fi
         if [ -d "client/views/$2" ]; then echo "Remove the existing view ($2) folder manually!"; exit; fi
         if [ -d "client/ui-elements/$2" ]; then echo "There's already a ui-element called $2!"; exit; fi
+
         # Create folder
         mkdir -p client/views/${2}
+
         # Create files
         touch client/views/${2}/${2}.js
         touch client/views/${2}/${2}.less
@@ -95,6 +97,10 @@ case ${1} in
         if [ -f "server/publications/$2.js" ]; then echo "Remove the existing publication file $2 manually!"; exit; fi
         if [ -f "client/js/subscriptions/$2.js" ]; then echo "Remove the existing subscription file $2 manually!"; exit; fi
         h2="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}";
+
+        # Create folder
+        mkdir -p server/publications
+        mkdir -p client/subscriptions
 
         # Create file
         touch model/${2}.js

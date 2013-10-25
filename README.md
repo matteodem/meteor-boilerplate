@@ -1,9 +1,11 @@
 # meteor-boilerplate
 
-I created this repository because I always reconstructed a similiar directory structure when starting a new Meteorjs Project. This boilerplate has different packages that I use regularly & a little command line tool.
+This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks
 
 ## How to install
 ```
+# If meteor and meteorite are already installed
+cd /path/to/project/
 mrt install
 meteor
 ```
@@ -13,30 +15,59 @@ meteor
 ./meteor-boilerplate # Lists all possible commands 
 ```
 
-## What is in this boilerplate
+## What's in this boilerplate
 
-This boilerplate doesn't have anything than a basic folder structure and pre-defined packages. The "insecure" and "autopublish" packages are removed by default.
+The "insecure" and "autopublish" packages are removed by default. Several other packages are added, which are listed on the bottom.
+
+### Features
+
+* Comprehensible folder structure
+* TDD / BDD with [laika](http://arunoda.github.io/laika/)
+* Multi page apps with [iron-router](https://github.com/EventedMind/iron-router)
+* A way to load fixtures (as of now no external packages used for that)
+* meteor-boilerplate console tool, which helps on creating views, routes and so on
+
 
 ### Folder structure
 
 ```
 client/ 				# Client folder
-	global/				# Global less, js and html files
-		less/			# Main less file & variables
-		js/				# Main javascript files
-			client.js	# Client.js for global javascript stuff
-			router.js	# Router definitions
+    config/             # Configuration files (on the client)
+	global/				# Global js and html files
+		js/				# Javascript files with global tasks
+		    lib/        # Client side library folder
 		html/			# General purpose html templates
-	templates/			# Contains all templates
-	index.html			# Basic index.html with a {{renderPage}} for the router
-model/  				# Model files, for each Meteor.Collection
+    routes/             # All routes(*)
+    startup/            # Javascript files on Meteor.startup()
+    stylesheets         # LESS files
+    subscriptions/      # Collection subscriptions(*)
+    ui-elements/        # Components, such as a form etc(*)
+	views/			    # Contains all views(*)
+model/  				# Model files, for each Meteor.Collection(*)
+private/                # Private files
+public/                 # Public files
 server/					# Server folder
-tests/					# Test files
+    fixtures/           # Meteor.Collection fixtures defined
+    lib/                # Server side library folder
+    publications/       # Collection publications(*)
+    startup/            # On server startup
+tests/					# Test files, can be run with laika
 meteor-boilerplate		# Command line tool
 ```
 
+* = the command line tool creates files in these folders
+
 ### Packages used
+
+* standard-app-packages
+* preserve-inputs
 * less
 * jQuery
-* bootstrap
-* Router (Smart Package)
+* underscore
+* handlebar-helpers
+* iron-router
+* bootstrap 3
+* accounts-password
+* accounts-ui
+* appcache
+
