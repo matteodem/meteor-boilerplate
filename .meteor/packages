@@ -11,3 +11,6 @@ underscore
 handlebar-helpers
 iron-router
 bootstrap3-less
+accounts-password
+accounts-ui
+appcache

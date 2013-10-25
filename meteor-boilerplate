@@ -2,7 +2,7 @@
 
 # Overall check
 if [ ! -d ".meteor" ]
-    then echo 'Please use the meteor-boilerplate cli tool out of your project root (./meteor-boilerplate)'
+    then echo 'Please use the meteor-boilerplate console tool out of your project root (./meteor-boilerplate)'
     exit
 fi
 
