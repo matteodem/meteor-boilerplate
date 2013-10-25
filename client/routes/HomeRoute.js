@@ -5,7 +5,9 @@ var HomeController = RouteController.extend({
 Router.map(function () {
     this.route('home', {
         path :  '/',
-        controller :  HomeController
+        controller :  HomeController,
+        menu : 'main-menu',
+        weight : 0
     });
 });
 

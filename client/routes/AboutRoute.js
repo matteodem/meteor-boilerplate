@@ -5,7 +5,9 @@ AboutController = RouteController.extend({
 Router.map(function () {
     this.route('about', {
         path :  '/about',
-        controller :  AboutController
+        controller :  AboutController,
+        menu : 'main-menu',
+        weight : 1
     });
 });
 
