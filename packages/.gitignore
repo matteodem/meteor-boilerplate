@@ -1,8 +1,6 @@
 router
-page-js-ie-support
-HTML5-History-API
 iron-router
 handlebar-helpers
 bootstrap3-less
-yaml
-mocha-web
+page-js-ie-support
+HTML5-History-API

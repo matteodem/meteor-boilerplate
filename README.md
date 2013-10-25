@@ -17,7 +17,7 @@ meteor
 
 ## What's in this boilerplate
 
-The "insecure" and "autopublish" packages are removed by default. Several other packages are added, which are listed on the bottom.
+The "insecure" and "autopublish" packages are removed by default. Several other packages are added, which are listed on the bottom. There's already a lot of predefined code in this boilerplate, to show you the possible functionality.
 
 ### Features
 
