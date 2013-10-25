@@ -49,12 +49,14 @@
         <h1>
 <a name="meteor-boilerplate" class="anchor" href="#meteor-boilerplate"><span class="octicon octicon-link"></span></a>meteor-boilerplate</h1>
 
-<p>I created this repository because I always reconstructed a similiar directory structure when starting a new Meteorjs Project. This boilerplate has different packages that I use regularly &amp; a little command line tool.</p>
+<p>This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks</p>
 
 <h2>
 <a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install</h2>
 
-<pre><code>mrt install
+<pre><code># If meteor and meteorite are already installed
+cd /path/to/project/
+mrt install
 meteor
 </code></pre>
 
@@ -65,36 +67,65 @@ meteor
 </code></pre>
 
 <h2>
-<a name="what-is-in-this-boilerplate" class="anchor" href="#what-is-in-this-boilerplate"><span class="octicon octicon-link"></span></a>What is in this boilerplate</h2>
+<a name="whats-in-this-boilerplate" class="anchor" href="#whats-in-this-boilerplate"><span class="octicon octicon-link"></span></a>What's in this boilerplate</h2>
 
-<p>This boilerplate doesn't have anything than a basic folder structure and pre-defined packages. The "insecure" and "autopublish" packages are removed by default.</p>
+<p>The "insecure" and "autopublish" packages are removed by default. Several other packages are added, which are listed on the bottom. There's already a lot of predefined code in this boilerplate, to show you the possible functionality.</p>
 
 <h3>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>Comprehensible folder structure</li>
+<li>TDD / BDD with <a href="http://arunoda.github.io/laika/">laika</a>
+</li>
+<li>Multi page apps with <a href="https://github.com/EventedMind/iron-router">iron-router</a>
+</li>
+<li>A way to load fixtures (as of now no external packages used for that)</li>
+<li>meteor-boilerplate console tool, which helps on creating views, routes and so on</li>
+</ul><h3>
 <a name="folder-structure" class="anchor" href="#folder-structure"><span class="octicon octicon-link"></span></a>Folder structure</h3>
 
 <pre><code>client/                 # Client folder
-    global/             # Global less, js and html files
-        less/           # Main less file &amp; variables
-        js/             # Main javascript files
-            client.js   # Client.js for global javascript stuff
-            router.js   # Router definitions
+    config/             # Configuration files (on the client)
+    global/             # Global js and html files
+        js/             # Javascript files with global tasks
+            lib/        # Client side library folder
         html/           # General purpose html templates
-    templates/          # Contains all templates
-    index.html          # Basic index.html with a {{renderPage}} for the router
-model/                  # Model files, for each Meteor.Collection
+    routes/             # All routes(*)
+    startup/            # Javascript files on Meteor.startup()
+    stylesheets         # LESS files
+    subscriptions/      # Collection subscriptions(*)
+    ui-elements/        # Components, such as a form etc(*)
+    views/              # Contains all views(*)
+model/                  # Model files, for each Meteor.Collection(*)
+private/                # Private files
+public/                 # Public files
 server/                 # Server folder
-tests/                  # Test files
+    fixtures/           # Meteor.Collection fixtures defined
+    lib/                # Server side library folder
+    publications/       # Collection publications(*)
+    startup/            # On server startup
+tests/                  # Test files, can be run with laika
 meteor-boilerplate      # Command line tool
 </code></pre>
 
-<h3>
+<ul>
+<li>= the command line tool creates files in these folders</li>
+</ul><h3>
 <a name="packages-used" class="anchor" href="#packages-used"><span class="octicon octicon-link"></span></a>Packages used</h3>
 
 <ul>
+<li>standard-app-packages</li>
+<li>preserve-inputs</li>
 <li>less</li>
 <li>jQuery</li>
-<li>bootstrap</li>
-<li>Router (Smart Package)</li>
+<li>underscore</li>
+<li>handlebar-helpers</li>
+<li>iron-router</li>
+<li>bootstrap 3</li>
+<li>accounts-password</li>
+<li>accounts-ui</li>
+<li>appcache</li>
 </ul>
       </section>
 
