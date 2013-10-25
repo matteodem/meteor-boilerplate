@@ -4,4 +4,6 @@ Handlebars.registerHelper('isActive', function (siteName) {
     if ('undefined' !== typeof current && current !== null) {
         return current.route.name == siteName ? 'active' : 'not-active';
     }
+
+    return 'not-active';
 });
