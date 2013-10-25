@@ -28,7 +28,7 @@ case ${1} in
         echo "Template.${2}.events({"   >> client/views/${2}/${2}.js
         echo "});"                      >> client/views/${2}/${2}.js
         echo ""                         >> client/views/${2}/${2}.js
-        echo "@import '../../global/less/variables.less';"  >> client/views/${2}/${2}.less
+        echo "@import '../../stylesheets/variables.less'; "  >> client/views/${2}/${2}.less
         echo ""                                             >> client/views/${2}/${2}.less
         # Succesful
         echo "Successfully created a view called \"${2}\""
@@ -83,7 +83,7 @@ case ${1} in
         echo "});"                      >> client/ui-elements/${2}/${2}.js
         echo ""                         >> client/ui-elements/${2}/${2}.js
 
-        echo "@import '../../global/less/variables.less';"  >> client/ui-elements/${2}/${2}.less
+        echo "@import '../../stylesheets/variables.less'; "  >> client/ui-elements/${2}/${2}.less
         echo ""                                             >> client/ui-elements/${2}/${2}.less
 
         # Succesful
@@ -93,13 +93,13 @@ case ${1} in
         if [ -z ${2} ]; then echo "Define a model name!"; exit; fi
         if [ -f "model/$2.js" ]; then echo "Remove the existing model $2 manually!"; exit; fi
         if [ -f "server/publications/$2.js" ]; then echo "Remove the existing publication file $2 manually!"; exit; fi
-        if [ -f "client/global/js/subscriptions/$2.js" ]; then echo "Remove the existing subscription file $2 manually!"; exit; fi
+        if [ -f "client/js/subscriptions/$2.js" ]; then echo "Remove the existing subscription file $2 manually!"; exit; fi
         h2="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}";
 
         # Create file
         touch model/${2}.js
         touch server/publications/$2.js
-        touch client/global/js/subscriptions/$2.js
+        touch client/subscriptions/$2.js
 
         # Fill files
         echo "$h2 = new Meteor.Collection('${2}');"     >> model/${2}.js
@@ -126,11 +126,11 @@ case ${1} in
         echo "});"                                      >> server/publications/${2}.js
         echo ""                                         >> server/publications/${2}.js
 
-        echo "Meteor.subscribe('${2}');"                >> client/global/js/subscriptions/${2}.js
-        echo ""                                         >> client/global/js/subscriptions/${2}.js
+        echo "Meteor.subscribe('${2}');"                >> client/subscriptions/${2}.js
+        echo ""                                         >> client/subscriptions/${2}.js
 
         # Succesful
-        echo "Successfully created a model called \"${2}\" (with files in model, client/global/subscriptions and server/publications)"
+        echo "Successfully created a model called \"${2}\" (with files in model, client/subscriptions and server/publications)"
         ;;
     *)
         if [ -z ${1} ]; then
@@ -142,7 +142,7 @@ case ${1} in
         echo "List of possible operations: "
         echo -e "create:view       - Create a view folder under /client/views with html, js and less files in it"
         echo -e "create:route      - Create a route javascript file under /client/routes"
-        echo -e "create:model      - Create a model which sets up basic javascript files under model, client/global/subscriptions and server/publications"
+        echo -e "create:model      - Create a model which sets up basic javascript files under model, client/subscriptions and server/publications"
         echo -e "create:element    - Create a ui element, such as a searchbar, form etc."
         echo ""
         ;;
