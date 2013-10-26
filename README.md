@@ -41,7 +41,7 @@ client/ 				# Client folder
     startup/            # Javascript files on Meteor.startup()
     stylesheets         # LESS files
     subscriptions/      # Collection subscriptions(*)
-    ui-elements/        # Components, such as a form etc(*)
+    modules/            # Meant for components, such as form and more(*)
 	views/			    # Contains all views(*)
 model/  				# Model files, for each Meteor.Collection(*)
 private/                # Private files

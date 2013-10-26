@@ -10,7 +10,7 @@ case ${1} in
     create:view)
         if [ -z ${2} ]; then echo "Define a view name!"; exit; fi
         if [ -d "client/views/$2" ]; then echo "Remove the existing view ($2) folder manually!"; exit; fi
-        if [ -d "client/ui-elements/$2" ]; then echo "There's already a ui-element called $2!"; exit; fi
+        if [ -d "client/modules/$2" ]; then echo "There's already a module called $2!"; exit; fi
 
         # Create folder
         mkdir -p client/views/${2}
@@ -59,37 +59,37 @@ case ${1} in
         # Succesful
         echo "Successfully created a route called \"${h2}Route\" and the has the path ${3}"
         ;;
-    create:element)
-        if [ -z ${2} ]; then echo "Define a ui-element name!"; exit; fi
-        if [ -d "client/ui-elements/$2" ]; then echo "Remove the existing ui-element ($2) folder manually!"; exit; fi
+    create:module)
+        if [ -z ${2} ]; then echo "Define a module name!"; exit; fi
+        if [ -d "client/modules/$2" ]; then echo "Remove the existing module ($2) folder manually!"; exit; fi
         if [ -d "client/views/$2" ]; then echo "There's already a view called $2!"; exit; fi
 
         # Create folder
-        mkdir -p client/ui-elements/${2}
+        mkdir -p client/modules/${2}
 
         # Create files
-        touch client/ui-elements/${2}/${2}.js
-        touch client/ui-elements/${2}/${2}.less
-        touch client/ui-elements/${2}/${2}.html
+        touch client/modules/${2}/${2}.js
+        touch client/modules/${2}/${2}.less
+        touch client/modules/${2}/${2}.html
 
         # Fill files
-        echo "<template name=\"${2}\">" >> client/ui-elements/${2}/${2}.html
-        echo "    <p>Template ${2}</p>" >> client/ui-elements/${2}/${2}.html
-        echo "</template>"              >> client/ui-elements/${2}/${2}.html
-        echo ""                         >> client/ui-elements/${2}/${2}.html
+        echo "<template name=\"${2}\">" >> client/modules/${2}/${2}.html
+        echo "    <p>Template ${2}</p>" >> client/modules/${2}/${2}.html
+        echo "</template>"              >> client/modules/${2}/${2}.html
+        echo ""                         >> client/modules/${2}/${2}.html
 
-        echo "Template.${2}.helpers({"  >> client/ui-elements/${2}/${2}.js
-        echo "});"                      >> client/ui-elements/${2}/${2}.js
-        echo ""                         >> client/ui-elements/${2}/${2}.js
-        echo "Template.${2}.events({"   >> client/ui-elements/${2}/${2}.js
-        echo "});"                      >> client/ui-elements/${2}/${2}.js
-        echo ""                         >> client/ui-elements/${2}/${2}.js
+        echo "Template.${2}.helpers({"  >> client/modules/${2}/${2}.js
+        echo "});"                      >> client/modules/${2}/${2}.js
+        echo ""                         >> client/modules/${2}/${2}.js
+        echo "Template.${2}.events({"   >> client/modules/${2}/${2}.js
+        echo "});"                      >> client/modules/${2}/${2}.js
+        echo ""                         >> client/modules/${2}/${2}.js
 
-        echo "@import '../../stylesheets/variables.less'; "  >> client/ui-elements/${2}/${2}.less
-        echo ""                                             >> client/ui-elements/${2}/${2}.less
+        echo "@import '../../stylesheets/variables.less'; "  >> client/modules/${2}/${2}.less
+        echo ""                                             >> client/modules/${2}/${2}.less
 
         # Succesful
-        echo "Successfully created a ui element called \"${2}\""
+        echo "Successfully created a module called \"${2}\""
         ;;
     create:model)
         if [ -z ${2} ]; then echo "Define a model name!"; exit; fi
@@ -149,7 +149,7 @@ case ${1} in
         echo -e "create:view       - Create a view folder under /client/views with html, js and less files in it"
         echo -e "create:route      - Create a route javascript file under /client/routes"
         echo -e "create:model      - Create a model which sets up basic javascript files under model, client/subscriptions and server/publications"
-        echo -e "create:element    - Create a ui element, such as a searchbar, form etc."
+        echo -e "create:module     - Create a module, such as a searchbar, form etc."
         echo ""
         ;;
 esac
