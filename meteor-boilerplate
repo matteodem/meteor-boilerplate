@@ -40,6 +40,9 @@ case ${1} in
         h2="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}";
         if [ -f "client/routes/${h2}Route.js" ]; then echo "Remove the existing route $2 manually!"; exit; fi
 
+        # Create folder
+        mkdir -p client/routes/${2}
+
         # Create file
         touch client/routes/${h2}Route.js
 
