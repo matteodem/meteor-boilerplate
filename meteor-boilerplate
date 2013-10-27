@@ -41,7 +41,7 @@ case ${1} in
         if [ -f "client/routes/${h2}Route.js" ]; then echo "Remove the existing route $2 manually!"; exit; fi
 
         # Create folder
-        mkdir -p client/routes/${2}
+        mkdir -p client/routes
 
         # Create file
         touch client/routes/${h2}Route.js
