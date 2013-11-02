@@ -1,7 +1,16 @@
 <template name="home">
     <div class="jumbotron">
         <h1>Welcome to the meteor-boilerplate</h1>
-        <p>Use this as a starting point for your meteor projects, together with the ./meteor-boilerplate console tool</p>
+        <p>
+            Use this as a starting point for your meteor projects, together with the ./meteor-boilerplate console tool
+            <br />
+        </p>
         <p><a href="http://matteodem.github.io/meteor-boilerplate" class="btn btn-primary btn-lg">Learn more</a></p>
     </div>
+    <hr />
+    {{#if currentUser}}
+        <p>You're logged in as {{currentUser.username}}, <a href="{{urlFor 'entrySignOut'}}">sing out here</a></p>
+    {{else}}
+        <a href="{{urlFor 'entrySignIn'}}">Sign in here</a> (or if you have no account <a href="{{urlFor 'entrySignUp'}}">sign up</a>)
+    {{/if}}
 </template>

@@ -5,7 +5,8 @@
       "router": {},
       "iron-router": {},
       "handlebar-helpers": {},
-      "bootstrap3-less": {}
+      "bootstrap3-less": {},
+      "accounts-entry": {}
     },
     "packages": {
       "router": {
@@ -15,8 +16,8 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.0",
-        "commit": "c63e92d24c8210e2304ff5fed1b5c463394aeaf6"
+        "tag": "v0.6.1",
+        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
@@ -27,6 +28,11 @@
         "git": "https://github.com/eprochasson/bootstrap3-less",
         "tag": "v0.1.4",
         "commit": "23ec918f8377b15b22cba33e13b717214235c88a"
+      },
+      "accounts-entry": {
+        "git": "https://github.com/BeDifferential/accounts-entry.git",
+        "tag": "v0.4.2",
+        "commit": "d846e901d7478240050471bcd5afff7de12b3683"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
