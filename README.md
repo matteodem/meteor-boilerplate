@@ -32,7 +32,7 @@ The "insecure" and "autopublish" packages are removed by default. Several other 
 
 ```
 client/ 				# Client folder
-    compatibility       # Libraries which create a global variable
+    compatibility/      # Libraries which create a global variable
     config/             # Configuration files (on the client)
 	lib/                # Library files that get executed first
     routes/             # All routes(*)
