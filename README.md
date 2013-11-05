@@ -32,17 +32,16 @@ The "insecure" and "autopublish" packages are removed by default. Several other 
 
 ```
 client/ 				# Client folder
+    compatibility       # Libraries which create a global variable
     config/             # Configuration files (on the client)
-	global/				# Global js and html files
-		js/				# Javascript files with global tasks
-		    lib/        # Client side library folder
-		html/			# General purpose html templates
+	lib/                # Library files that get executed first
     routes/             # All routes(*)
     startup/            # Javascript files on Meteor.startup()
     stylesheets         # LESS files
     subscriptions/      # Collection subscriptions(*)
     modules/            # Meant for components, such as form and more(*)
 	views/			    # Contains all views(*)
+	    common/         # General purpose html templates
 model/  				# Model files, for each Meteor.Collection(*)
 private/                # Private files
 public/                 # Public files
@@ -70,4 +69,3 @@ meteor-boilerplate		# Command line tool
 * accounts-password
 * accounts-ui
 * appcache
-
