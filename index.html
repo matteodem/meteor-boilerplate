@@ -86,17 +86,16 @@ meteor
 <a name="folder-structure" class="anchor" href="#folder-structure"><span class="octicon octicon-link"></span></a>Folder structure</h3>
 
 <pre><code>client/                 # Client folder
+    compatibility/      # Libraries which create a global variable
     config/             # Configuration files (on the client)
-    global/             # Global js and html files
-        js/             # Javascript files with global tasks
-            lib/        # Client side library folder
-        html/           # General purpose html templates
+    lib/                # Library files that get executed first
     routes/             # All routes(*)
     startup/            # Javascript files on Meteor.startup()
     stylesheets         # LESS files
     subscriptions/      # Collection subscriptions(*)
-    modules/            # For components, such as form and more(*)
+    modules/            # Meant for components, e.g a form(*)
     views/              # Contains all views(*)
+        common/         # General purpose html templates
 model/                  # Model files, for each Meteor.Collection(*)
 private/                # Private files
 public/                 # Public files
