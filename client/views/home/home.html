@@ -9,7 +9,7 @@
     </div>
     <hr />
     {{#if currentUser}}
-        <p>You're logged in as {{currentUser.username}}, <a href="{{urlFor 'entrySignOut'}}">sing out here</a></p>
+        <p>You're logged in as {{currentUser.username}}, <a href="{{urlFor 'entrySignOut'}}">sign out here</a></p>
     {{else}}
         <a href="{{urlFor 'entrySignIn'}}">Sign in here</a> (or if you have no account <a href="{{urlFor 'entrySignUp'}}">sign up</a>)
     {{/if}}

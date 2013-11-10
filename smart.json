@@ -1,9 +1,12 @@
 {
   "packages": {
-    "router": {},
-    "iron-router": {},
+    "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "dev"
+    },
     "handlebar-helpers": {},
     "bootstrap3-less": {},
-    "accounts-entry": {}
+    "accounts-entry": {},
+    "iron-router-progress" : {}
   }
 }

@@ -2,22 +2,20 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "router": {},
-      "iron-router": {},
-      "handlebar-helpers": {},
-      "bootstrap3-less": {},
-      "accounts-entry": {}
-    },
-    "packages": {
-      "router": {
-        "git": "https://github.com/tmeasday/meteor-router.git",
-        "tag": "v0.5.4.1",
-        "commit": "d00e380dda2184b70e909fc4a0fb5358d602c586"
-      },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.1",
-        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
+        "branch": "dev"
+      },
+      "handlebar-helpers": {},
+      "bootstrap3-less": {},
+      "accounts-entry": {},
+      "iron-router-progress": {}
+    },
+    "packages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "dev",
+        "commit": "ff274326a8dd75292e69977ae6e32c786d50746e"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
@@ -34,15 +32,10 @@
         "tag": "v0.4.2",
         "commit": "d846e901d7478240050471bcd5afff7de12b3683"
       },
-      "page-js-ie-support": {
-        "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
-        "tag": "v1.3.5",
-        "commit": "b99ed8380aefd10b2afc8f18d9eed4dd0d8ea9cb"
-      },
-      "HTML5-History-API": {
-        "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
-        "tag": "v4.0.0",
-        "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.1.2",
+        "commit": "e6f382c90c0847542d0946f32f4f78008038a8b4"
       }
     }
   }
