@@ -61,11 +61,13 @@ meteor-boilerplate		# Command line tool
 * standard-app-packages
 * preserve-inputs
 * less
-* jQuery
+* jquery
 * underscore
 * handlebar-helpers
 * iron-router
-* bootstrap 3
+* iron-router-progress
+* bootstrap3-less
 * accounts-password
-* accounts-ui
 * appcache
+* accounts-entry
+* accounts-ui
