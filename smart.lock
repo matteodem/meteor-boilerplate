@@ -2,20 +2,16 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "dev"
-      },
+      "iron-router": {},
       "handlebar-helpers": {},
       "bootstrap3-less": {},
-      "accounts-entry": {},
-      "iron-router-progress": {}
+      "accounts-entry": {}
     },
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "dev",
-        "commit": "ff274326a8dd75292e69977ae6e32c786d50746e"
+        "tag": "v0.6.1",
+        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
@@ -31,11 +27,6 @@
         "git": "https://github.com/BeDifferential/accounts-entry.git",
         "tag": "v0.4.2",
         "commit": "d846e901d7478240050471bcd5afff7de12b3683"
-      },
-      "iron-router-progress": {
-        "git": "https://github.com/Multiply/iron-router-progress.git",
-        "tag": "v0.1.2",
-        "commit": "e6f382c90c0847542d0946f32f4f78008038a8b4"
       }
     }
   }

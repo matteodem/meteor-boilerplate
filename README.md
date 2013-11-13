@@ -71,3 +71,9 @@ meteor-boilerplate		# Command line tool
 * appcache
 * accounts-entry
 * accounts-ui
+
+## Other Awesome Boilerplates
+
+- [Void](https://github.com/SachaG/Void) by Sacha Greif
+- [meteor-jw-opinionated-skeleton](https://github.com/jamesdwilson/meteor-jw-opinionated-skeleton) by jamesdwilson (CoffeeScript)
+- [meteor-boilerplate](https://github.com/BeDifferential/meteor-boilerplate) by BeDifferential (CoffeeScript)
