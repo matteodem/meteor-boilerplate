@@ -10,7 +10,6 @@ jquery
 underscore
 handlebar-helpers
 iron-router
-iron-router-progress
 bootstrap3-less
 accounts-password
 appcache
