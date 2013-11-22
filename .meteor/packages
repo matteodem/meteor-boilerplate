@@ -12,6 +12,6 @@ handlebar-helpers
 iron-router
 bootstrap3-less
 accounts-password
-appcache
 accounts-entry
 accounts-ui
+iron-router-progress

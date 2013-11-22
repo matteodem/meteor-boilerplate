@@ -65,10 +65,9 @@ meteor-boilerplate		# Command line tool
 * underscore
 * handlebar-helpers
 * iron-router
-* !iron-router-progress (removed, since there are dependency conflicts)
+* iron-router-progress
 * bootstrap3-less
 * accounts-password
-* appcache
 * accounts-entry
 * accounts-ui
 

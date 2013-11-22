@@ -5,7 +5,8 @@
       "iron-router": {},
       "handlebar-helpers": {},
       "bootstrap3-less": {},
-      "accounts-entry": {}
+      "accounts-entry": {},
+      "iron-router-progress": {}
     },
     "packages": {
       "iron-router": {
@@ -25,8 +26,13 @@
       },
       "accounts-entry": {
         "git": "https://github.com/BeDifferential/accounts-entry.git",
-        "tag": "v0.4.2",
-        "commit": "d846e901d7478240050471bcd5afff7de12b3683"
+        "tag": "v0.4.4",
+        "commit": "56cee1ff5afe2ce5be7b749cd74fc939fc9ce781"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.2.0",
+        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
       }
     }
   }

@@ -3,6 +3,7 @@
     "iron-router": {},
     "handlebar-helpers": {},
     "bootstrap3-less": {},
-    "accounts-entry": {}
+    "accounts-entry": {},
+    "iron-router-progress": {}
   }
 }
