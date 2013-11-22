@@ -25,10 +25,10 @@ case ${1} in
         echo "    <p>Template ${2}</p>" >> client/views/${2}/${2}.html
         echo "</template>"              >> client/views/${2}/${2}.html
         echo ""                         >> client/views/${2}/${2}.html
-        echo "Template.${2}.helpers({"  >> client/views/${2}/${2}.js
+        echo "Template['${2}'].helpers({"  >> client/views/${2}/${2}.js
         echo "});"                      >> client/views/${2}/${2}.js
         echo ""                         >> client/views/${2}/${2}.js
-        echo "Template.${2}.events({"   >> client/views/${2}/${2}.js
+        echo "Template['${2}'].events({"   >> client/views/${2}/${2}.js
         echo "});"                      >> client/views/${2}/${2}.js
         echo ""                         >> client/views/${2}/${2}.js
         echo "@import '../../stylesheets/variables.less'; "  >> client/views/${2}/${2}.less
@@ -101,10 +101,10 @@ case ${1} in
         echo "</template>"              >> client/modules/${2}/${2}.html
         echo ""                         >> client/modules/${2}/${2}.html
 
-        echo "Template.${2}.helpers({"  >> client/modules/${2}/${2}.js
+        echo "Template['${2}'].helpers({"  >> client/modules/${2}/${2}.js
         echo "});"                      >> client/modules/${2}/${2}.js
         echo ""                         >> client/modules/${2}/${2}.js
-        echo "Template.${2}.events({"   >> client/modules/${2}/${2}.js
+        echo "Template['${2}'].events({"   >> client/modules/${2}/${2}.js
         echo "});"                      >> client/modules/${2}/${2}.js
         echo ""                         >> client/modules/${2}/${2}.js
 
@@ -118,7 +118,7 @@ case ${1} in
         if [ -z ${2} ]; then echo "Define a model name!"; exit; fi
         if [ -f "model/$2.js" ]; then echo "Remove the existing model $2 manually!"; exit; fi
         if [ -f "server/publications/$2.js" ]; then echo "Remove the existing publication file $2 manually!"; exit; fi
-        if [ -f "client/js/subscriptions/$2.js" ]; then echo "Remove the existing subscription file $2 manually!"; exit; fi
+        if [ -f "client/subscriptions/$2.js" ]; then echo "Remove the existing subscription file $2 manually!"; exit; fi
         h2="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}";
 
         # Create folder
@@ -161,6 +161,24 @@ case ${1} in
         # Succesful
         echo "Successfully created a model called \"${2}\" (with files in model, client/subscriptions and server/publications)"
         ;;
+    create:test)
+        if [ -z ${2} ]; then echo "Define a test name!"; exit; fi
+        if [ -f "tests/$2.js" ]; then echo "Remove the existing test $2 manually!"; exit; fi
+
+        # Create file
+        touch tests/${2}.js
+
+        h2="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}";
+
+        # Fill file
+        echo "var assert = require('assert');"          >> tests/${2}.js
+        echo ""                                         >> tests/${2}.js
+        echo "suite('$h2', function () {"               >> tests/${2}.js
+        echo "});"                                      >> tests/${2}.js
+
+        # Succesful
+        echo "Successfully created a test called ${2}.js under tests"
+        ;;
     *)
         if [ -z ${1} ]; then
             echo ""
@@ -169,11 +187,12 @@ case ${1} in
             echo ""
         fi
         echo "List of possible operations: "
-        echo -e "create:view       - Create a view folder under /client/views with html, js and less files in it"
-        echo -e "create:common     - Create a html template file under /client/views/common"
-        echo -e "create:route      - Create a route javascript file under /client/routes"
-        echo -e "create:model      - Create a model which sets up basic javascript files under model, client/subscriptions and server/publications"
-        echo -e "create:module     - Create a module, such as a searchbar, form etc."
+        echo -e "create:test   - Test file under tests"
+        echo -e "create:view   - View folder under client/views with html, js and less files in it"
+        echo -e "create:common - Html template file under client/views/common"
+        echo -e "create:route  - Route javascript file under client/routes"
+        echo -e "create:model  - Model with files in model/, client/subscriptions and server/publications"
+        echo -e "create:module - Module, such as a searchbar, form etc."
         echo ""
         ;;
 esac

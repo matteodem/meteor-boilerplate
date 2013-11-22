@@ -21,7 +21,7 @@ The "insecure" and "autopublish" packages are removed by default. Several other 
 
 ### Features
 
-* Comprehensible folder structure
+* Comprehensive folder structure
 * TDD / BDD with [laika](http://arunoda.github.io/laika/)
 * Multi page apps with [iron-router](https://github.com/EventedMind/iron-router)
 * A way to load fixtures (as of now no external packages used for that)
