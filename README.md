@@ -1,7 +1,6 @@
 # meteor-boilerplate
 
-This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks
-To see a project created with this boilerplate, [click here](https://github.com/matteodem/places).
+This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks. 
 
 ## How to install
 ```
@@ -27,7 +26,6 @@ The "insecure" and "autopublish" packages are removed by default. Several other 
 * Multi page apps with [iron-router](https://github.com/EventedMind/iron-router)
 * A way to load fixtures (as of now no external packages used for that)
 * meteor-boilerplate console tool, which helps on creating views, routes and so on
-
 
 ### Folder structure
 
@@ -71,6 +69,9 @@ meteor-boilerplate		# Command line tool
 * accounts-password
 * accounts-entry
 * accounts-ui
+
+## Projects created with this boilerplate
+[places](https://github.com/matteodem/places)
 
 ## Other Awesome Boilerplates
 
