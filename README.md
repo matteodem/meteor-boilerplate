@@ -1,6 +1,7 @@
 # meteor-boilerplate
 
 This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks
+To see a project created with this boilerplate, [click here](https://github.com/matteodem/places).
 
 ## How to install
 ```
