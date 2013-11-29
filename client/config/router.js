@@ -1,5 +1,5 @@
 Router.configure({
-    layoutTemplate: 'layout',
+    layoutTemplate: 'basicLayout',
     notFoundTemplate: 'notFound',
     yieldTemplates: {
         'footer': { to: 'footer' }

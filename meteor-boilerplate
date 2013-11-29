@@ -37,23 +37,39 @@ case ${1} in
         echo "Successfully created a view called \"${2}\""
         ;;
     create:common)
-        if [ -z ${2} ]; then echo "Define a common view name!"; exit; fi
-        if [ -f "client/views/common/$2.html" ]; then echo "Remove the existing common view ($2) manually!"; exit; fi
-        if [ -d "client/views/$2" ]; then echo "Remove the existing view ($2) folder manually!"; exit; fi
-        if [ -d "client/modules/$2" ]; then echo "There's already a module called $2!"; exit; fi
+            if [ -z ${2} ]; then echo "Define a common view name!"; exit; fi
+            if [ -f "client/views/common/$2.html" ]; then echo "Remove the existing common view ($2) manually!"; exit; fi
+            if [ -d "client/views/$2" ]; then echo "Remove the existing view ($2) folder manually!"; exit; fi
+            if [ -d "client/modules/$2" ]; then echo "There's already a module called $2!"; exit; fi
 
-        # Create folder
-        mkdir -p client/views/common
+            # Create folder
+            mkdir -p client/views/common
 
-        touch client/views/common/${2}.html
-        # Fill files
-        echo "<template name=\"${2}\">" >> client/views/common/${2}.html
-        echo "    <p>Template ${2}</p>" >> client/views/common/${2}.html
-        echo "</template>"              >> client/views/common/${2}.html
-        echo ""                         >> client/views/common/${2}.html
-        # Succesful
-        echo "Successfully created a common view called \"${2}\""
-        ;;
+            touch client/views/common/${2}.html
+            # Fill files
+            echo "<template name=\"${2}\">" >> client/views/common/${2}.html
+            echo "    <p>Template ${2}</p>" >> client/views/common/${2}.html
+            echo "</template>"              >> client/views/common/${2}.html
+            echo ""                         >> client/views/common/${2}.html
+            # Succesful
+            echo "Successfully created a common view called \"${2}\""
+            ;;
+    create:layout)
+            if [ -z ${2} ]; then echo "Define a layout view name!"; exit; fi
+            if [ -f "client/views/layouts/$2.html" ]; then echo "Remove the existing layout ($2) manually!"; exit; fi
+
+            # Create folder
+            mkdir -p client/views/layouts
+
+            touch client/views/layouts/${2}.html
+            # Fill files
+            echo "<template name=\"${2}Layout\">"   >> client/views/layouts/${2}.html
+            echo "    {{yield}}"                    >> client/views/layouts/${2}.html
+            echo "</template>"                      >> client/views/layouts/${2}.html
+            echo ""                                 >> client/views/layouts/${2}.html
+            # Succesful
+            echo "Successfully created a layout called \"${2}\""
+            ;;
     create:route)
         if [ -z ${2} ] || [ -z ${3} ]; then echo "The first parameter is the route / template name and the second one the path (e. g. create:route home /)"; exit; fi
         h2="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}";
@@ -189,6 +205,7 @@ case ${1} in
         echo "List of possible operations: "
         echo -e "create:test   - Test file under tests"
         echo -e "create:view   - View folder under client/views with html, js and less files in it"
+        echo -e "create:layout - Create a layout template which yields your content, used by iron-router"
         echo -e "create:common - Html template file under client/views/common"
         echo -e "create:route  - Route javascript file under client/routes"
         echo -e "create:model  - Model with files in model/, client/subscriptions and server/publications"
