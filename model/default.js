@@ -1,22 +1,20 @@
 // Use "./meteor-boilerplate.sh create:model" to create new models, that look as following:
-// 
+//
 // Default = new Meteor.Collection('default');
-// 
+//
 // Default.allow({
 //     insert : function () {
-//         return true;
+//         return false;
 //     },
 //     update : function () {
-//         return true;
+//         return false;
 //     },
 //     remove : function () {
-//         return true;
+//         return false;
 //     }
 // });
-// 
-// Meteor.publish('default', function () {
-//     return Default.find();
-// });
-// 
+//
 // Meteor.methods({
 // });
+//
+// Also creates files in server/publications and client/subscriptions
