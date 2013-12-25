@@ -138,7 +138,8 @@ case ${1} in
         h2="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}";
 
         # Create folder
-        mkdir -p server/publications
+        mkdir -p model
+	mkdir -p server/publications
         mkdir -p client/subscriptions
 
         # Create file
