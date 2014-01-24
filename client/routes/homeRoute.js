@@ -10,4 +10,3 @@ Router.map(function () {
         weight : 0
     });
 });
-
