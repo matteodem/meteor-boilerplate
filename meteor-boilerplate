@@ -79,20 +79,20 @@ case ${1} in
         mkdir -p client/routes
 
         # Create file
-        touch client/routes/${h2}Route.js
+        touch client/routes/${2}Route.js
 
         # Fill files
-        echo "var ${h2}Controller = RouteController.extend({"                   >> client/routes/${h2}Route.js
-        echo "    template: '${2}'"                                             >> client/routes/${h2}Route.js
-        echo "});"                                                              >> client/routes/${h2}Route.js
-        echo ""                                                                 >> client/routes/${h2}Route.js
-        echo "Router.map(function () {"                                         >> client/routes/${h2}Route.js
-        echo "    this.route('${2}', {"                                         >> client/routes/${h2}Route.js
-        echo "        path :  '${3}',"                                          >> client/routes/${h2}Route.js
-        echo "        controller :  ${h2}Controller"                            >> client/routes/${h2}Route.js
-        echo "    });"                                                          >> client/routes/${h2}Route.js
-        echo "});"                                                              >> client/routes/${h2}Route.js
-        echo ""                                                                 >> client/routes/${h2}Route.js
+        echo "var ${h2}Controller = RouteController.extend({"                   >> client/routes/${2}Route.js
+        echo "    template: '${2}'"                                             >> client/routes/${2}Route.js
+        echo "});"                                                              >> client/routes/${2}Route.js
+        echo ""                                                                 >> client/routes/${2}Route.js
+        echo "Router.map(function () {"                                         >> client/routes/${2}Route.js
+        echo "    this.route('${2}', {"                                         >> client/routes/${2}Route.js
+        echo "        path :  '${3}',"                                          >> client/routes/${2}Route.js
+        echo "        controller :  ${h2}Controller"                            >> client/routes/${2}Route.js
+        echo "    });"                                                          >> client/routes/${2}Route.js
+        echo "});"                                                              >> client/routes/${2}Route.js
+        echo ""                                                                 >> client/routes/${2}Route.js
 
         # Succesful
         echo "Successfully created a route called \"${h2}Route\" and the has the path ${3}"
