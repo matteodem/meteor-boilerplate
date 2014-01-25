@@ -3,8 +3,10 @@
 This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks. 
 
 ## How to install
+
+First, [download](https://github.com/matteodem/meteor-boilerplate/zipball/master) and unpack the boilerplate archive.
 ```
-# If meteor and meteorite are already installed
+# Assuming meteor and meteorite are already installed...
 cd /path/to/project/
 mrt install
 meteor
