@@ -1,4 +1,4 @@
-// Use "./meteor-boilerplate.sh create:model" to create new models, that look as following:
+// Use "./meteor-boilerplate create:model" to create new models, that look as following:
 //
 // Default = new Meteor.Collection('default');
 //
