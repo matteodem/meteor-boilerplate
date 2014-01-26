@@ -96,7 +96,7 @@ case ${1} in
         echo ""                                                                 >> client/routes/${2}Route.js
 
         # Succesful
-        echo "Successfully created a route called \"${h2}Route\" and the has the path ${3}"
+        echo "Successfully created route \"${h2}Route\" with the path ${3}"
         ;;
     create:module)
         if [ -z ${2} ]; then echo "Define a module name!"; exit; fi
