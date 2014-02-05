@@ -27,7 +27,7 @@ The "insecure" and "autopublish" packages are removed by default. Several other 
 * TDD / BDD with [laika](http://arunoda.github.io/laika/)
 * Multi page apps with [iron-router](https://github.com/EventedMind/iron-router)
 * A way to load fixtures (as of now no external packages used for that)
-* meteor-boilerplate console tool, which helps on creating views, routes and so on
+* meteor-boilerplate console tool, which helps on creating views, routes and so on (meteor-boilerplate.bat for windows users)
 
 ### Folder structure
 
@@ -53,6 +53,7 @@ server/					# Server folder
     startup/            # On server startup
 tests/					# Test files, can be run with laika
 meteor-boilerplate		# Command line tool
+meteor-boilerplate.bat  # Command line tool for windows
 ```
 
 (*) = the command line tool creates files in these folders
