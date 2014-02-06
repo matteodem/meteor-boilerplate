@@ -2,8 +2,9 @@
   "packages": {
     "iron-router": {},
     "handlebar-helpers": {},
-    "bootstrap3-less": {},
     "accounts-entry": {},
-    "iron-router-progress": {}
+    "iron-router-progress": {},
+    "semantic-ui": {},
+    "collection2": {}
   }
 }

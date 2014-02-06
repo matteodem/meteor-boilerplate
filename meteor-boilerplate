@@ -149,24 +149,22 @@ case ${1} in
         touch client/subscriptions/$2.js
 
         # Fill files
-        echo "$h2 = new Meteor.Collection('${2}');"     >> model/${2}.js
-        echo ""                                         >> model/${2}.js
-        echo "$h2.allow({"                              >> model/${2}.js
-        echo "    insert : function () {"               >> model/${2}.js
-        echo "        return false;"                    >> model/${2}.js
-        echo "    },"                                   >> model/${2}.js
-        echo "    update : function () {"               >> model/${2}.js
-        echo "        return false;"                    >> model/${2}.js
-        echo "    },"                                   >> model/${2}.js
-        echo "    remove : function () {"               >> model/${2}.js
-        echo "        return false;"                    >> model/${2}.js
-        echo "    }"                                    >> model/${2}.js
-        echo "});"                                      >> model/${2}.js
-        echo ""                                         >> model/${2}.js
-        echo "// Use Meteor.methods for db operations"  >> model/${2}.js
-        echo "Meteor.methods({"                         >> model/${2}.js
-        echo "});"                                      >> model/${2}.js
-        echo ""                                         >> model/${2}.js
+        echo "$h2 = new Meteor.Collection2('${2}', { 'schema' : {} });" >> model/${2}.js
+        echo ""                                                         >> model/${2}.js
+        echo "// Collection2 already does schema checking"              >> model/${2}.js
+        echo "// Add custom permission rules if needed"                 >> model/${2}.js
+        echo "$h2.allow({"                                              >> model/${2}.js
+        echo "    insert : function () {"                               >> model/${2}.js
+        echo "        return true;"                                     >> model/${2}.js
+        echo "    },"                                                   >> model/${2}.js
+        echo "    update : function () {"                               >> model/${2}.js
+        echo "        return true;"                                     >> model/${2}.js
+        echo "    },"                                                   >> model/${2}.js
+        echo "    remove : function () {"                               >> model/${2}.js
+        echo "        return true;"                                     >> model/${2}.js
+        echo "    }"                                                    >> model/${2}.js
+        echo "});"                                                      >> model/${2}.js
+        echo ""                                                         >> model/${2}.js
 
         echo "Meteor.publish('${2}', function () {"     >> server/publications/${2}.js
         echo "    return $h2.find();"                   >> server/publications/${2}.js

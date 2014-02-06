@@ -1,6 +1,3 @@
-// Bootstrap 3
-@import "/packages/bootstrap3-less/bootstrap.lessimport";
-
 // General styles, e. g. for the body tag
 @import 'variables';
 @import 'elements';
@@ -9,24 +6,23 @@
     Main Content
    ------------------- */
 
-#main {
-    margin-bottom: 60px;
+body, #main {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Fauna One', serif;
+
+    a {
+        color: inherit;
+        transition: 0.3s color;
+
+        &:hover {
+            color: @purple;
+        }
+    }
 }
 
-/* -------------------
-    Footer
-   ------------------- */
-#main, footer {
-    padding: 20px;
-}
-
-footer {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    background-color: @footerColor;
-    color: white;
-    width: 100%;
+.ui.header {
+    font-family: 'Glegoo', serif;
 }
 
 /* -------------------
@@ -34,10 +30,10 @@ footer {
    ------------------- */
 
 #iron-router-progress {
-    background-color : #000000;
-    box-shadow       : 0 0 5px #000000;
+    background-color : #988aac;
+    box-shadow       : 0 0 5px #884fbf;
 }
 
 #iron-router-progress.spinner:before {
-    border-color : #000000;
+    border-color : #dfdfdf;
 }

@@ -261,7 +261,7 @@ exit /b
   copy /y nul client\subscriptions\%1.js
 
   :: Fill files
-  echo %h2% = new Meteor.Collection('%1'); >> model\%1.js
+  echo %h2% = new Meteor.Collection2('%1'); >> model\%1.js
   echo. >> model\%1.js
   echo %h2%.allow({ >> model\%1.js
   echo     insert : function () { >> model\%1.js

@@ -10,8 +10,9 @@ jquery
 underscore
 handlebar-helpers
 iron-router
-bootstrap3-less
 accounts-password
 accounts-entry
 accounts-ui
 iron-router-progress
+semantic-ui
+collection2

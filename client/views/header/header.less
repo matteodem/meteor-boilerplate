@@ -1,0 +1,38 @@
+@import '../../stylesheets/variables.less'; 
+@import '../../stylesheets/elements.less';
+
+
+.header-wrapper {
+    background-image: url('/images/background/background1.jpg');
+    height: 450px;
+    background-position: 100% 100%;
+    transition: height 0.8s;
+    color: @white;
+
+    .ui.header {
+        font-size: 3em;
+        padding-top: 160px;
+
+        > .sub.header {
+            color: @veryLightGray;
+        }
+    }
+
+    .resize.button {
+        margin-top: 40px;
+        font-size: 1.5em;
+    }
+
+    .angle.icon {
+        color: @white;
+    }
+
+    a:hover {
+        color: @lightPurple;
+    }
+
+    &.active {
+        height: 900px;
+    }
+}
+

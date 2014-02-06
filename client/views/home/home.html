@@ -1,43 +1,51 @@
 <template name="home">
-    <div class="jumbotron">
-        <h1>Welcome to the meteor-boilerplate</h1>
-        <p>
-            Use this as a starting point for your meteor projects, together with the ./meteor-boilerplate console tool
-            <br />
-        </p>
-        <p><a href="http://matteodem.github.io/meteor-boilerplate" class="btn btn-primary btn-lg">Github Site</a></p>
+    <div class="ui four column main-content features grid">
+        {{#each feature}}
+            <div class="center aligned column">
+                <a href="{{{anchor}}}" class="ui unstyled no-underline link icon header">
+                    {{text}}
+                    <i class="{{color}} {{icon}} boilerplate-feature icon"></i>
+                </a>
+            </div>
+        {{/each}}
     </div>
-    <div class="home wrapper">
-        <h2>How to start working with this boilerplate</h2>
-        <h3>Use validation packages</h3>
-        <p>Instead of validating your collections from hand, use one of the maintained packages:</p>
-        <ul>
-            <li><a href="https://github.com/aldeed/meteor-collection2">Collection 2</a> <small>A smart package for Meteor that extends Meteor.Collection</small></li>
-            <li><a href="https://github.com/matteodem/meteor-easy-check">EasyCheck</a> <small>Easy way to validate objects for a Meteor.Collection</small></li>
-        </ul>
-        <h3>Responsive Frameworks</h3>
-        <p>This boilerplate uses <a href="http://getbootstrap.com/">Bootstrap 3</a> as default, since it's the most famous one. Also check out:</p>
-        <ul>
-            <li><a href="http://semantic-ui.com/">Semantic UI</a></li>
-            <li><a href="http://foundation.zurb.com/">Foundation</a></li>
-            <li><a href="http://matthewhartman.github.io/base/">Base</a></li>
-        </ul>
-        <h3>Console tool</h3>
+
+    <div class="ui fitted divider"></div>
+
+    <div class="main-content padding-wrapper">
+        <h3 class="large ui header">The console tool <div class="sub header">Be even faster</div></h3>
         <p>
-            There are some console commands you can use (./meteor-boilerplate) which can ease a lot of tasks, 
-            such as creating views, modules (searchbar), models (Collections) and so on
+            To speed up a lot of simple repetitive tasks, there's a console tool in this boilerplate.<br />
+            Simply use <code>./meteor-boilerplate {command}</code> in the project root
+            (<code>./meteor-boilerplate.bat</code> in windows).
         </p>
-        <p>
-            <a href="mailto:mat.demicheli@gmail.com">Write me</a> if you have any ideas for commands.
-        </p>
-        <h3>TDD</h3>
-        <p>Check out <a href="http://arunoda.github.io/laika/">laika</a>, which gives you all you need to do it.</p>
-        <h3>Stylesheets</h3>
-        <p>
-            Under client/stylesheets, you'll find a main.less with global styles for your page and a helpers.less
-            which gives you some classes to make your html classes more expressive / declarative.
-        </p>
+
     </div>
+
+    <div class="ui fitted divider"></div>
+
+    <h3>Responsive Frameworks</h3>
+    <p>This boilerplate uses <a href="http://getbootstrap.com/">Bootstrap 3</a> as default, since it's the most famous one. Also check out:</p>
+    <ul>
+        <li><a href="http://semantic-ui.com/">Semantic UI</a></li>
+        <li><a href="http://foundation.zurb.com/">Foundation</a></li>
+        <li><a href="http://matthewhartman.github.io/base/">Base</a></li>
+    </ul>
+    <h3>Console tool</h3>
+    <p>
+        There are some console commands you can use (./meteor-boilerplate) which can ease a lot of tasks,
+        such as creating views, modules (searchbar), models (Collections) and so on
+    </p>
+    <p>
+        <a href="mailto:mat.demicheli@gmail.com">Write me</a> if you have any ideas for commands.
+    </p>
+    <h3>TDD</h3>
+    <p>Check out <a href="http://arunoda.github.io/laika/">laika</a>, which gives you all you need to do it.</p>
+    <h3>Stylesheets</h3>
+    <p>
+        Under client/stylesheets, you'll find a main.less with global styles for your page and a helpers.less
+        which gives you some classes to make your html classes more expressive / declarative.
+    </p>
     <hr />
     {{> searchbar}}
     {{#if currentUser}}
