@@ -5,9 +5,13 @@
 #main {
     .boilerplate-feature.icon {
         margin-top: 10px;
-        color: @blue;
+        transition: 0.7s color;
 
-        &.orange.html5 {
+        &:hover {
+            color: @blue;
+        }
+
+        &.hover-orange.html5:hover {
             color: @orange;
         }
     }
@@ -15,5 +19,12 @@
     .features.grid {
         width: 100%;
         margin: 0%;
+        margin-top: 30px;
     }
+}
+
+.column > .icon-wrapper {
+    line-height: 500px;
+    font-size: 2.2em;
+    color: @blue;
 }

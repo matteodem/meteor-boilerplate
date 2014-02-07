@@ -1,12 +1,12 @@
 <template name="basicLayout">
     <header>
-        {{> header}}
+        {{yield 'header'}}
     </header>
     <div id="main">
         {{yield}}
         {{! Also a sidebar! }}
     </div>
     <footer>
-        {{> footer}}
+        {{yield 'footer'}}
     </footer>
 </template>

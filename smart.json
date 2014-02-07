@@ -2,7 +2,6 @@
   "packages": {
     "iron-router": {},
     "handlebar-helpers": {},
-    "accounts-entry": {},
     "iron-router-progress": {},
     "semantic-ui": {},
     "collection2": {}

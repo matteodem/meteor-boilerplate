@@ -4,7 +4,6 @@
     "basePackages": {
       "iron-router": {},
       "handlebar-helpers": {},
-      "accounts-entry": {},
       "iron-router-progress": {},
       "semantic-ui": {},
       "collection2": {}
@@ -20,11 +19,6 @@
         "tag": "v0.0.9",
         "commit": "71e94c99462b8801a34c5363510758b6ff5f5ac7"
       },
-      "accounts-entry": {
-        "git": "https://github.com/BeDifferential/accounts-entry.git",
-        "tag": "v0.5.3",
-        "commit": "20641be951a1a2e563cd2e6bf552f2cc8fe03984"
-      },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
         "tag": "v0.2.0",
@@ -39,11 +33,6 @@
         "git": "https://github.com/aldeed/meteor-collection2.git",
         "tag": "v0.3.7",
         "commit": "4c6c2dfd87af8cda321c80e1baea72842ad5c542"
-      },
-      "just-i18n": {
-        "git": "https://github.com/subhog/meteor-just-i18n.git",
-        "tag": "v0.1.1",
-        "commit": "ce88ac66c0dc107dc2da93ce152616115838101f"
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",

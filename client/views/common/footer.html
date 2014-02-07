@@ -1,4 +1,9 @@
 <template name="footer">
-    <div>pictures by <a href="http://www.flickr.com/photos/dexxus/">Paul Bica</a></div>
+    <div class="padding-wrapper">pictures by <a href="http://www.flickr.com/photos/dexxus/">Paul Bica</a></div>
+    {{#if currentUser}}
+        <!-- p>You're logged in as {{currentUser.username}}, <a href="{{urlFor 'entrySignOut'}}">sign out here</a></p -->
+    {{else}}
+        <!-- a href="{{urlFor 'entrySignIn'}}">Sign in here</a> (or if you have no account <a href="{{urlFor 'entrySignUp'}}">sign up)</a -->
+    {{/if}}
 </template>
 

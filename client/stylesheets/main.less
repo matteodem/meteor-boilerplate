@@ -11,13 +11,23 @@ body, #main {
     padding: 0px;
     font-family: 'Fauna One', serif;
 
-    a {
-        color: inherit;
-        transition: 0.3s color;
+    .divider:before {
+        margin-right: 0px;
+    }
+}
 
-        &:hover {
-            color: @purple;
-        }
+a {
+    color: inherit;
+    transition: 0.3s color;
+
+    &:hover {
+        color: @purple;
+    }
+}
+
+.icon {
+    &.orange {
+        color: @orange;
     }
 }
 

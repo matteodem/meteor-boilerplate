@@ -2,7 +2,7 @@
     <div class="ui four column main-content features grid">
         {{#each feature}}
             <div class="center aligned column">
-                <a href="{{{anchor}}}" class="ui unstyled no-underline link icon header">
+                <a href="{{{path}}}" class="ui unstyled no-hover-styles no-underline link icon header">
                     {{text}}
                     <i class="{{color}} {{icon}} boilerplate-feature icon"></i>
                 </a>
@@ -10,47 +10,138 @@
         {{/each}}
     </div>
 
-    <div class="ui fitted divider"></div>
-
-    <div class="main-content padding-wrapper">
-        <h3 class="large ui header">The console tool <div class="sub header">Be even faster</div></h3>
-        <p>
-            To speed up a lot of simple repetitive tasks, there's a console tool in this boilerplate.<br />
-            Simply use <code>./meteor-boilerplate {command}</code> in the project root
-            (<code>./meteor-boilerplate.bat</code> in windows).
-        </p>
-
+    <div id="packages" class="main-content padding-wrapper">
+        <div class="ui fitted horizontal icon divider"><i class="magic icon"></i></div>
+        <div class="ui two column grid">
+            <div class="center aligned column">
+                <div class="center aligned icon-wrapper">
+                    <i class="circular massive red archive icon"></i>
+                </div>
+            </div>
+            <div class="column">
+                <h3 class="large ui header">Atmosphere packages <div class="sub header">Don't reinvent the wheel</div></h3>
+                <p>There are the a lot of helpful packages in this boilerplate to get you started asap.</p>
+                <div class="ui list">
+                    {{#each package}}
+                        <a href="{{{path}}}" class="item no-underline link">
+                            <i class="archive icon"></i>
+                            {{name}}
+                        </a>
+                    {{/each}}
+                </div>
+                <div class="ui info message">
+                    <div class="header">
+                        Removed Packages
+                    </div>
+                    "insecure" and "autopublish" are removed by default!
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="ui fitted divider"></div>
+    <div id="console-tool" class="main-content padding-wrapper">
+        <div class="ui fitted horizontal icon divider"><i class="magic icon"></i></div>
+        <div class="ui two column grid">
+            <div class="column">
+                <h3 class="large ui header">The console tool <div class="sub header">Be even faster</div></h3>
+                <p>
+                    To speed up a lot of simple repetitive tasks, there's a console tool in this boilerplate.<br />
+                    Simply use <code>./meteor-boilerplate {command}</code> in the project root
+                    (<code>./meteor-boilerplate.bat</code> for coders on Windows).
+                </p>
+                <div class="ui list">
+                    {{#each consoleCommand}}
+                    <div class="item">
+                        <i class="right triangle icon"></i>
+                        <div class="content">
+                            <div class="header">{{command}}</div>
+                            <div class="description">{{description}}</div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <p>
+                    <a href="mailto:mat.demicheli@gmail.com">Write me</a> if you have any ideas for additional commands.
+                </p>
+            </div>
+            <div class="center aligned column">
+                <div class="center aligned icon-wrapper">
+                    <i class="circular massive code icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h3>Responsive Frameworks</h3>
-    <p>This boilerplate uses <a href="http://getbootstrap.com/">Bootstrap 3</a> as default, since it's the most famous one. Also check out:</p>
-    <ul>
-        <li><a href="http://semantic-ui.com/">Semantic UI</a></li>
-        <li><a href="http://foundation.zurb.com/">Foundation</a></li>
-        <li><a href="http://matthewhartman.github.io/base/">Base</a></li>
-    </ul>
-    <h3>Console tool</h3>
-    <p>
-        There are some console commands you can use (./meteor-boilerplate) which can ease a lot of tasks,
-        such as creating views, modules (searchbar), models (Collections) and so on
-    </p>
-    <p>
-        <a href="mailto:mat.demicheli@gmail.com">Write me</a> if you have any ideas for commands.
-    </p>
-    <h3>TDD</h3>
-    <p>Check out <a href="http://arunoda.github.io/laika/">laika</a>, which gives you all you need to do it.</p>
-    <h3>Stylesheets</h3>
-    <p>
-        Under client/stylesheets, you'll find a main.less with global styles for your page and a helpers.less
-        which gives you some classes to make your html classes more expressive / declarative.
-    </p>
-    <hr />
-    {{> searchbar}}
-    {{#if currentUser}}
-        <p>You're logged in as {{currentUser.username}}, <a href="{{urlFor 'entrySignOut'}}">sign out here</a></p>
-    {{else}}
-        <a href="{{urlFor 'entrySignIn'}}">Sign in here</a> (or if you have no account <a href="{{urlFor 'entrySignUp'}}">sign up</a>)
-    {{/if}}
+    <div id="html5" class="main-content padding-wrapper">
+        <div class="ui fitted horizontal icon divider"><i class="magic icon"></i></div>
+        <div class="ui two column grid">
+            <div class="center aligned column">
+                <div class="center aligned icon-wrapper">
+                    <i class="circular massive orange html5 icon"></i>
+                </div>
+            </div>
+            <div class="column">
+                <h3 class="large ui header">HTML5 and CSS3 <div class="sub header">Semanticness FTW!</div></h3>
+                <p>
+                    Semantic UI and Normalize.CSS are both added to increase the use of semantic tags and classes.
+                    It's better for both developers and designers if there's readable html code instead of something
+                    really unreadable.
+                </p>
+                <h4>CSS classes in Bootstrap 3 and Semantic UI - for Contrast</h4>
+                <table class="ui basic table">
+                    <thead>
+                    <tr>
+                        <th>What</th>
+                        <th>Bootstrap 3</th>
+                        <th>Semantic UI</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each semanticElement}}
+                    <tr>
+                        <td>{{what}}</td>
+                        <td>{{withBootstrap}}</td>
+                        <td>{{withSemanticUI}}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="structure" class="main-content padding-wrapper">
+        <div class="ui fitted horizontal icon divider"><i class="magic icon"></i></div>
+        <div class="ui two column grid">
+            <div class="column">
+                <h3 class="large ui header">Folder structure <div class="sub header">seperate your concerns</div></h3>
+                <p>
+                    There's already a structure provided for your meteor app, with some content filled in to see
+                    where you can place what kind of code or where what code is generated. Here's the default structure
+                    as a list:
+                    <br />
+                    <ul>
+                        {{#each folder}}
+                        <li>
+                            {{root}}
+                            {{#if children}}
+                            <ul>
+                                {{#each children}}
+                                <li>{{this}}</li>
+                                {{/each}}
+                            </ul>
+                            {{/if}}
+                        </li>
+                        {{/each}}
+                    </ul>
+                </p>
+
+            </div>
+            <div class="center aligned column">
+                <div class="center aligned icon-wrapper">
+                    <i class="circular massive unordered list icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
