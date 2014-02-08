@@ -1,6 +1,7 @@
 # meteor-boilerplate
 
-This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks. 
+This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks.
+Here's what the boilerplate looks like: [boilerplate.meteor.com](http://boilerplate.meteor.com)
 
 ## How to install
 
@@ -16,6 +17,19 @@ meteor
 ```
 ./meteor-boilerplate # Lists all possible commands 
 ```
+
+### Packages used
+
+* semantic-ui
+* collection2
+* less
+* jquery
+* underscore
+* handlebar-helpers
+* iron-router
+* iron-router-progress
+* accounts-password
+* accounts-ui
 
 ## What's in this boilerplate
 
@@ -57,21 +71,6 @@ meteor-boilerplate.bat  # Command line tool for windows
 ```
 
 (*) = the command line tool creates files in these folders
-
-### Packages used
-
-* standard-app-packages
-* preserve-inputs
-* less
-* jquery
-* underscore
-* handlebar-helpers
-* iron-router
-* iron-router-progress
-* bootstrap3-less
-* accounts-password
-* accounts-entry
-* accounts-ui
 
 ## Projects created with this boilerplate
 [places](https://github.com/matteodem/places)

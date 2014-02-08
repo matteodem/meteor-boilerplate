@@ -1,9 +1,7 @@
 <template name="footer">
-    <div class="padding-wrapper">pictures by <a href="http://www.flickr.com/photos/dexxus/">Paul Bica</a></div>
-    {{#if currentUser}}
-        <!-- p>You're logged in as {{currentUser.username}}, <a href="{{urlFor 'entrySignOut'}}">sign out here</a></p -->
-    {{else}}
-        <!-- a href="{{urlFor 'entrySignIn'}}">Sign in here</a> (or if you have no account <a href="{{urlFor 'entrySignUp'}}">sign up)</a -->
-    {{/if}}
+    <div class="ui inverted padding-wrapper footer segment">
+        project by <a href="https://github.com/matteodem">Matteo De Micheli</a>,
+        pictures by <a href="http://www.flickr.com/photos/dexxus/">Paul Bica</a>
+    </div>
 </template>
 

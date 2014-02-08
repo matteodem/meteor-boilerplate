@@ -10,10 +10,10 @@ body, #main {
     margin: 0px;
     padding: 0px;
     font-family: 'Fauna One', serif;
+}
 
-    .divider:before {
-        margin-right: 0px;
-    }
+#main {
+    margin: 0px 4px 0px 0px;
 }
 
 a {
@@ -21,18 +21,29 @@ a {
     transition: 0.3s color;
 
     &:hover {
-        color: @purple;
+        color: @primaryLinkHoverColor;
     }
 }
 
 .icon {
     &.orange {
-        color: @orange;
+        color: @html5Orange;
     }
 }
 
 .ui.header {
     font-family: 'Glegoo', serif;
+}
+
+/* -------------------
+    Footer
+   ------------------- */
+.padding-wrapper.footer {
+    border-radius: 0px;
+
+    a:hover {
+        color: @secondaryLinkHoverColor;
+    }
 }
 
 /* -------------------
