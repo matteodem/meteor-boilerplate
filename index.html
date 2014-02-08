@@ -49,12 +49,15 @@
         <h1>
 <a name="meteor-boilerplate" class="anchor" href="#meteor-boilerplate"><span class="octicon octicon-link"></span></a>meteor-boilerplate</h1>
 
-<p>This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks</p>
+<p>This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks.
+Here's what the boilerplate looks like: <a href="http://boilerplate.meteor.com">boilerplate.meteor.com</a></p>
 
 <h2>
 <a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install</h2>
 
-<pre><code># If meteor and meteorite are already installed
+<p>First, <a href="https://github.com/matteodem/meteor-boilerplate/zipball/master">download</a> and unpack the boilerplate archive.</p>
+
+<pre><code># Assuming meteor and meteorite are already installed...
 cd /path/to/project/
 mrt install
 meteor
@@ -66,7 +69,21 @@ meteor
 <pre><code>./meteor-boilerplate # Lists all possible commands 
 </code></pre>
 
-<h2>
+<h3>
+<a name="packages-used" class="anchor" href="#packages-used"><span class="octicon octicon-link"></span></a>Packages used</h3>
+
+<ul>
+<li>semantic-ui</li>
+<li>collection2</li>
+<li>less</li>
+<li>jquery</li>
+<li>underscore</li>
+<li>handlebar-helpers</li>
+<li>iron-router</li>
+<li>iron-router-progress</li>
+<li>accounts-password</li>
+<li>accounts-ui</li>
+</ul><h2>
 <a name="whats-in-this-boilerplate" class="anchor" href="#whats-in-this-boilerplate"><span class="octicon octicon-link"></span></a>What's in this boilerplate</h2>
 
 <p>The "insecure" and "autopublish" packages are removed by default. Several other packages are added, which are listed on the bottom. There's already a lot of predefined code in this boilerplate, to show you the possible functionality.</p>
@@ -75,13 +92,13 @@ meteor
 <a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
 
 <ul>
-<li>Comprehensible folder structure</li>
+<li>Comprehensive folder structure</li>
 <li>TDD / BDD with <a href="http://arunoda.github.io/laika/">laika</a>
 </li>
 <li>Multi page apps with <a href="https://github.com/EventedMind/iron-router">iron-router</a>
 </li>
 <li>A way to load fixtures (as of now no external packages used for that)</li>
-<li>meteor-boilerplate console tool, which helps on creating views, routes and so on</li>
+<li>meteor-boilerplate console tool, which helps on creating views, routes and so on (meteor-boilerplate.bat for windows users)</li>
 </ul><h3>
 <a name="folder-structure" class="anchor" href="#folder-structure"><span class="octicon octicon-link"></span></a>Folder structure</h3>
 
@@ -93,7 +110,7 @@ meteor
     startup/            # Javascript files on Meteor.startup()
     stylesheets         # LESS files
     subscriptions/      # Collection subscriptions(*)
-    modules/            # Meant for components, e.g a form(*)
+    modules/            # Meant for components, such as form and more(*)
     views/              # Contains all views(*)
         common/         # General purpose html templates
 model/                  # Model files, for each Meteor.Collection(*)
@@ -106,25 +123,26 @@ server/                 # Server folder
     startup/            # On server startup
 tests/                  # Test files, can be run with laika
 meteor-boilerplate      # Command line tool
+meteor-boilerplate.bat  # Command line tool for windows
 </code></pre>
 
 <p>(*) = the command line tool creates files in these folders</p>
 
-<h3>
-<a name="packages-used" class="anchor" href="#packages-used"><span class="octicon octicon-link"></span></a>Packages used</h3>
+<h2>
+<a name="projects-created-with-this-boilerplate" class="anchor" href="#projects-created-with-this-boilerplate"><span class="octicon octicon-link"></span></a>Projects created with this boilerplate</h2>
+
+<p><a href="https://github.com/matteodem/places">places</a></p>
+
+<h2>
+<a name="other-awesome-boilerplates" class="anchor" href="#other-awesome-boilerplates"><span class="octicon octicon-link"></span></a>Other Awesome Boilerplates</h2>
 
 <ul>
-<li>standard-app-packages</li>
-<li>preserve-inputs</li>
-<li>less</li>
-<li>jQuery</li>
-<li>underscore</li>
-<li>handlebar-helpers</li>
-<li>iron-router</li>
-<li>bootstrap 3</li>
-<li>accounts-password</li>
-<li>accounts-ui</li>
-<li>appcache</li>
+<li>
+<a href="https://github.com/SachaG/Void">Void</a> by Sacha Greif</li>
+<li>
+<a href="https://github.com/jamesdwilson/meteor-jw-opinionated-skeleton">meteor-jw-opinionated-skeleton</a> by jamesdwilson (CoffeeScript)</li>
+<li>
+<a href="https://github.com/BeDifferential/meteor-boilerplate">meteor-boilerplate</a> by BeDifferential (CoffeeScript)</li>
 </ul>
       </section>
 
