@@ -1,4 +1,4 @@
-Handlebars.registerHelper('isActive', function (siteName) {
+UI.registerHelper('isActive', function (siteName) {
     var current = Router.current();
 
     if ('undefined' !== typeof current && current !== null) {
@@ -8,7 +8,7 @@ Handlebars.registerHelper('isActive', function (siteName) {
     return 'not-active';
 });
 
-Handlebars.registerHelper('debug', function (optionalValue) {
+UI.registerHelper('debug', function (optionalValue) {
     if (typeof console !== "undefined" || typeof console.log !== "undefined") {
         console.log("Current Context");
         console.log("====================");
