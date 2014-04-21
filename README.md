@@ -80,3 +80,6 @@ meteor-boilerplate.bat  # Command line tool for windows
 - [Void](https://github.com/SachaG/Void) by Sacha Greif
 - [meteor-jw-opinionated-skeleton](https://github.com/jamesdwilson/meteor-jw-opinionated-skeleton) by jamesdwilson (CoffeeScript)
 - [meteor-boilerplate](https://github.com/BeDifferential/meteor-boilerplate) by BeDifferential (CoffeeScript)
+
+## License
+This boilerplate has an MIT License, see the LICENSE.txt for more information.
