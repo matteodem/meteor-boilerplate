@@ -1,8 +1,8 @@
-REPLACE_FIRST_UPPERCASE = new Meteor.Collection2('REPLACE_FIRST', { 'schema' : {} });
+ReplaceFirstUpperCase = new Meteor.Collection2('ReplaceFirst', { 'schema' : {} });
 
 // Collection2 already does schema checking"
 // Add custom permission rules if needed"
-REPLACE_FIRST_UPPERCASE.allow({
+ReplaceFirstUpperCase.allow({
     insert : function () {
         return true;
     },

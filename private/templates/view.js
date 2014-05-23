@@ -1,5 +1,5 @@
-Template['REPLACE_1'].helpers({
+Template['ReplaceFirst'].helpers({
 });
 
-Template['REPLACE_1'].events({
+Template['ReplaceFirst'].events({
 });

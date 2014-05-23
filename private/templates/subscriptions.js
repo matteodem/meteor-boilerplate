@@ -1,1 +1,0 @@
-Meteor.subscribe('REPLACE_FIRST');

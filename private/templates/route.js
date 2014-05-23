@@ -1,10 +1,10 @@
-var REPLACE_1_UPPERCASEController = RouteController.extend({
-    template: 'REPLACE_1'
+var ReplaceFirstUpperCaseController = RouteController.extend({
+    template: 'ReplaceFirst'
 });
 
 Router.map(function () {
-    this.route('REPLACE_1', {
-        path :  'REPLACE_2',
-        controller :  REPLACE_1_UPPERCASEController
+    this.route('ReplaceFirst', {
+        path :  'ReplaceSecond',
+        controller :  ReplaceFirstUpperCaseController
     });
 });
