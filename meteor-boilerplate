@@ -78,9 +78,9 @@ case ${1} in
         # Create folder
         mkdir -p client/modules/${2}
         # Create files
-        createFile view.html client/modules/${2}/${2}.html $2 $3
-        createFile view.js client/modules/${2}/${2}.js $2 $3
-        createFile view.less client/modules/${2}/${2}.less $2 $3
+        createFile module.html client/modules/${2}/${2}.html $2 $3
+        createFile module.js client/modules/${2}/${2}.js $2 $3
+        createFile module.less client/modules/${2}/${2}.less $2 $3
         # Succesful
         echo "Successfully created a module called \"${2}\""
         ;;
