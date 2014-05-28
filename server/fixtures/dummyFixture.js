@@ -2,6 +2,6 @@
 Fixtures = typeof Fixtures !== "undefined" ? Fixtures : {};
 
 Fixtures.dummyFixture = [
-    { 'foo' : 'bar' },
-    { 'foo2' : 'bar2', 'another' : 'value' }
+    { 'foo' : 'bar', 'another' : 'value' },
+    { 'foo' : 'bar2', 'another' : 'value2' }
 ];

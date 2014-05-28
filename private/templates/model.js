@@ -1,4 +1,4 @@
-ReplaceFirstUpperCase = new Meteor.Collection2('ReplaceFirst', { 'schema' : {} });
+ReplaceFirstUpperCase = new Meteor.Collection2('ReplaceFirst');
 
 // Collection2 already does schema checking"
 // Add custom permission rules if needed"
