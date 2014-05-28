@@ -2,7 +2,7 @@ function loadFixture(fixtures, collection) {
     var i;
 
     for (i = 0; i < fixtures.length; i+= 1) {
-        // Define your Meteor.method for inserting into the collection under /model
+        //collection.remove({ });
         collection.insert(fixtures[i]);
     }
 }
