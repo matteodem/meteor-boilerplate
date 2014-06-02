@@ -67,7 +67,8 @@ case ${1} in
         # Create file
         createFile route.js client/routes/${2}Route.js $2 $3
         # Succesful
-        echo "Successfully created route \"${2^}Route\" with the path ${3}"
+	routeName="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}"
+        echo "Successfully created route \"${routeName}Route\" with the path ${3}"
         ;;
     create:module)
         if [ -z ${2} ]; then echo "Define a module name!"; exit; fi
