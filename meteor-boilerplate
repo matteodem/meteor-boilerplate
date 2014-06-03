@@ -60,14 +60,15 @@ case ${1} in
             ;;
     create:route)
         if [ -z ${2} ] || [ -z ${3} ]; then echo "The first parameter is the route / template name and the second one the path (e. g. create:route home /)"; exit; fi
-        if [ -f "client/routes/${h2}Route.js" ]; then echo "Remove the existing route $2 manually!"; exit; fi
+        if [ -f "client/routes/${2}Route.js" ]; then echo "Remove the existing route $2 manually!"; exit; fi
 
         # Create folder
         mkdir -p client/routes
         # Create file
         createFile route.js client/routes/${2}Route.js $2 $3
         # Succesful
-        echo "Successfully created route \"${h2}Route\" with the path ${3}"
+	routeName="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}"
+        echo "Successfully created route \"${routeName}Route\" with the path ${3}"
         ;;
     create:module)
         if [ -z ${2} ]; then echo "Define a module name!"; exit; fi
