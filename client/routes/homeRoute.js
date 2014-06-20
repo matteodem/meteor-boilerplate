@@ -1,10 +1,10 @@
 var HomeController = RouteController.extend({
-    template: 'home'
+  template: 'home'
 });
 
 Router.map(function () {
-    this.route('home', {
-        path :  '/',
-        controller :  HomeController
-    });
+  this.route('home', {
+    path :  '/',
+    controller :  HomeController
+  });
 });

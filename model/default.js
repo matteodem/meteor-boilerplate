@@ -3,15 +3,15 @@
 // Default = new Meteor.Collection('default');
 //
 // Default.allow({
-//     insert : function () {
-//         return false;
-//     },
-//     update : function () {
-//         return false;
-//     },
-//     remove : function () {
-//         return false;
-//     }
+//   insert : function () {
+//     return false;
+//   },
+//   update : function () {
+//     return false;
+//   },
+//   remove : function () {
+//     return false;
+//   }
 // });
 //
 // Meteor.methods({

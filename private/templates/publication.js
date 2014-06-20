@@ -1,3 +1,3 @@
 Meteor.publish('ReplaceFirst', function () {
-    return ReplaceFirstUpperCase.find();
+  return ReplaceFirstUpperCase.find();
 });
