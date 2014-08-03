@@ -18,3 +18,6 @@ iron-router-progress
 /handlebar-helpers
 /iron-router-progress
 /blaze-layout
+/iron-layout
+/iron-core
+/iron-dynamic-template
