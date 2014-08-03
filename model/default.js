@@ -1,6 +1,19 @@
-// Use "./meteor-boilerplate create:model" to create new models, that look as following:
+// Use "./meteor-boilerplate create:model" to create new models:
 //
-// Default = new Meteor.Collection('default');
+// Default = new Meteor.Collection('default', {
+//   schema: new SimpleSchema({
+//     title: {
+//       type: String
+//     },
+//     content: {
+//       type: String
+//     },
+//     createdAt: {
+//       type: Date,
+//       denyUpdate: true
+//     }
+//   })
+// });
 //
 // Default.allow({
 //   insert : function () {
