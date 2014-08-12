@@ -1,137 +1,206 @@
-#!/bin/bash
+var cache = {},
+  fs = require('fs'),
+  args = process.argv,
+  util = require('util'),
+  cliRoot = './private/cli/',
+  readline = require('readline'),
+  exec = require('child_process').exec;
 
-# Overall check
-if [ ! -d ".meteor" ]
-    then echo 'Please use the meteor-boilerplate console tool out of your project root (./meteor-boilerplate)'
-    exit
-fi
 
-# Helper Function to copy the template files
-function createFile {
-    UPPERCASE="$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}";
-    ESCAPED=$(sed 's/[\*\.]/\\&/g' <<<"$CTMP")
+function execute(command, callback){
+  exec(command, function(error, stdout, stderr){ callback(stdout); });
+};
 
-    # First parameter is the file name, path, then all the parameter names passed into the command
-    sed "s/ReplaceFirstUpperCase/${UPPERCASE}/g" private/templates/${1} > ${1}
-    sed "s/ReplaceFirst/${3}/g" ${1} > ${1}.test
-    sed "s/ReplaceSecond/${ESCAPED}/g" ${1}.test > ${2}
-    rm ${1} ${1}.test
+function printError(content, callback) {
+  execute('echo $(tput setab 1)$(tput setaf 7) ' + content + ' $(tput sgr0)', function (string) {
+    process.stdout.write('\n' + string + '\n');
+    callback(string);
+  });
 }
 
-case ${1} in
-    create:view)
-        if [ -z ${2} ]; then echo "Define a view name!"; exit; fi
-        if [ -d "client/views/$2" ]; then echo "Remove the existing view ($2) folder manually!"; exit; fi
-        if [ -d "client/modules/$2" ]; then echo "There's already a module called $2!"; exit; fi
-        if [ -f "client/views/common/$2.html" ]; then echo "Remove the existing common view ($2) manually!"; exit; fi
+function printInfo(content) {
+  process.stdout.write(util.inspect(content, { colors: true }).replace(/\'/g, '') + '\n');
+}
 
-        # Create folder
-        mkdir -p client/views/${2}
-        # Create files
-        createFile view.html client/views/${2}/${2}.html $2 $3
-        createFile view.js client/views/${2}/${2}.js $2 $3
-        createFile view.less client/views/${2}/${2}.less $2 $3
-        # Succesful
-        echo "Successfully created a view called \"${2}\""
-        ;;
-    create:common)
-            if [ -z ${2} ]; then echo "Define a common view name!"; exit; fi
-            if [ -f "client/views/common/$2.html" ]; then echo "Remove the existing common view ($2) manually!"; exit; fi
-            if [ -d "client/views/$2" ]; then echo "Remove the existing view ($2) folder manually!"; exit; fi
-            if [ -d "client/modules/$2" ]; then echo "There's already a module called $2!"; exit; fi
+function printCommand(command, description) {
+  process.stdout.write(util.inspect(command, { colors: true }).replace(/\'/g, '') + "\t - " + description);
+}
 
-            # Create folder
-            mkdir -p client/views/common
-            # Fill files
-            createFile "view.html" "client/views/common/${2}.html" $2 $3
-            # Succesful
-            echo "Successfully created a common view called \"${2}\""
-            ;;
-    create:layout)
-            if [ -z ${2} ]; then echo "Define a layout view name!"; exit; fi
-            if [ -f "client/views/layouts/$2.html" ]; then echo "Remove the existing layout ($2) manually!"; exit; fi
+function getCreateMethods() {
+  if (cache['createMethods']) {
+    return cache['createMethods'];
+  }
 
-            # Create folder
-            mkdir -p client/views/layouts
-            # Create file
-            createFile layout.html client/views/layouts/${2}.html $2 $3
-            # Succesful
-            echo "Successfully created a layout called \"${2}\""
-            ;;
-    create:route)
-        if [ -z ${2} ] || [ -z ${3} ]; then echo "The first parameter is the route / template name and the second one the path (e. g. create:route home /)"; exit; fi
-        if [ -f "client/routes/${2}Route.js" ]; then echo "Remove the existing route $2 manually!"; exit; fi
+  cache['createMethods'] = fs.readdirSync(cliRoot + 'create/' + configuration.create_profile );
+  return cache['createMethods'];
+}
 
-        # Create folder
-        mkdir -p client/routes
-        # Create file
-        createFile route.js client/routes/${2}Route.js $2 $3
-        # Succesful
-	routeName="$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}"
-        echo "Successfully created route \"${routeName}Route\" with the path ${3}"
-        ;;
-    create:module)
-        if [ -z ${2} ]; then echo "Define a module name!"; exit; fi
-        if [ -d "client/modules/$2" ]; then echo "Remove the existing module ($2) folder manually!"; exit; fi
-        if [ -d "client/views/$2" ]; then echo "There's already a view called $2!"; exit; fi
-        if [ -f "client/views/common/$2.html" ]; then echo "Remove the existing common view ($2) manually!"; exit; fi
+function commandExists(command) {
+  return commands[command];
+}
 
-        # Create folder
-        mkdir -p client/modules/${2}
-        # Create files
-        createFile module.html client/modules/${2}/${2}.html $2 $3
-        createFile module.js client/modules/${2}/${2}.js $2 $3
-        createFile module.less client/modules/${2}/${2}.less $2 $3
-        # Succesful
-        echo "Successfully created a module called \"${2}\""
-        ;;
-    create:model)
-        if [ -z ${2} ]; then echo "Define a model name!"; exit; fi
-        if [ -f "model/$2.js" ]; then echo "Remove the existing model $2 manually!"; exit; fi
-        if [ -f "server/publications/$2.js" ]; then echo "Remove the existing publication file $2 manually!"; exit; fi
-        if [ -f "client/subscriptions/$2.js" ]; then echo "Remove the existing subscription file $2 manually!"; exit; fi
+function quote(regex) {
+  return regex.replace(/([()[{*+.$^\\|?])/g, '\\$1');
+}
 
-        # Create folder
-        mkdir -p model
-	    mkdir -p server/publications
-        mkdir -p client/subscriptions
+function slugify(text) {
+  text = text.replace(/[^-a-zA-Z0-9\s\/\.+]+/ig, '');
+  text = text.replace(/\s+/gi, "-");
+  return text;
+}
 
-        # Create file
-        touch model/${2}.js
-        touch server/publications/$2.js
-        touch client/subscriptions/$2.js
+function createFoldersAndFile(conf) {
+  var absolutePath = '',
+    pathParts = conf.path.split('/');
 
-        # Fill files
-        createFile model.js model/${2}.js $2 $3
-        createFile publication.js server/publications/${2}.js $2 $3
-        createFile subscription.js client/subscriptions/${2}.js $2 $3
-        # Succesful
-        echo "Successfully created a model called \"${2}\" (with files in model, client/subscriptions and server/publications)"
-        ;;
-    create:test)
-        if [ -z ${2} ]; then echo "Define a test name!"; exit; fi
-        if [ -f "tests/$2.js" ]; then echo "Remove the existing test $2 manually!"; exit; fi
+  pathParts.forEach(function (part, index) {
+    var isDirectory = false;
 
-        # Create file
-        createFile test.js tests/${2}.js $2 $3
-        # Succesful
-        echo "Successfully created a test called ${2}.js under tests"
-        ;;
-    *)
-        if [ -z ${1} ]; then
-            echo ""
-        else
-            echo "Could not find the command!"
-            echo ""
-        fi
-        echo "List of possible operations: "
-        echo -e "create:test   - Test file under tests"
-        echo -e "create:view   - View folder under client/views with html, js and less files in it"
-        echo -e "create:layout - Create a layout template which yields your content, used by iron-router"
-        echo -e "create:common - Html template file under client/views/common"
-        echo -e "create:route  - Route javascript file under client/routes"
-        echo -e "create:model  - Model with files in model/, client/subscriptions and server/publications"
-        echo -e "create:module - Module, such as a searchbar, form etc."
-        echo ""
-        ;;
-esac
+    absolutePath += part;
+
+    if (pathParts.length - 1 !== index) {
+      absolutePath += '/';
+      isDirectory = true;
+    }
+
+    if (!fs.existsSync(absolutePath)) {
+      if (isDirectory) {
+        fs.mkdirSync(absolutePath);
+      } else {
+        // It has to be the file
+        fs.writeFileSync(conf.path, conf.contents, { encoding: 'utf8' });
+      }
+    }
+  });
+}
+
+function createFiles(path, variables, filesConfiguration, callback) {
+  variables.forEach(function (variable) {
+    filesConfiguration.map(function (file) {
+      var variableRegExp = new RegExp(quote('**' + variable.name + '**'), 'g');
+
+      file.name = file.name.replace(variableRegExp, variable.value);
+      file.path = slugify(file.path.replace(variableRegExp, variable.value));
+
+      file.contents = fs
+        .readFileSync(path + '/templates/' + file.template, { encoding: "utf8" })
+        .replace(variableRegExp, variable.value)
+      ;
+
+      return file;
+    })
+  });
+
+  filesConfiguration.forEach(function (file) {
+    createFoldersAndFile(file);
+  });
+
+  callback();
+}
+
+/*
+ Configuration
+ private/cli/configuration.json
+ */
+var configuration = JSON.parse(fs.readFileSync(cliRoot + 'configuration.json', { encoding: "utf8" }));
+
+/*
+ Commands
+ create:...
+ */
+var commands = {};
+
+// Add create commands to the 'commands' object
+getCreateMethods().forEach(function (createPart) {
+  commands['create:' + createPart] = 'file_contents';
+});
+
+
+// TODO: Rewrite logic to be useable if there were more than 3 arguments
+
+// Process the given input
+if (args.length === 3) {
+  // If there are exactly 3 arguments (for example "node meteor-boilerplate create:view")
+  var command = args[2],
+    parts = command.split(':'),
+    userInput = [];
+
+  if (commandExists(command)) {
+    var rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    // Different kinds of commands
+    if (command.substr(0, 6) === 'create') {
+      var createPath = cliRoot + 'create/' + configuration.create_profile + '/' + parts[1];
+
+      var createConf = JSON.parse(fs.readFileSync(
+        createPath + '/configuration.json',
+        { encoding: "utf8" }
+      ));
+
+      var variables = createConf.variables;
+
+      var argument = variables.shift();
+      console.log(argument.description);
+
+      rl.prompt();
+
+      rl.on('line', function(line) {
+        if (!line) {
+          console.log('Please enter a value!');
+          rl.prompt();
+        } else {
+          userInput.push({ 'name' : argument.name, 'value' : line });
+
+          if (variables.length === 0) {
+            createFiles(createPath, userInput, createConf.files, function () {
+              console.log();
+
+              createConf.files.forEach(function (file) {
+                process.stdout.write('-- Created ');
+                printInfo(file.path );
+              });
+
+              console.log();
+              process.exit(0);
+            });
+          }
+
+          argument = variables.shift();
+
+          console.log(argument.description);
+          rl.prompt();
+        }
+      })
+    }
+  } else {
+    printError('The command ' + command + ' has not been found!', function () {
+      // TODO: Implement simple suggestions
+      // console.log('Did you mean: ');
+      process.exit(0);
+    });
+  }
+} else if (args.length > 3) {
+  // Expect the exact amount of needed variables to be entered
+} else {
+  // If no command was entered, print out the overview of commands
+  // Our nice title
+  console.log("                   __                              __          _ __                __      __     ");
+  console.log("   ____ ___  ___  / /____  ____  _____            / /_  ____  (_) /__  _________  / /___ _/ /____ ");
+  console.log("  / __ `__ \\/ _ \\/ __/ _ \\/ __ \\/ ___/  ______   / __ \\/ __ \\/ / / _ \\/ ___/ __ \\/ / __ `/ __/ _ \\");
+  console.log(" / / / / / /  __/ /_/  __/ /_/ / /     /_____/  / /_/ / /_/ / / /  __/ /  / /_/ / / /_/ / /_/  __/");
+  console.log("/_/ /_/ /_/\\___/\\__/\\___/\\____/_/              /_.___/\\____/_/_/\\___/_/  / .___/_/\\__,_/\\__/\\___/ ");
+  console.log("                                                                        /_/                       ");
+  console.log("Use one of the following commands:\n");
+
+  getCreateMethods().forEach(function (command) {
+    var description = fs.readFileSync(
+      cliRoot + 'create/' + configuration.create_profile + '/' + command + '/info.txt',
+      { encoding: "utf8" }
+    );
+    printCommand('create:' + command, description);
+  });
+  console.log();
+}

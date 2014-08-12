@@ -1,0 +1,20 @@
+{
+  "variables" : [
+    {
+      "name" : "viewName",
+      "description" : "What's the name of your view?"
+    }
+  ],
+  "files" : [
+    {
+      "template" : "view.html",
+      "name" : "**viewName**.html",
+      "path" : "client/views/**viewName**/**viewName**.html"
+    },
+    {
+      "template" : "view.js",
+      "name" : "**viewName**.js",
+      "path" : "client/views/**viewName**/**viewName**.js"
+    }
+  ]
+}

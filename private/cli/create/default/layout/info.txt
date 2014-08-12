@@ -1,0 +1,1 @@
+Layout template which yields your content
