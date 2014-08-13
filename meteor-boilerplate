@@ -6,10 +6,9 @@ var cache = {},
   readline = require('readline'),
   exec = require('child_process').exec;
 
-
 function execute(command, callback){
   exec(command, function(error, stdout, stderr){ callback(stdout); });
-};
+}
 
 function printError(content, callback) {
   execute('echo $(tput setab 1)$(tput setaf 7) ' + content + ' $(tput sgr0)', function (string) {
@@ -44,13 +43,16 @@ function quote(regex) {
 }
 
 function slugify(text) {
-  text = text.replace(/[^-a-zA-Z0-9\s\/\.+]+/ig, '');
-  text = text.replace(/\s+/gi, "-");
-  return text;
+  return text
+    .replace(/[^-a-zA-Z0-9\s\/\.+]+/ig, '')
+    .replace(/\s+/gi, "_")
+    .toLowerCase()
+  ;
 }
 
 function createFoldersAndFile(conf) {
-  var absolutePath = '',
+  var fileExists = false,
+    absolutePath = '',
     pathParts = conf.path.split('/');
 
   pathParts.forEach(function (part, index) {
@@ -70,8 +72,12 @@ function createFoldersAndFile(conf) {
         // It has to be the file
         fs.writeFileSync(conf.path, conf.contents, { encoding: 'utf8' });
       }
+    } else if (fs.existsSync(absolutePath) && !isDirectory) {
+      fileExists = true;
     }
   });
+
+  return !fileExists;
 }
 
 function createFiles(path, variables, filesConfiguration, callback) {
@@ -91,11 +97,93 @@ function createFiles(path, variables, filesConfiguration, callback) {
     })
   });
 
+  var alreadyExistingFile = '';
+
   filesConfiguration.forEach(function (file) {
-    createFoldersAndFile(file);
+    var continueCreating;
+
+    if (alreadyExistingFile) {
+      return;
+    }
+
+    continueCreating = createFoldersAndFile(file);
+
+    if (!continueCreating) {
+      alreadyExistingFile = file;
+    }
   });
 
-  callback();
+  if (alreadyExistingFile) {
+    printError('Remove existing file "' + alreadyExistingFile.path + '" manually! ', function () {
+      process.exit(0);
+    });
+  } else {
+    console.log();
+
+    createConf.files.forEach(function (file) {
+      process.stdout.write('-- Created ');
+      printInfo(file.path );
+    });
+
+    console.log();
+
+    if (callback) {
+      callback();
+    }
+  }
+}
+
+function showQuestions(variables, callback) {
+  var userInput = [];
+  var argument = variables.shift();
+
+  console.log(argument.description);
+
+  rl.prompt();
+
+  rl.on('line', function(line) {
+    if (!line) {
+      console.log('Please enter a value!');
+      rl.prompt();
+    } else {
+      userInput.push({ 'name' : argument.name, 'value' : line });
+
+      if (variables.length === 0) {
+        callback(userInput);
+      }
+
+      argument = variables.shift();
+
+      console.log(argument.description);
+      rl.prompt();
+    }
+  })
+}
+
+function commandsAreSimiliar(firstCommand, secondCommand) {
+  var sameCharOccurences = 0,
+    firstCommandChars = firstCommand.split(''),
+    secondCommandChars = secondCommand.split('');
+
+  firstCommandChars.forEach(function (character, index) {
+    if (character === secondCommandChars[index]) {
+      sameCharOccurences += 1;
+    }
+  });
+
+  return sameCharOccurences > parseInt((firstCommand.length / 1.5).toFixed(0), 10);
+}
+
+function getSuggestions(command) {
+  var foundSuggestions = [];
+
+  Object.keys(commands).forEach(function (existingCommand) {
+    if (commandsAreSimiliar(command, existingCommand)) {
+      foundSuggestions.push(existingCommand);
+    }
+  });
+
+  return foundSuggestions;
 }
 
 /*
@@ -115,15 +203,16 @@ getCreateMethods().forEach(function (createPart) {
   commands['create:' + createPart] = 'file_contents';
 });
 
-
-// TODO: Rewrite logic to be useable if there were more than 3 arguments
-
+// TODO: configurations for all create commands
+// TODO: Comment existing functions
+// TODO: Refactor
+// TODO: Make the code readable
+// TODO: Readme.md
 // Process the given input
-if (args.length === 3) {
+if (args.length >= 3) {
   // If there are exactly 3 arguments (for example "node meteor-boilerplate create:view")
   var command = args[2],
-    parts = command.split(':'),
-    userInput = [];
+    parts = command.split(':');
 
   if (commandExists(command)) {
     var rl = readline.createInterface({
@@ -142,48 +231,52 @@ if (args.length === 3) {
 
       var variables = createConf.variables;
 
-      var argument = variables.shift();
-      console.log(argument.description);
+      if (args.length === 3) {
+        // Show an interactive console
+        showQuestions(variables, function (userInput) {
+          createFiles(createPath, userInput, createConf.files, function () {
+            process.exit(0);
+          });
+        });
+      } else {
+        // Expect it to be the exact amount of variables needed
+        var commandArgs = args.splice(3);
 
-      rl.prompt();
+        if (commandArgs.length === variables.length) {
+          var userInput = variables.map(function (variable) {
+            variable.value = commandArgs.shift();
+            return variable;
+          });
 
-      rl.on('line', function(line) {
-        if (!line) {
-          console.log('Please enter a value!');
-          rl.prompt();
+          createFiles(createPath, userInput, createConf.files, function () {
+            process.exit(0);
+          });
         } else {
-          userInput.push({ 'name' : argument.name, 'value' : line });
+          printError('Amount of parameters is invalid!', function () {
+            var suggestions = getSuggestions(command);
 
-          if (variables.length === 0) {
-            createFiles(createPath, userInput, createConf.files, function () {
-              console.log();
-
-              createConf.files.forEach(function (file) {
-                process.stdout.write('-- Created ');
-                printInfo(file.path );
-              });
-
-              console.log();
-              process.exit(0);
-            });
-          }
-
-          argument = variables.shift();
-
-          console.log(argument.description);
-          rl.prompt();
+            if (suggestions.length > 0) {
+              console.log('node meteor-boilerplate ' + command + ' ' + variables.map(function (v) { return v.name; }).join(' ') + '\n');
+            }
+            process.exit(0);
+          });
         }
-      })
+      }
     }
   } else {
-    printError('The command ' + command + ' has not been found!', function () {
-      // TODO: Implement simple suggestions
-      // console.log('Did you mean: ');
+    printError('The command ' + command + ' does not exist!', function () {
+      var suggestions = getSuggestions(command);
+
+      if (suggestions.length > 0) {
+        console.log('Did you mean? ');
+        suggestions.forEach(function (suggestion) {
+          process.stdout.write('   ');
+          printInfo(suggestion);
+        });
+      }
       process.exit(0);
     });
   }
-} else if (args.length > 3) {
-  // Expect the exact amount of needed variables to be entered
 } else {
   // If no command was entered, print out the overview of commands
   // Our nice title
