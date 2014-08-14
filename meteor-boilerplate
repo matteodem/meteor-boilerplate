@@ -231,7 +231,13 @@ var Errors = {
     InteractiveConsole.printError('Remove existing file "' + path + '" manually! ', function () {
       process.exit(0);
     });
+  },
+
+  executeWithinMeteorProject: function () {
+    InteractiveConsole.print('Execute this script within the meteor project!');
+    process.exit(0);
   }
+
 };
 
 /**
@@ -284,12 +290,12 @@ CommandRunner.prototype.run = function () {
 /**
  * Project Wide Configuration
  *
- * Has all the configuration needed for the project and this script, 
+ * Has all the configuration needed for the project and this script,
  * for example the profile which is used for creating files and more (with coffeescript support)
- * 
+ *
  * found under private/cli/configuration.json
  */
-var configuration = JSON.parse(fs.readFileSync(cliRoot + 'configuration.json', { encoding: "utf8" }));
+var configuration;
 
 /**
  * Commands
@@ -301,6 +307,13 @@ var configuration = JSON.parse(fs.readFileSync(cliRoot + 'configuration.json', {
  * create:* (found in each profile, private/cli/create/<profile-name>/<*>
  */
 var commands = {};
+
+// Check if the command has been entered within the meteor directory
+if (!fs.existsSync('.meteor')) {
+  Errors.executeWithinMeteorProject();
+}
+
+configuration = JSON.parse(fs.readFileSync(cliRoot + 'configuration.json', { encoding: "utf8" }));
 
 // Fill 'commands' object with all create commands
 fs.readdirSync(cliRoot + 'create/' + configuration.profile ).forEach(function (createPart) {

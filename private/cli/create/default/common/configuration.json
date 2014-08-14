@@ -1,0 +1,14 @@
+{
+  "variables" : [
+    {
+      "name" : "commonViewName",
+      "description" : "What's the name of your common view?"
+    }
+  ],
+  "files" : [
+    {
+      "template" : "common.html",
+      "path" : "client/views/common/__commonViewName__.html"
+    }
+  ]
+}

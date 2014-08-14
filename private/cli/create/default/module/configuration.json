@@ -1,0 +1,22 @@
+{
+  "variables" : [
+    {
+      "name" : "moduleName",
+      "description" : "What's the name of your module?"
+    }
+  ],
+  "files" : [
+    {
+      "template" : "module.html",
+      "path" : "client/modules/__moduleName__/__moduleName__.html"
+    },
+    {
+      "template" : "module.js",
+      "path" : "client/modules/__moduleName__/__moduleName__.js"
+    },
+    {
+      "template" : "module.less",
+      "path" : "client/modules/__moduleName__/__moduleName__.less"
+    }
+  ]
+}

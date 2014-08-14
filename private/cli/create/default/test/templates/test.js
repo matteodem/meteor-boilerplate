@@ -1,4 +1,4 @@
 var assert = require('assert');
 
-suite('ReplaceFirst', function () {
+suite('__testName__', function () {
 });

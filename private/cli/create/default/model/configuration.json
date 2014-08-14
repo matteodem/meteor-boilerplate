@@ -1,0 +1,22 @@
+{
+  "variables" : [
+    {
+      "name" : "modelName",
+      "description" : "What's your model called (Meteor.Collection)?"
+    }
+  ],
+  "files" : [
+    {
+      "template" : "model.js",
+      "path" : "model/__modelName__.js"
+    },
+    {
+      "template" : "subscription.js",
+      "path" : "client/subscriptions/__modelName__Sub.js"
+    },
+    {
+      "template" : "publication.js",
+      "path" : "server/publications/__modelName__Pub.js"
+    }
+  ]
+}

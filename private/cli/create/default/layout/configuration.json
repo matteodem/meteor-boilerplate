@@ -1,0 +1,14 @@
+{
+  "variables" : [
+    {
+      "name" : "layoutName",
+      "description" : "What's the name of your layout?"
+    }
+  ],
+  "files" : [
+    {
+      "template" : "layout.html",
+      "path" : "client/views/layouts/__layoutName__.html"
+    }
+  ]
+}
