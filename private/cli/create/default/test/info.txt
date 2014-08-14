@@ -1,1 +1,1 @@
-Velocity test file for custom logic
+Velocity test file for verifying app logic

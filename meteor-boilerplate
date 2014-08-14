@@ -1,41 +1,15 @@
-var cache = {},
-  fs = require('fs'),
+var fs = require('fs'),
   args = process.argv,
   util = require('util'),
   cliRoot = './private/cli/',
   readline = require('readline'),
   exec = require('child_process').exec;
 
+/**
+ *  General Helper Functions
+ */
 function execute(command, callback){
   exec(command, function(error, stdout, stderr){ callback(stdout); });
-}
-
-function printError(content, callback) {
-  execute('echo $(tput setab 1)$(tput setaf 7) ' + content + ' $(tput sgr0)', function (string) {
-    process.stdout.write('\n' + string + '\n');
-    callback(string);
-  });
-}
-
-function printInfo(content) {
-  process.stdout.write(util.inspect(content, { colors: true }).replace(/\'/g, '') + '\n');
-}
-
-function printCommand(command, description) {
-  process.stdout.write(util.inspect(command, { colors: true }).replace(/\'/g, '') + "\t - " + description);
-}
-
-function getCreateMethods() {
-  if (cache['createMethods']) {
-    return cache['createMethods'];
-  }
-
-  cache['createMethods'] = fs.readdirSync(cliRoot + 'create/' + configuration.create_profile );
-  return cache['createMethods'];
-}
-
-function commandExists(command) {
-  return commands[command];
 }
 
 function quote(regex) {
@@ -46,118 +20,7 @@ function slugify(text) {
   return text
     .replace(/[^-a-zA-Z0-9\s\/\.+]+/ig, '')
     .replace(/\s+/gi, "_")
-    .toLowerCase()
   ;
-}
-
-function createFoldersAndFile(conf) {
-  var fileExists = false,
-    absolutePath = '',
-    pathParts = conf.path.split('/');
-
-  pathParts.forEach(function (part, index) {
-    var isDirectory = false;
-
-    absolutePath += part;
-
-    if (pathParts.length - 1 !== index) {
-      absolutePath += '/';
-      isDirectory = true;
-    }
-
-    if (!fs.existsSync(absolutePath)) {
-      if (isDirectory) {
-        fs.mkdirSync(absolutePath);
-      } else {
-        // It has to be the file
-        fs.writeFileSync(conf.path, conf.contents, { encoding: 'utf8' });
-      }
-    } else if (fs.existsSync(absolutePath) && !isDirectory) {
-      fileExists = true;
-    }
-  });
-
-  return !fileExists;
-}
-
-function createFiles(path, variables, filesConfiguration, callback) {
-  variables.forEach(function (variable) {
-    filesConfiguration.map(function (file) {
-      var variableRegExp = new RegExp(quote('**' + variable.name + '**'), 'g');
-
-      file.name = file.name.replace(variableRegExp, variable.value);
-      file.path = slugify(file.path.replace(variableRegExp, variable.value));
-
-      file.contents = fs
-        .readFileSync(path + '/templates/' + file.template, { encoding: "utf8" })
-        .replace(variableRegExp, variable.value)
-      ;
-
-      return file;
-    })
-  });
-
-  var alreadyExistingFile = '';
-
-  filesConfiguration.forEach(function (file) {
-    var continueCreating;
-
-    if (alreadyExistingFile) {
-      return;
-    }
-
-    continueCreating = createFoldersAndFile(file);
-
-    if (!continueCreating) {
-      alreadyExistingFile = file;
-    }
-  });
-
-  if (alreadyExistingFile) {
-    printError('Remove existing file "' + alreadyExistingFile.path + '" manually! ', function () {
-      process.exit(0);
-    });
-  } else {
-    console.log();
-
-    createConf.files.forEach(function (file) {
-      process.stdout.write('-- Created ');
-      printInfo(file.path );
-    });
-
-    console.log();
-
-    if (callback) {
-      callback();
-    }
-  }
-}
-
-function showQuestions(variables, callback) {
-  var userInput = [];
-  var argument = variables.shift();
-
-  console.log(argument.description);
-
-  rl.prompt();
-
-  rl.on('line', function(line) {
-    if (!line) {
-      console.log('Please enter a value!');
-      rl.prompt();
-    } else {
-      userInput.push({ 'name' : argument.name, 'value' : line });
-
-      if (variables.length === 0) {
-        callback(userInput);
-      }
-
-      argument = variables.shift();
-
-      console.log(argument.description);
-      rl.prompt();
-    }
-  })
 }
 
 function commandsAreSimiliar(firstCommand, secondCommand) {
@@ -186,114 +49,316 @@ function getSuggestions(command) {
   return foundSuggestions;
 }
 
-/*
- Configuration
- private/cli/configuration.json
+/**
+ * File Manager
+ *
+ * Handles creation of files and folders for create:* commands
  */
-var configuration = JSON.parse(fs.readFileSync(cliRoot + 'configuration.json', { encoding: "utf8" }));
+var FileManager = {
 
-/*
- Commands
- create:...
+  createFoldersAndFile: function (conf) {
+    var fileExists = false,
+      absolutePath = '',
+      pathParts = conf.path.split('/');
+
+    pathParts.forEach(function (part, index) {
+      var isDirectory = false;
+
+      absolutePath += part;
+
+      if (pathParts.length - 1 !== index) {
+        absolutePath += '/';
+        isDirectory = true;
+      }
+
+      if (!fs.existsSync(absolutePath)) {
+        if (isDirectory) {
+          fs.mkdirSync(absolutePath);
+        } else {
+          // It has to be the file
+          fs.writeFileSync(conf.path, conf.contents, { encoding: 'utf8' });
+        }
+      } else if (fs.existsSync(absolutePath) && !isDirectory) {
+        fileExists = true;
+      }
+    });
+
+    return !fileExists;
+  },
+
+  processFiles: function (path, variables, filesConfiguration, callback) {
+    var managerScope = this,
+      alreadyExistingFilePath = '';
+
+    filesConfiguration.forEach(function (file) {
+      var continueCreating;
+
+      if (alreadyExistingFilePath) {
+        return;
+      }
+
+      file.contents = fs.readFileSync(path + '/templates/' + file.template, { encoding: "utf8" });
+
+      variables.forEach(function (variable) {
+        var variableRegExp = new RegExp(quote('__' + variable.name + '__'), 'g');
+
+        file.path = slugify(file.path.replace(variableRegExp, variable.value));
+        file.contents = file.contents.replace(variableRegExp, variable.value);
+      });
+
+      continueCreating = managerScope.createFoldersAndFile(file);
+
+      if (!continueCreating) {
+        alreadyExistingFilePath = file.path;
+      }
+    });
+
+    if (alreadyExistingFilePath) {
+      Errors.fileExists(alreadyExistingFilePath);
+    } else {
+      InteractiveConsole.print();
+
+      filesConfiguration.forEach(function (file) {
+        process.stdout.write('-- Created ');
+        InteractiveConsole.printInfo(file.path);
+      });
+
+      InteractiveConsole.print();
+
+      if (callback) {
+        callback();
+      }
+    }
+  }
+};
+
+/**
+ * Interactive Console
+ *
+ * Prints output to the user and takes input through the readline interface
  */
-var commands = {};
+var InteractiveConsole = {
 
-// Add create commands to the 'commands' object
-getCreateMethods().forEach(function (createPart) {
-  commands['create:' + createPart] = 'file_contents';
-});
-
-// TODO: configurations for all create commands
-// TODO: Comment existing functions
-// TODO: Refactor
-// TODO: Make the code readable
-// TODO: Readme.md
-// Process the given input
-if (args.length >= 3) {
-  // If there are exactly 3 arguments (for example "node meteor-boilerplate create:view")
-  var command = args[2],
-    parts = command.split(':');
-
-  if (commandExists(command)) {
-    var rl = readline.createInterface({
+  init : function (runnerScope) {
+    this.readLine = readline.createInterface({
       input: process.stdin,
       output: process.stdout
     });
+  },
 
-    // Different kinds of commands
-    if (command.substr(0, 6) === 'create') {
-      var createPath = cliRoot + 'create/' + configuration.create_profile + '/' + parts[1];
+  showQuestions: function (variables, callback) {
+    var userInput = [],
+      consoleScope = this,
+      argument = variables.shift();
 
-      var createConf = JSON.parse(fs.readFileSync(
-        createPath + '/configuration.json',
-        { encoding: "utf8" }
-      ));
+    InteractiveConsole.print(argument.question);
 
-      var variables = createConf.variables;
+    this.readLine.prompt();
 
-      if (args.length === 3) {
-        // Show an interactive console
-        showQuestions(variables, function (userInput) {
-          createFiles(createPath, userInput, createConf.files, function () {
-            process.exit(0);
-          });
-        });
+    this.readLine.on('line', function(line) {
+      if (!line) {
+        InteractiveConsole.print('Please enter a value!');
+        consoleScope.readLine.prompt();
       } else {
-        // Expect it to be the exact amount of variables needed
-        var commandArgs = args.splice(3);
+        userInput.push({ 'name' : argument.name, 'value' : line });
 
-        if (commandArgs.length === variables.length) {
-          var userInput = variables.map(function (variable) {
-            variable.value = commandArgs.shift();
-            return variable;
-          });
-
-          createFiles(createPath, userInput, createConf.files, function () {
-            process.exit(0);
-          });
+        if (variables.length === 0) {
+          callback(userInput);
         } else {
-          printError('Amount of parameters is invalid!', function () {
-            var suggestions = getSuggestions(command);
+          argument = variables.shift();
 
-            if (suggestions.length > 0) {
-              console.log('node meteor-boilerplate ' + command + ' ' + variables.map(function (v) { return v.name; }).join(' ') + '\n');
-            }
-            process.exit(0);
-          });
+          InteractiveConsole.print(argument.question);
+          consoleScope.readLine.prompt();
         }
       }
-    }
-  } else {
-    printError('The command ' + command + ' does not exist!', function () {
+    });
+  },
+
+  print: function () {
+    if (!arguments[0])
+      arguments[0] = '';
+
+    process.stdout.write(arguments[0] + '\n');
+  },
+
+  printError: function (content, callback) {
+    execute('echo $(tput setab 1)$(tput setaf 7) ' + content + ' $(tput sgr0)', function (string) {
+      process.stdout.write('\n' + string + '\n');
+      callback(string);
+    });
+  },
+
+  printInfo: function (content) {
+    process.stdout.write(util.inspect(content, { colors: true }).replace(/\'/g, '') + '\n');
+  },
+
+  printCommand: function (command, description) {
+    process.stdout.write(util.inspect(command, { colors: true }).replace(/\'/g, '') + "\t - " + description);
+  }
+
+};
+
+/**
+ * Errors
+ *
+ * Helper Objec for printing out certain types of errors.
+ */
+var Errors = {
+
+  commandNotFound: function (command) {
+    InteractiveConsole.printError('The command ' + command + ' does not exist!', function () {
       var suggestions = getSuggestions(command);
 
       if (suggestions.length > 0) {
-        console.log('Did you mean? ');
+        InteractiveConsole.print('Did you mean? ');
         suggestions.forEach(function (suggestion) {
           process.stdout.write('   ');
-          printInfo(suggestion);
+          InteractiveConsole.printInfo(suggestion);
         });
       }
       process.exit(0);
     });
+  },
+
+  amountOfParametersInvalid: function (command, parameters) {
+    InteractiveConsole.printError('Amount of parameters is invalid!', function () {
+      InteractiveConsole.print('node meteor-boilerplate ' + command + ' ' + parameters.map(function (v) { return v.name; }).join(' ') + '\n');
+      process.exit(0);
+    });
+  },
+
+  fileExists: function (path) {
+    InteractiveConsole.printError('Remove existing file "' + path + '" manually! ', function () {
+      process.exit(0);
+    });
+  }
+};
+
+/**
+ * Main Command Runner Class
+ */
+var CommandRunner = function (nodeArgs) {
+  this.command = nodeArgs[2];
+  this.arguments = nodeArgs;
+  this.commandParts = this.command.split(':');
+};
+
+CommandRunner.prototype.exists = function () {
+  return commands[this.command];
+};
+
+CommandRunner.prototype.run = function () {
+  var questions,
+    userInput,
+    commandArgs,
+    runnerScope = this;
+
+  commands[this.command].init(this);
+  questions = commands[this.command].getQuestions();
+
+
+  if (this.arguments.length === 3) {
+    // Show an interactive console, if there are exactly 3 arguments (for example "node meteor-boilerplate create:view")
+    InteractiveConsole.init(this);
+
+    InteractiveConsole.showQuestions(questions, function (userInput) {
+      commands[runnerScope.command].execute(userInput);
+    });
+  } else {
+    // If more, expect it to be the exact amount of variables needed
+    commandArgs = this.arguments.splice(3);
+
+    if (commandArgs.length === questions.length) {
+      userInput = questions.map(function (variable) {
+        variable.value = commandArgs.shift();
+        return variable;
+      });
+
+      commands[runnerScope.command].execute(userInput);
+    } else {
+      Errors.amountOfParametersInvalid(runnerScope.command, questions)
+    }
+  }
+};
+
+/**
+ * Project Wide Configuration
+ *
+ * Has all the configuration needed for the project and this script, 
+ * for example the profile which is used for creating files and more (with coffeescript support)
+ * 
+ * found under private/cli/configuration.json
+ */
+var configuration = JSON.parse(fs.readFileSync(cliRoot + 'configuration.json', { encoding: "utf8" }));
+
+/**
+ * Commands
+ *
+ * Holds all commands where the key is the command itself ('create:view')
+ * and the value is an object used for processing all commands in a general way
+ *
+ * Currently available
+ * create:* (found in each profile, private/cli/create/<profile-name>/<*>
+ */
+var commands = {};
+
+// Fill 'commands' object with all create commands
+fs.readdirSync(cliRoot + 'create/' + configuration.profile ).forEach(function (createPart) {
+  commands['create:' + createPart] = {
+    init: function (runnerScope) {
+      this.createPath = cliRoot + 'create/' + configuration.profile + '/' + runnerScope.commandParts[1];
+
+      this.configuration = JSON.parse(fs.readFileSync(
+        this.createPath + '/configuration.json',
+        { encoding: "utf8" }
+      ));
+    },
+    getQuestions: function () {
+      return this.configuration.variables.map(function (variable) {
+        variable.question = variable.description;
+        return variable;
+      });
+    },
+    execute: function (userInput) {
+      FileManager.processFiles(this.createPath, userInput, this.configuration.files, function () {
+        process.exit(0);
+      });
+    },
+    getDescription: function () {
+      return fs.readFileSync(
+        cliRoot + 'create/' + configuration.profile + '/' + createPart + '/info.txt',
+        { encoding: "utf8" }
+      );
+    }
+  };
+});
+
+// TODO: configurations for all create commands, and coffee + livescript folders
+// TODO: README.md
+
+// Process the given input
+if (args.length >= 3) {
+  var command = new CommandRunner(args);
+
+  if (command.exists()) {
+    command.run();
+  } else {
+    Errors.commandNotFound(command.command);
   }
 } else {
   // If no command was entered, print out the overview of commands
   // Our nice title
-  console.log("                   __                              __          _ __                __      __     ");
-  console.log("   ____ ___  ___  / /____  ____  _____            / /_  ____  (_) /__  _________  / /___ _/ /____ ");
-  console.log("  / __ `__ \\/ _ \\/ __/ _ \\/ __ \\/ ___/  ______   / __ \\/ __ \\/ / / _ \\/ ___/ __ \\/ / __ `/ __/ _ \\");
-  console.log(" / / / / / /  __/ /_/  __/ /_/ / /     /_____/  / /_/ / /_/ / / /  __/ /  / /_/ / / /_/ / /_/  __/");
-  console.log("/_/ /_/ /_/\\___/\\__/\\___/\\____/_/              /_.___/\\____/_/_/\\___/_/  / .___/_/\\__,_/\\__/\\___/ ");
-  console.log("                                                                        /_/                       ");
-  console.log("Use one of the following commands:\n");
+  InteractiveConsole.print("                   __                              __          _ __                __      __     ");
+  InteractiveConsole.print("   ____ ___  ___  / /____  ____  _____            / /_  ____  (_) /__  _________  / /___ _/ /____ ");
+  InteractiveConsole.print("  / __ `__ \\/ _ \\/ __/ _ \\/ __ \\/ ___/  ______   / __ \\/ __ \\/ / / _ \\/ ___/ __ \\/ / __ `/ __/ _ \\");
+  InteractiveConsole.print(" / / / / / /  __/ /_/  __/ /_/ / /     /_____/  / /_/ / /_/ / / /  __/ /  / /_/ / / /_/ / /_/  __/");
+  InteractiveConsole.print("/_/ /_/ /_/\\___/\\__/\\___/\\____/_/              /_.___/\\____/_/_/\\___/_/  / .___/_/\\__,_/\\__/\\___/ ");
+  InteractiveConsole.print("                                                                        /_/                       ");
+  InteractiveConsole.print("Use one of the following commands:\n");
 
-  getCreateMethods().forEach(function (command) {
-    var description = fs.readFileSync(
-      cliRoot + 'create/' + configuration.create_profile + '/' + command + '/info.txt',
-      { encoding: "utf8" }
-    );
-    printCommand('create:' + command, description);
+  Object.keys(commands).forEach(function (command) {
+    InteractiveConsole.printCommand(command, commands[command].getDescription());
   });
-  console.log();
+
+  InteractiveConsole.print();
 }

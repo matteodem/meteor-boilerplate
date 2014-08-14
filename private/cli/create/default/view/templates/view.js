@@ -1,5 +1,5 @@
-Template['**viewName**'].helpers({
+Template['__viewName__'].helpers({
 });
 
-Template['**viewName**'].events({
+Template['__viewName__'].events({
 });

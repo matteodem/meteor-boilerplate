@@ -8,13 +8,11 @@
   "files" : [
     {
       "template" : "view.html",
-      "name" : "**viewName**.html",
-      "path" : "client/views/**viewName**/**viewName**.html"
+      "path" : "client/views/__viewName__/__viewName__.html"
     },
     {
       "template" : "view.js",
-      "name" : "**viewName**.js",
-      "path" : "client/views/**viewName**/**viewName**.js"
+      "path" : "client/views/__viewName__/__viewName__.js"
     }
   ]
 }
