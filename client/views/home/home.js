@@ -22,6 +22,7 @@ Template.home.helpers({
   },
   'consoleCommand' : function () {
     return [
+      { 'command' : 'change:profile', 'description' : 'Change script profile to coffeescript if wished.' },
       { 'command' : 'create:view', 'description' : 'Creates a folder under client/views with html, less and javascript files.' },
       { 'command' : 'create:module', 'description' : 'Similiar to a view, but under client/modules and for re-usable components' },
       { 'command' : 'create:layout', 'description' : 'Creates a layout template which yields your content, used by iron-router' },
@@ -29,7 +30,8 @@ Template.home.helpers({
       { 'command' : 'create:route', 'description' : 'Creates a route javascript file under client/routes' },
       { 'command' : 'create:model', 'description' : 'Creates a model with files in model/, client/subscriptions and server/publications' },
       { 'command' : 'create:less', 'description' : 'Creates a less stylesheet in client/stylesheets' },
-      { 'command' : 'create:test', 'description' : 'Creates test file under tests' }
+      { 'command' : 'create:test', 'description' : 'Creates test file under tests' },
+      { 'command' : 'reset:project', 'description' : 'Removes all unnecessary files, perfect for a fresh start' }
     ];
   },
   'semanticElement' : function () {

@@ -421,7 +421,7 @@ var commands = {
     },
 
     getDescription: function () {
-      return 'Removs a lot of files, perfect for a fresh start';
+      return 'Removes a lot of files, perfect for a fresh start';
     }
 
   }

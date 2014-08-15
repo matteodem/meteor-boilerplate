@@ -15,7 +15,7 @@ meteor
 
 ## How to use
 ```
-./meteor-boilerplate # Lists all possible commands 
+node meteor-boilerplate # Lists all possible commands
 ```
 
 ### Packages used
@@ -31,9 +31,26 @@ meteor
 * accounts-password
 * accounts-ui
 
-## What's in this boilerplate
+The "insecure" and "autopublish" packages are removed by default.
 
-The "insecure" and "autopublish" packages are removed by default. Several other packages are added, which are listed on the bottom. There's already a lot of predefined code in this boilerplate, to show you the possible functionality.
+### Removing default code
+
+There's already a lot of predefined code in this boilerplate, to show you the possible functionality. However, if you want to start off with an
+empty project, use the provided command to get rid off all the code you don't need.
+
+```bash
+node meteor-boilerplate reset:project
+```
+
+### Coffeescript support
+
+For all our coffeescript lovers, you can change to a coffeescript configuration for file generation like this.
+
+```bash
+node meteor-boilerplate change:profile coffee
+```
+
+Also use the ```reset:project``` command to start off with coffeescript files.
 
 ### Features
 
@@ -41,7 +58,7 @@ The "insecure" and "autopublish" packages are removed by default. Several other 
 * TDD / BDD with [laika](http://arunoda.github.io/laika/)
 * Multi page apps with [iron-router](https://github.com/EventedMind/iron-router)
 * A way to load fixtures (as of now no external packages used for that)
-* meteor-boilerplate console tool, which helps on creating views, routes and so on (meteor-boilerplate.bat for windows users)
+* meteor-boilerplate console tool, which helps on creating views, routes and so on
 
 ### Folder structure
 
