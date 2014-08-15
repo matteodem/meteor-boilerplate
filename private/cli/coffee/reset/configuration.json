@@ -5,16 +5,16 @@
       "path" : "client/views/home/home.html"
     },
     {
-      "template" : "homeRoute.js",
-      "path" : "client/routes/homeRoute.js"
+      "template" : "homeRoute.coffee",
+      "path" : "client/routes/homeRoute.coffee"
     },
     {
       "template" : "layout.html",
       "path" : "client/views/layouts/layout.html"
     },
     {
-      "template" : "routerConfig.js",
-      "path" : "client/config/router.js"
+      "template" : "routerConfig.coffee",
+      "path" : "client/config/router.coffee"
     }
   ]
 }
