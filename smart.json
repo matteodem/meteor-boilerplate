@@ -4,6 +4,8 @@
     "handlebar-helpers": {},
     "iron-router-progress": {},
     "semantic-ui": {},
-    "collection2": {}
+    "collection2": {},
+    "velocity-html-reporter": {},
+    "mocha-web-velocity": {}
   }
 }

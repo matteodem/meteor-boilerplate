@@ -21,3 +21,7 @@ iron-router-progress
 /iron-layout
 /iron-core
 /iron-dynamic-template
+/velocity-html-reporter
+/velocity
+/mocha-web-velocity
+/mirror

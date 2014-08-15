@@ -17,7 +17,8 @@ Template.home.helpers({
       { 'name' : 'Underscore', 'path' : 'http://underscorejs.org/' },
       { 'name' : 'Handlebar Helpers', 'path' : 'https://github.com/raix/Meteor-handlebar-helpers' },
       { 'name' : 'Iron Router Progress', 'path' : 'https://github.com/Multiply/iron-router-progress' },
-      { 'name' : 'Accounts UI & Password', 'path' : 'http://docs.meteor.com/#accountsui' }
+      { 'name' : 'Accounts UI & Password', 'path' : 'http://docs.meteor.com/#accountsui' },
+      { 'name' : 'Velocity', 'path' : 'https://github.com/xolvio/velocity' }
     ];
   },
   'consoleCommand' : function () {
@@ -30,7 +31,7 @@ Template.home.helpers({
       { 'command' : 'create:route', 'description' : 'Creates a route javascript file under client/routes' },
       { 'command' : 'create:model', 'description' : 'Creates a model with files in model/, client/subscriptions and server/publications' },
       { 'command' : 'create:less', 'description' : 'Creates a less stylesheet in client/stylesheets' },
-      { 'command' : 'create:test', 'description' : 'Creates test file under tests' },
+      { 'command' : 'create:test', 'description' : 'Creates a velocity test file under tests' },
       { 'command' : 'reset:project', 'description' : 'Removes all unnecessary files, perfect for a fresh start' }
     ];
   },
@@ -53,10 +54,9 @@ Template.home.helpers({
       },
       { 'root' : 'model' },
       { 'root' : 'private' },
-      { 'root' : 'server', 'children' : ['fixtures', 'lib', 'publications', 'startup', 'tests'] },
+      { 'root' : 'server', 'children' : ['fixtures', 'lib', 'publications', 'startup'] },
       { 'root' : 'public' },
-      { 'root' : 'meteor-boilerplate' },
-      { 'root' : 'meteor-boilerplate.bat' }
+      { 'root' : 'meteor-boilerplate' }
     ]
   }
 });

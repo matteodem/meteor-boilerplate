@@ -6,7 +6,9 @@
       "handlebar-helpers": {},
       "iron-router-progress": {},
       "semantic-ui": {},
-      "collection2": {}
+      "collection2": {},
+      "velocity-html-reporter": {},
+      "mocha-web-velocity": {}
     },
     "packages": {
       "iron-router": {
@@ -31,8 +33,18 @@
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
-        "tag": "v0.4.4",
-        "commit": "c70deb36e10f63238b884529eea1e38cf0789903"
+        "tag": "v0.4.6",
+        "commit": "80554182486be0d8e74f7ed02194a5649d712e27"
+      },
+      "velocity-html-reporter": {
+        "git": "https://github.com/rdickert/velocity-html-reporter.git",
+        "tag": "v0.1.4",
+        "commit": "55f973519fb6db831678219057854b94a4cec846"
+      },
+      "mocha-web-velocity": {
+        "git": "https://github.com/mad-eye/meteor-mocha-web.git",
+        "tag": "v0.3.4",
+        "commit": "5b68e18104c00687748b190b04a7752478472d17"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",
@@ -41,8 +53,18 @@
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
-        "tag": "v0.6.0",
-        "commit": "418ec496612fb2afc853e342f0d2269b6674a2fe"
+        "tag": "v0.7.0",
+        "commit": "77d267aec4ba8a70f677e5d9ef9fb91fb0e3f0f6"
+      },
+      "velocity": {
+        "git": "https://github.com/xolvio/velocity.git",
+        "tag": "v0.1.18",
+        "commit": "1958c117417e832c3e9025088cca845b4a82728f"
+      },
+      "mirror": {
+        "git": "https://github.com/xdissent/meteor-mirror.git",
+        "tag": "v0.0.2",
+        "commit": "03d965dcab2f976a1fdc6ce513edcd4c17b75746"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

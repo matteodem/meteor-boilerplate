@@ -1,6 +1,12 @@
 # meteor-boilerplate
 
-This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks.
+This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks. Here's what you get
+with it.
+
+* meteor-boilerplate console tool, for scaffolding files and more
+* Helpful packages included, for example [Iron Router](https://github.com/EventedMind/iron-router) and [Velocity](https://github.com/xolvio/velocity)
+* Given folder structure to keep code clean
+
 Here's what the boilerplate looks like: [boilerplate.meteor.com](http://boilerplate.meteor.com)
 
 ## How to install
@@ -20,25 +26,28 @@ node meteor-boilerplate # Lists all possible commands
 
 ### Packages used
 
-* semantic-ui
-* collection2
+* standard-app-packages
 * less
 * jquery
 * underscore
 * handlebar-helpers
 * iron-router
-* iron-router-progress
 * accounts-password
 * accounts-ui
+* iron-router-progress
+* semantic-ui
+* collection2
+* velocity-html-reporter
+* mocha-web-velocity
 
-The "insecure" and "autopublish" packages are removed by default.
+The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).
 
 ### Removing default code
 
 There's already a lot of predefined code in this boilerplate, to show you the possible functionality. However, if you want to start off with an
 empty project, use the provided command to get rid off all the code you don't need.
 
-```bash
+```sh
 node meteor-boilerplate reset:project
 ```
 
@@ -46,19 +55,11 @@ node meteor-boilerplate reset:project
 
 For all our coffeescript lovers, you can change to a coffeescript configuration for file generation like this.
 
-```bash
+```sh
 node meteor-boilerplate change:profile coffee
 ```
 
 Also use the ```reset:project``` command to start off with coffeescript files.
-
-### Features
-
-* Comprehensive folder structure
-* TDD / BDD with [laika](http://arunoda.github.io/laika/)
-* Multi page apps with [iron-router](https://github.com/EventedMind/iron-router)
-* A way to load fixtures (as of now no external packages used for that)
-* meteor-boilerplate console tool, which helps on creating views, routes and so on
 
 ### Folder structure
 
@@ -82,9 +83,8 @@ server/					# Server folder
     lib/                # Server side library folder
     publications/       # Collection publications(*)
     startup/            # On server startup
-tests/					# Test files, can be run with laika
+tests/					# Velocity test files, can be run with mocha(*)
 meteor-boilerplate		# Command line tool
-meteor-boilerplate.bat  # Command line tool for windows
 ```
 
 (*) = the command line tool creates files in these folders
