@@ -1,0 +1,3 @@
+Router.configure(
+  layoutTemplate: 'layout'
+)

@@ -345,10 +345,12 @@ var commands = {
             commandScope.success(profileName);
             InteractiveConsole.print('-- Added coffeescript package to project');
             InteractiveConsole.print();
+            process.exit(0);
           });
         } else {
           commandScope.success(profileName);
           InteractiveConsole.print();
+          process.exit(0);
         }
       }
     },
@@ -378,41 +380,43 @@ var commands = {
       }];
     },
     execute: function (userInput) {
-      var resetRootPath = cliRoot + configuration.profile + '/reset/';
+      var commandScope = this,
+        folders = this.deletableFolders(),
+        resetRootPath = cliRoot + configuration.profile + '/reset/';
 
       if (userInput[0].value.toLowerCase() === 'y') {
-        this.deleteFolders([
-          'client/views', 'client/modules', 'client/modules', 'client/stylesheets', 'client/routes', 'client/config', 'client/subscriptions',
-          'server/publications', 'server/startup', 'server/fixtures',
-          'public', 'tests'
-        ]);
+        execute('rm -rf ' + folders.join(' '), function () {
+          folders.forEach(function (f) { commandScope.printFileChange('Removed', f) });
 
-        JSON
-          .parse(fs.readFileSync(resetRootPath + 'configuration.json' , { encoding: 'utf8' }))
-          .files
-          .forEach(function (fileConf) {
-            fileConf.contents = fs.readFileSync(resetRootPath + fileConf.template, { encoding: 'utf8' });
-            console.log(fileConf);
-            /*FileManager.createFoldersAndFile(fileConf);*/
-          })
-        ;
+          // Create files
+          JSON
+            .parse(fs.readFileSync(resetRootPath + 'configuration.json' , { encoding: 'utf8' }))
+            .files
+            .forEach(function (fileConf) {
+              fileConf.contents = fs.readFileSync(resetRootPath + fileConf.template, { encoding: 'utf8' });
+              commandScope.printFileChange('Added', fileConf.path);
+              FileManager.createFoldersAndFile(fileConf);
+            })
+          ;
+
+          process.exit(0);
+        });
       } else {
         process.exit(0);
       }
     },
 
-    deleteFolders: function (folders) {
-      for (var i = 0; i < folders.length; i += 1) {
-        try {
-          fs.rmdirSync(folders[i]);
-        } catch (e) {}
-
-        this.removedMessage(folders[i]);
-      }
+    deletableFolders: function () {
+      return [
+        'client/views', 'client/modules', 'client/modules', 'client/stylesheets',
+        'client/routes', 'client/config', 'client/subscriptions', 'client/startup',
+        'server/publications', 'server/startup', 'server/fixtures',
+        'model', 'public', 'tests'
+      ];
     },
 
-    removedMessage: function (path) {
-      process.stdout.write('-- Removed ');
+    printFileChange: function (action, path) {
+      process.stdout.write('-- ' + action +  ' ');
       InteractiveConsole.printInfo(path);
     },
 
