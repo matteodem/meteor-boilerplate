@@ -193,7 +193,7 @@ var InteractiveConsole = {
   },
 
   printCommand: function (command, description) {
-    process.stdout.write(util.inspect(command, { colors: true }).replace(/\'/g, '') + "\t - " + description);
+    process.stdout.write(util.inspect(command, { colors: true }).replace(/\'/g, '') + "\t - " + description + '\n');
   }
 
 };
@@ -236,6 +236,14 @@ var Errors = {
   executeWithinMeteorProject: function () {
     InteractiveConsole.print('Execute this script within the meteor project!');
     process.exit(0);
+  },
+
+  nonExistentProfile: function (name, availableProfiles) {
+    InteractiveConsole.printError('Profile "' + name + '" does not exist!', function () {
+      InteractiveConsole.print('Available profiles: ');
+      InteractiveConsole.printInfo(availableProfiles);
+      process.exit(0);
+    });
   }
 
 };
@@ -244,7 +252,7 @@ var Errors = {
  * Main Command Runner Class
  */
 var CommandRunner = function (nodeArgs) {
-  this.command = nodeArgs[2];
+  this.command = nodeArgs[2].toLowerCase();
   this.arguments = nodeArgs;
   this.commandParts = this.command.split(':');
 };
@@ -262,9 +270,9 @@ CommandRunner.prototype.run = function () {
   commands[this.command].init(this);
   questions = commands[this.command].getQuestions();
 
-
-  if (this.arguments.length === 3) {
-    // Show an interactive console, if there are exactly 3 arguments (for example "node meteor-boilerplate create:view")
+  if (this.arguments.length === 3 && questions.length > 0) {
+    // Show an interactive console, if there are exactly 3 arguments
+    // for example "node meteor-boilerplate create:view"
     InteractiveConsole.init(this);
 
     InteractiveConsole.showQuestions(questions, function (userInput) {
@@ -303,10 +311,65 @@ var configuration;
  * Holds all commands where the key is the command itself ('create:view')
  * and the value is an object used for processing all commands in a general way
  *
- * Currently available
- * create:* (found in each profile, private/cli/create/<profile-name>/<*>
+ * create:*
+ *   found in each profile, private/cli/<profile-name>/create/<*>
+ * change:profile
+ *   Change the profile specified in private/cli/configuration.json
  */
-var commands = {};
+var commands = {
+  'change:profile' : {
+    init: function (runnerScope) {
+      this.availableProfiles = fs.readdirSync(cliRoot).filter(function (element) {
+        return element.indexOf('.') === -1;
+      });
+    },
+    getQuestions: function () {
+      return [{
+        'question' : 'Which profile do you want to change to?',
+        'name' : 'profileName'
+      }];
+    },
+    execute: function (userInput) {
+      var commandScope = this,
+        profileName = userInput[0].value;
+
+      if (this.availableProfiles.indexOf(profileName) === -1) {
+        Errors.nonExistentProfile(profileName, commandScope.availableProfiles.join(', '));
+      } else {
+        this.changeProfile(profileName);
+        InteractiveConsole.print();
+
+        if (profileName === 'coffee' && fs.readFileSync('.meteor/packages', { encoding: 'utf8' }).indexOf('coffeescript') === -1) {
+          InteractiveConsole.printInfo('Coffeescript package missing!');
+          execute('meteor add coffeescript', function () {
+            commandScope.success(profileName);
+            InteractiveConsole.print('-- Added coffeescript package to project');
+            InteractiveConsole.print();
+          })
+        } else {
+          commandScope.success(profileName);
+          InteractiveConsole.print();
+        }
+      }
+    },
+
+    success: function (profileName) {
+      process.stdout.write('-- Changed profile to ');
+      InteractiveConsole.printInfo(profileName);
+    },
+
+    changeProfile: function (name) {
+      configuration.profile = name;
+      fs.unlinkSync(cliRoot + 'configuration.json');
+      fs.writeFileSync(cliRoot + 'configuration.json', JSON.stringify(configuration), { encoding: 'utf8' });
+    },
+
+    getDescription: function () {
+      return 'Change your project wide profile for generating files';
+    }
+
+  }
+};
 
 // Check if the command has been entered within the meteor directory
 if (!fs.existsSync('.meteor')) {
@@ -316,10 +379,10 @@ if (!fs.existsSync('.meteor')) {
 configuration = JSON.parse(fs.readFileSync(cliRoot + 'configuration.json', { encoding: "utf8" }));
 
 // Fill 'commands' object with all create commands
-fs.readdirSync(cliRoot + 'create/' + configuration.profile ).forEach(function (createPart) {
+fs.readdirSync(cliRoot + '/' + configuration.profile + '/create').forEach(function (createPart) {
   commands['create:' + createPart] = {
     init: function (runnerScope) {
-      this.createPath = cliRoot + 'create/' + configuration.profile + '/' + runnerScope.commandParts[1];
+      this.createPath = cliRoot + '/' + configuration.profile +'/create/' + runnerScope.commandParts[1];
 
       this.configuration = JSON.parse(fs.readFileSync(
         this.createPath + '/configuration.json',
@@ -339,17 +402,14 @@ fs.readdirSync(cliRoot + 'create/' + configuration.profile ).forEach(function (c
     },
     getDescription: function () {
       return fs.readFileSync(
-        cliRoot + 'create/' + configuration.profile + '/' + createPart + '/info.txt',
+        cliRoot + '/' + configuration.profile + '/create/' + createPart + '/info.txt',
         { encoding: "utf8" }
-      );
+      ).replace('\n', '');
     }
   };
 });
 
-// TODO: configurations for all create commands, and coffee + livescript folders
 // TODO: README.md
-
-// Process the given input
 if (args.length >= 3) {
   var command = new CommandRunner(args);
 
@@ -359,8 +419,6 @@ if (args.length >= 3) {
     Errors.commandNotFound(command.command);
   }
 } else {
-  // If no command was entered, print out the overview of commands
-  // Our nice title
   InteractiveConsole.print("                   __                              __          _ __                __      __     ");
   InteractiveConsole.print("   ____ ___  ___  / /____  ____  _____            / /_  ____  (_) /__  _________  / /___ _/ /____ ");
   InteractiveConsole.print("  / __ `__ \\/ _ \\/ __/ _ \\/ __ \\/ ___/  ______   / __ \\/ __ \\/ / / _ \\/ ___/ __ \\/ / __ `/ __/ _ \\");
@@ -369,7 +427,7 @@ if (args.length >= 3) {
   InteractiveConsole.print("                                                                        /_/                       ");
   InteractiveConsole.print("Use one of the following commands:\n");
 
-  Object.keys(commands).forEach(function (command) {
+  Object.keys(commands).sort().forEach(function (command) {
     InteractiveConsole.printCommand(command, commands[command].getDescription());
   });
 

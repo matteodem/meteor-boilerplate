@@ -1,0 +1,1 @@
+Self working components such as a searchbar or a form

@@ -1,0 +1,18 @@
+{
+  "variables" : [
+    {
+      "name" : "routeName",
+      "description" : "What's the name of your route?"
+    },
+    {
+      "name" : "routePath",
+      "description" : "What's the path of your route? (e.g. /blog/:_id/view)"
+    }
+  ],
+  "files" : [
+    {
+      "template" : "route.coffee",
+      "path" : "client/routes/__routeName__Route.coffee"
+    }
+  ]
+}

@@ -28,6 +28,7 @@ Template.home.helpers({
       { 'command' : 'create:common', 'description' : 'Creates a simple html file under client/views/common' },
       { 'command' : 'create:route', 'description' : 'Creates a route javascript file under client/routes' },
       { 'command' : 'create:model', 'description' : 'Creates a model with files in model/, client/subscriptions and server/publications' },
+      { 'command' : 'create:less', 'description' : 'Creates a less stylesheet in client/stylesheets' },
       { 'command' : 'create:test', 'description' : 'Creates test file under tests' }
     ];
   },

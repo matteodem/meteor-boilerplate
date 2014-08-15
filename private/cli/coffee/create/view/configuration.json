@@ -1,0 +1,18 @@
+{
+  "variables" : [
+    {
+      "name" : "viewName",
+      "description" : "What's the name of your view?"
+    }
+  ],
+  "files" : [
+    {
+      "template" : "view.html",
+      "path" : "client/views/__viewName__/__viewName__.html"
+    },
+    {
+      "template" : "view.coffee",
+      "path" : "client/views/__viewName__/__viewName__.coffee"
+    }
+  ]
+}

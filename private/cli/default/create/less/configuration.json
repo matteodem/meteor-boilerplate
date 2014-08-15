@@ -1,0 +1,14 @@
+{
+  "variables" : [
+    {
+      "name" : "stylesheetName",
+      "description" : "What's the name of your stylesheet?"
+    }
+  ],
+  "files" : [
+    {
+      "template" : "stylesheet.less",
+      "path" : "client/stylesheets/__stylesheetName__.less"
+    }
+  ]
+}
