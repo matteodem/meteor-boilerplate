@@ -345,7 +345,7 @@ var commands = {
             commandScope.success(profileName);
             InteractiveConsole.print('-- Added coffeescript package to project');
             InteractiveConsole.print();
-          })
+          });
         } else {
           commandScope.success(profileName);
           InteractiveConsole.print();
@@ -366,6 +366,58 @@ var commands = {
 
     getDescription: function () {
       return 'Change your project wide profile for generating files';
+    }
+  },
+  'reset:project' : {
+    init: function (runnerScope) {
+    },
+    getQuestions: function () {
+      return [{
+        'question' : 'Do you really want to reset this project (Y/n)?',
+        'name' : 'resetProject'
+      }];
+    },
+    execute: function (userInput) {
+      var resetRootPath = cliRoot + configuration.profile + '/reset/';
+
+      if (userInput[0].value.toLowerCase() === 'y') {
+        this.deleteFolders([
+          'client/views', 'client/modules', 'client/modules', 'client/stylesheets', 'client/routes', 'client/config', 'client/subscriptions',
+          'server/publications', 'server/startup', 'server/fixtures',
+          'public', 'tests'
+        ]);
+
+        JSON
+          .parse(fs.readFileSync(resetRootPath + 'configuration.json' , { encoding: 'utf8' }))
+          .files
+          .forEach(function (fileConf) {
+            fileConf.contents = fs.readFileSync(resetRootPath + fileConf.template, { encoding: 'utf8' });
+            console.log(fileConf);
+            /*FileManager.createFoldersAndFile(fileConf);*/
+          })
+        ;
+      } else {
+        process.exit(0);
+      }
+    },
+
+    deleteFolders: function (folders) {
+      for (var i = 0; i < folders.length; i += 1) {
+        try {
+          fs.rmdirSync(folders[i]);
+        } catch (e) {}
+
+        this.removedMessage(folders[i]);
+      }
+    },
+
+    removedMessage: function (path) {
+      process.stdout.write('-- Removed ');
+      InteractiveConsole.printInfo(path);
+    },
+
+    getDescription: function () {
+      return 'Removs a lot of files, perfect for a fresh start';
     }
 
   }
