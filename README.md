@@ -7,7 +7,7 @@ with it.
 * Helpful packages included, for example [Iron Router](https://github.com/EventedMind/iron-router) and [Velocity](https://github.com/xolvio/velocity)
 * Given folder structure to keep code clean
 
-Here's what the boilerplate looks like: [boilerplate.meteor.com](http://boilerplate.meteor.com)
+The boilerplate looks like following: [boilerplate.meteor.com](http://boilerplate.meteor.com)
 
 ## How to install
 
