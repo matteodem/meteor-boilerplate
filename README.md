@@ -90,7 +90,7 @@ meteor-boilerplate		# Command line tool
 (*) = the command line tool creates files in these folders
 
 ## Projects created with this boilerplate
-[places](https://github.com/matteodem/places)
+[starthacking](http://starthacking.meteor.com/) - A simple micro page to find useful programming resources
 
 ## Other Awesome Boilerplates
 
