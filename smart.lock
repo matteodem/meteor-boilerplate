@@ -6,7 +6,6 @@
       "handlebar-helpers": {},
       "iron-router-progress": {},
       "semantic-ui": {},
-      "collection2": {},
       "velocity-html-reporter": {},
       "mocha-web-velocity": {}
     },
@@ -31,15 +30,10 @@
         "tag": "v0.19.0",
         "commit": "23ddf7b58db125cc33d0d95d58fcac940f262481"
       },
-      "collection2": {
-        "git": "https://github.com/aldeed/meteor-collection2.git",
-        "tag": "v0.4.6",
-        "commit": "80554182486be0d8e74f7ed02194a5649d712e27"
-      },
       "velocity-html-reporter": {
         "git": "https://github.com/rdickert/velocity-html-reporter.git",
-        "tag": "v0.1.4",
-        "commit": "55f973519fb6db831678219057854b94a4cec846"
+        "tag": "v0.1.5",
+        "commit": "741edd0caa8d0e491c53d597d34636f90cc64b88"
       },
       "mocha-web-velocity": {
         "git": "https://github.com/mad-eye/meteor-mocha-web.git",
@@ -51,15 +45,10 @@
         "tag": "v0.2.0",
         "commit": "4a2d53e35ba036b0c189c7ceca34be494d4c6c97"
       },
-      "simple-schema": {
-        "git": "https://github.com/aldeed/meteor-simple-schema.git",
-        "tag": "v0.7.0",
-        "commit": "77d267aec4ba8a70f677e5d9ef9fb91fb0e3f0f6"
-      },
       "velocity": {
         "git": "https://github.com/xolvio/velocity.git",
-        "tag": "v0.1.18",
-        "commit": "1958c117417e832c3e9025088cca845b4a82728f"
+        "tag": "v0.1.19",
+        "commit": "5ccde8b9a72d8291f22fea9393821142d19a6d0a"
       },
       "mirror": {
         "git": "https://github.com/xdissent/meteor-mirror.git",

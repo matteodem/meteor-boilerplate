@@ -1,10 +1,9 @@
 {
   "packages": {
-    "iron-router": "0.8.2",
+    "iron-router": {},
     "handlebar-helpers": {},
     "iron-router-progress": {},
     "semantic-ui": {},
-    "collection2": {},
     "velocity-html-reporter": {},
     "mocha-web-velocity": {}
   }
