@@ -13,7 +13,6 @@ accounts-password
 accounts-ui
 iron-router-progress
 semantic-ui
-collection2
 velocity-html-reporter
 mocha-web-velocity
 aldeed:collection2

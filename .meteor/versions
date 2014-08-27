@@ -13,7 +13,6 @@ blaze@1.0.3
 callback-hook@1.0.0
 check@1.0.0
 coffeescript@1.0.2
-collection2@0.0.0
 ctl-helper@1.0.2
 ctl@1.0.0
 deps@1.0.1
@@ -54,7 +53,6 @@ semantic-ui@0.0.0
 service-configuration@1.0.0
 session@1.0.0
 sha@1.0.0
-simple-schema@0.0.0
 spacebars-compiler@1.0.1
 spacebars@1.0.0
 srp@1.0.0
