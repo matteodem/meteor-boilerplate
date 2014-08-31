@@ -3,11 +3,11 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640" />
+    <meta name="viewport" content="width=640">
 
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
 
     <script type="text/javascript" src="javascripts/modernizr.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -49,15 +49,22 @@
         <h1>
 <a name="meteor-boilerplate" class="anchor" href="#meteor-boilerplate"><span class="octicon octicon-link"></span></a>meteor-boilerplate</h1>
 
-<p>This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks.
-Here's what the boilerplate looks like: <a href="http://boilerplate.meteor.com">boilerplate.meteor.com</a></p>
+<p>This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks. Here's what you get
+with it.</p>
+
+<ul>
+<li>meteor-boilerplate console tool, for scaffolding files and more</li>
+<li>Helpful packages included, for example <a href="https://github.com/EventedMind/iron-router">Iron Router</a> and <a href="https://github.com/xolvio/velocity">Velocity</a>
+</li>
+<li>Given folder structure to keep code clean</li>
+</ul><p>The boilerplate looks like following: <a href="http://boilerplate.meteor.com">boilerplate.meteor.com</a></p>
 
 <h2>
 <a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install</h2>
 
 <p>First, <a href="https://github.com/matteodem/meteor-boilerplate/zipball/master">download</a> and unpack the boilerplate archive.</p>
 
-<pre><code># Assuming meteor and meteorite are already installed...
+<pre><code># Assuming meteor and meteorite are already installed
 cd /path/to/project/
 mrt install
 meteor
@@ -66,40 +73,48 @@ meteor
 <h2>
 <a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
 
-<pre><code>./meteor-boilerplate # Lists all possible commands 
+<pre><code>node meteor-boilerplate # Lists all possible commands
 </code></pre>
 
 <h3>
 <a name="packages-used" class="anchor" href="#packages-used"><span class="octicon octicon-link"></span></a>Packages used</h3>
 
 <ul>
-<li>semantic-ui</li>
-<li>collection2</li>
+<li>standard-app-packages</li>
 <li>less</li>
 <li>jquery</li>
 <li>underscore</li>
 <li>handlebar-helpers</li>
 <li>iron-router</li>
-<li>iron-router-progress</li>
 <li>accounts-password</li>
 <li>accounts-ui</li>
-</ul><h2>
-<a name="whats-in-this-boilerplate" class="anchor" href="#whats-in-this-boilerplate"><span class="octicon octicon-link"></span></a>What's in this boilerplate</h2>
-
-<p>The "insecure" and "autopublish" packages are removed by default. Several other packages are added, which are listed on the bottom. There's already a lot of predefined code in this boilerplate, to show you the possible functionality.</p>
+<li>iron-router-progress</li>
+<li>semantic-ui</li>
+<li>collection2</li>
+<li>velocity-html-reporter</li>
+<li>mocha-web-velocity</li>
+</ul><p>The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).</p>
 
 <h3>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
+<a name="removing-default-code" class="anchor" href="#removing-default-code"><span class="octicon octicon-link"></span></a>Removing default code</h3>
 
-<ul>
-<li>Comprehensive folder structure</li>
-<li>TDD / BDD with <a href="http://arunoda.github.io/laika/">laika</a>
-</li>
-<li>Multi page apps with <a href="https://github.com/EventedMind/iron-router">iron-router</a>
-</li>
-<li>A way to load fixtures (as of now no external packages used for that)</li>
-<li>meteor-boilerplate console tool, which helps on creating views, routes and so on (meteor-boilerplate.bat for windows users)</li>
-</ul><h3>
+<p>There's already a lot of predefined code in this boilerplate, to show you the possible functionality. However, if you want to start off with an
+empty project, use the provided command to get rid off all the code you don't need.</p>
+
+<div class="highlight highlight-sh"><pre>node meteor-boilerplate reset:project
+</pre></div>
+
+<h3>
+<a name="coffeescript-support" class="anchor" href="#coffeescript-support"><span class="octicon octicon-link"></span></a>Coffeescript support</h3>
+
+<p>For all our coffeescript lovers, you can change to a coffeescript configuration for file generation like this.</p>
+
+<div class="highlight highlight-sh"><pre>node meteor-boilerplate change:profile coffee
+</pre></div>
+
+<p>Also use the <code>reset:project</code> command to start off with coffeescript files.</p>
+
+<h3>
 <a name="folder-structure" class="anchor" href="#folder-structure"><span class="octicon octicon-link"></span></a>Folder structure</h3>
 
 <pre><code>client/                 # Client folder
@@ -121,9 +136,8 @@ server/                 # Server folder
     lib/                # Server side library folder
     publications/       # Collection publications(*)
     startup/            # On server startup
-tests/                  # Test files, can be run with laika
+tests/                  # Velocity test files, can be run with mocha(*)
 meteor-boilerplate      # Command line tool
-meteor-boilerplate.bat  # Command line tool for windows
 </code></pre>
 
 <p>(*) = the command line tool creates files in these folders</p>
@@ -131,7 +145,7 @@ meteor-boilerplate.bat  # Command line tool for windows
 <h2>
 <a name="projects-created-with-this-boilerplate" class="anchor" href="#projects-created-with-this-boilerplate"><span class="octicon octicon-link"></span></a>Projects created with this boilerplate</h2>
 
-<p><a href="https://github.com/matteodem/places">places</a></p>
+<p><a href="http://starthacking.meteor.com/">starthacking</a> - A simple micro page to find useful programming resources</p>
 
 <h2>
 <a name="other-awesome-boilerplates" class="anchor" href="#other-awesome-boilerplates"><span class="octicon octicon-link"></span></a>Other Awesome Boilerplates</h2>
@@ -143,7 +157,12 @@ meteor-boilerplate.bat  # Command line tool for windows
 <a href="https://github.com/jamesdwilson/meteor-jw-opinionated-skeleton">meteor-jw-opinionated-skeleton</a> by jamesdwilson (CoffeeScript)</li>
 <li>
 <a href="https://github.com/BeDifferential/meteor-boilerplate">meteor-boilerplate</a> by BeDifferential (CoffeeScript)</li>
-</ul>
+<li>
+<a href="https://github.com/EventedMind/em">em</a> by EventedMind (Boilerplate &amp; Scaffolding)</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>This boilerplate has an MIT License, see the LICENSE.txt for more information.</p>
       </section>
 
       <footer>
