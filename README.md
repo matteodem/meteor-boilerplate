@@ -12,7 +12,7 @@ The boilerplate looks like following: [boilerplate.meteor.com](http://boilerplat
 ## How to install
 
 First, [download](https://github.com/matteodem/meteor-boilerplate/zipball/master) and unpack the boilerplate archive.
-```
+```sh
 # Assuming meteor and meteorite are already installed
 cd /path/to/project/
 mrt install
@@ -20,27 +20,11 @@ meteor
 ```
 
 ## How to use
-```
+```sh
 node meteor-boilerplate # Lists all possible commands
+node meteor-boilerplate create:route # Interactive console for command
+node meteor-boilerplate create:route login /login # Executes it immediately
 ```
-
-### Packages used
-
-* standard-app-packages
-* less
-* jquery
-* underscore
-* handlebar-helpers
-* iron-router
-* accounts-password
-* accounts-ui
-* iron-router-progress
-* semantic-ui
-* collection2
-* velocity-html-reporter
-* mocha-web-velocity
-
-The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).
 
 ### Removing default code
 
@@ -60,6 +44,24 @@ node meteor-boilerplate change:profile coffee
 ```
 
 Also use the ```reset:project``` command to start off with coffeescript files.
+
+### Packages used
+
+* standard-app-packages
+* less
+* jquery
+* underscore
+* handlebar-helpers
+* iron-router
+* accounts-password
+* accounts-ui
+* iron-router-progress
+* semantic-ui
+* collection2
+* velocity-html-reporter
+* mocha-web-velocity
+
+The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).
 
 ### Folder structure
 
