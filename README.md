@@ -13,9 +13,8 @@ The boilerplate looks like following: [boilerplate.meteor.com](http://boilerplat
 
 First, [download](https://github.com/matteodem/meteor-boilerplate/zipball/master) and unpack the boilerplate archive.
 ```sh
-# Assuming meteor and meteorite are already installed
+# Assuming meteor is already installed
 cd /path/to/project/
-mrt install
 meteor
 ```
 
