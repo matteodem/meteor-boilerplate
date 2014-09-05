@@ -7,13 +7,13 @@ standard-app-packages
 less
 jquery
 underscore
-handlebar-helpers
-iron-router
 accounts-password
 accounts-ui
-iron-router-progress
-semantic-ui
-velocity-html-reporter
-mocha-web-velocity
 aldeed:collection2
+mrt:iron-router-progress
+iron:router
+raix:handlebar-helpers
+nooitaf:semantic-ui
+mrt:mocha-web-velocity
+velocity:html-reporter
 
