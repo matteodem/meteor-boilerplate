@@ -15,6 +15,5 @@ iron:router
 raix:handlebar-helpers
 nooitaf:semantic-ui
 velocity:html-reporter
-matteodem:traceur
 mike:mocha
 
