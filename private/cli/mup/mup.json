@@ -1,0 +1,23 @@
+{
+  "servers": [
+    {
+      "host": "hostname",
+      "username": "root",
+      "password": "password"
+    }
+  ],
+
+  "setupMongo": __setupMongo__,
+  "setupNode": __setupNode__,
+  "nodeVersion": "0.10.31",
+  "setupPhantom": false,
+
+  "appName": "__appName__",
+  "app": "__appPath__",
+
+  "env": {
+    "ROOT_URL": "__rootUrl__"
+  },
+
+  "deployCheckWaitTime": 15
+}

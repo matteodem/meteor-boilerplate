@@ -2,6 +2,7 @@ var fs = require('fs'),
   args = process.argv,
   util = require('util'),
   cliRoot = './private/cli/',
+  cliProfileRoot = cliRoot + 'profiles/',
   readline = require('readline'),
   exec = require('child_process').exec;
 
@@ -9,7 +10,9 @@ var fs = require('fs'),
  *  General Helper Functions
  */
 function execute(command, callback){
-  exec(command, function(error, stdout, stderr){ callback(stdout); });
+  exec(command, function(error, stdout, stderr){
+    callback(stdout, stderr, error);
+  });
 }
 
 function quote(regex) {
@@ -86,6 +89,16 @@ var FileManager = {
     return !fileExists;
   },
 
+  replaceVariables: function (content, variables) {
+    variables.forEach(function (variable) {
+      var variableRegExp = new RegExp(quote('__' + variable.name + '__'), 'g');
+
+      content = content.replace(variableRegExp, variable.value);
+    });
+
+    return content;
+  },
+
   processFiles: function (path, variables, filesConfiguration, callback) {
     var managerScope = this,
       alreadyExistingFilePath = '';
@@ -97,14 +110,15 @@ var FileManager = {
         return;
       }
 
-      file.contents = fs.readFileSync(path + '/templates/' + file.template, { encoding: "utf8" });
+      file.contents = managerScope.replaceVariables(
+        fs.readFileSync(path + '/templates/' + file.template, { encoding: "utf8" }),
+        variables
+      );
 
-      variables.forEach(function (variable) {
-        var variableRegExp = new RegExp(quote('__' + variable.name + '__'), 'g');
-
-        file.path = slugify(file.path.replace(variableRegExp, variable.value));
-        file.contents = file.contents.replace(variableRegExp, variable.value);
-      });
+      // slugify
+      file.path = managerScope.replaceVariables(file.path, variables).split('/').map(function (part) {
+        return slugify(part);
+      }).join('/');
 
       continueCreating = managerScope.createFoldersAndFile(file);
 
@@ -139,7 +153,7 @@ var FileManager = {
  */
 var InteractiveConsole = {
 
-  init : function (runnerScope) {
+  init : function () {
     this.readLine = readline.createInterface({
       input: process.stdin,
       output: process.stdout
@@ -156,7 +170,11 @@ var InteractiveConsole = {
     this.readLine.prompt();
 
     this.readLine.on('line', function(line) {
-      if (!line) {
+      if (typeof argument.stopOn === "function" && argument.stopOn(line)) {
+        process.exit(0);
+      }
+
+      if (!line && !argument.optional) {
         InteractiveConsole.print('Please enter a value!');
         consoleScope.readLine.prompt();
       } else {
@@ -164,6 +182,7 @@ var InteractiveConsole = {
 
         if (variables.length === 0) {
           callback(userInput);
+          consoleScope.readLine.close();
         } else {
           argument = variables.shift();
 
@@ -273,7 +292,7 @@ CommandRunner.prototype.run = function () {
   if (this.arguments.length === 3 && questions.length > 0) {
     // Show an interactive console, if there are exactly 3 arguments
     // for example "node meteor-boilerplate create:view"
-    InteractiveConsole.init(this);
+    InteractiveConsole.init();
 
     InteractiveConsole.showQuestions(questions, function (userInput) {
       commands[runnerScope.command].execute(userInput);
@@ -310,120 +329,239 @@ var configuration;
  *
  * Holds all commands where the key is the command itself ('create:view')
  * and the value is an object used for processing all commands in a general way
- *
- * create:*
- *   found in each profile, private/cli/<profile-name>/create/<*>
- * change:profile
- *   Change the profile specified in private/cli/configuration.json
  */
-var commands = {
-  'change:profile' : {
-    init: function (runnerScope) {
-      this.availableProfiles = fs.readdirSync(cliRoot).filter(function (element) {
-        return element.indexOf('.') === -1;
+var commands = {};
+
+commands['reset:project'] = {
+  init: function (runnerScope) {
+  },
+  getQuestions: function () {
+    return [{
+      'question' : 'Do you really want to reset this project? (Y/n)',
+      'name' : 'resetProject'
+    }];
+  },
+  execute: function (userInput) {
+    var commandScope = this,
+      folders = this.deletableFolders(),
+      resetRootPath = cliProfileRoot + configuration.profile + '/reset/';
+
+    if (userInput[0].value.toLowerCase() === 'y') {
+      execute('rm -rf ' + folders.join(' '), function () {
+        folders.forEach(function (f) { commandScope.printFileChange('Removed', f) });
+
+        // Create files
+        JSON
+          .parse(fs.readFileSync(resetRootPath + 'configuration.json' , { encoding: 'utf8' }))
+          .files
+          .forEach(function (fileConf) {
+            fileConf.contents = fs.readFileSync(resetRootPath + fileConf.template, { encoding: 'utf8' });
+            commandScope.printFileChange('Added', fileConf.path);
+            FileManager.createFoldersAndFile(fileConf);
+          })
+        ;
+
+        process.exit(0);
       });
-    },
-    getQuestions: function () {
-      return [{
-        'question' : 'Which profile do you want to change to?',
-        'name' : 'profileName'
-      }];
-    },
-    execute: function (userInput) {
-      var commandScope = this,
-        profileName = userInput[0].value;
-
-      if (this.availableProfiles.indexOf(profileName) === -1) {
-        Errors.nonExistentProfile(profileName, commandScope.availableProfiles.join(', '));
-      } else {
-        this.changeProfile(profileName);
-        InteractiveConsole.print();
-
-        if (profileName === 'coffee' && fs.readFileSync('.meteor/packages', { encoding: 'utf8' }).indexOf('coffeescript') === -1) {
-          InteractiveConsole.printInfo('Coffeescript package missing!');
-          execute('meteor add coffeescript', function () {
-            commandScope.success(profileName);
-            InteractiveConsole.print('-- Added coffeescript package to project');
-            InteractiveConsole.print();
-            process.exit(0);
-          });
-        } else {
-          commandScope.success(profileName);
-          InteractiveConsole.print();
-          process.exit(0);
-        }
-      }
-    },
-
-    success: function (profileName) {
-      process.stdout.write('-- Changed profile to ');
-      InteractiveConsole.printInfo(profileName);
-    },
-
-    changeProfile: function (name) {
-      configuration.profile = name;
-      fs.unlinkSync(cliRoot + 'configuration.json');
-      fs.writeFileSync(cliRoot + 'configuration.json', JSON.stringify(configuration), { encoding: 'utf8' });
-    },
-
-    getDescription: function () {
-      return 'Change your project wide profile for generating files';
+    } else {
+      process.exit(0);
     }
   },
-  'reset:project' : {
-    init: function (runnerScope) {
-    },
-    getQuestions: function () {
-      return [{
-        'question' : 'Do you really want to reset this project (Y/n)?',
-        'name' : 'resetProject'
-      }];
-    },
-    execute: function (userInput) {
-      var commandScope = this,
-        folders = this.deletableFolders(),
-        resetRootPath = cliRoot + configuration.profile + '/reset/';
 
-      if (userInput[0].value.toLowerCase() === 'y') {
-        execute('rm -rf ' + folders.join(' '), function () {
-          folders.forEach(function (f) { commandScope.printFileChange('Removed', f) });
+  deletableFolders: function () {
+    return [
+      'client/views', 'client/modules', 'client/modules', 'client/stylesheets',
+      'client/routes', 'client/config', 'client/subscriptions', 'client/startup',
+      'server/publications', 'server/startup', 'server/fixtures',
+      'model', 'public', 'tests'
+    ];
+  },
 
-          // Create files
-          JSON
-            .parse(fs.readFileSync(resetRootPath + 'configuration.json' , { encoding: 'utf8' }))
-            .files
-            .forEach(function (fileConf) {
-              fileConf.contents = fs.readFileSync(resetRootPath + fileConf.template, { encoding: 'utf8' });
-              commandScope.printFileChange('Added', fileConf.path);
-              FileManager.createFoldersAndFile(fileConf);
-            })
-          ;
+  printFileChange: function (action, path) {
+    process.stdout.write('-- ' + action +  ' ');
+    InteractiveConsole.printInfo(path);
+  },
 
+  getDescription: function () {
+    return 'Removes a lot of files, perfect for a fresh start';
+  }
+
+};
+
+commands['change:profile'] = {
+  init: function (runnerScope) {
+    this.availableProfiles = fs.readdirSync(cliProfileRoot).filter(function (element) {
+      return element.indexOf('.') === -1;
+    });
+  },
+  getQuestions: function () {
+    return [{
+      'question' : 'Which profile do you want to change to?',
+      'name' : 'profileName'
+    }];
+  },
+  execute: function (userInput) {
+    var commandScope = this,
+      profileName = userInput[0].value;
+
+    if (this.availableProfiles.indexOf(profileName) === -1) {
+      Errors.nonExistentProfile(profileName, commandScope.availableProfiles.join(', '));
+    } else {
+      this.changeProfile(profileName);
+      InteractiveConsole.print();
+
+      if (profileName === 'coffee' && fs.readFileSync('.meteor/packages', { encoding: 'utf8' }).indexOf('coffeescript') === -1) {
+        InteractiveConsole.printInfo('Coffeescript package missing!');
+        execute('meteor add coffeescript', function () {
+          commandScope.success(profileName);
+          InteractiveConsole.print('-- Added coffeescript package to project');
+          InteractiveConsole.print();
           process.exit(0);
         });
       } else {
+        commandScope.success(profileName);
+        InteractiveConsole.print();
         process.exit(0);
       }
-    },
+    }
+  },
 
-    deletableFolders: function () {
-      return [
-        'client/views', 'client/modules', 'client/modules', 'client/stylesheets',
-        'client/routes', 'client/config', 'client/subscriptions', 'client/startup',
-        'server/publications', 'server/startup', 'server/fixtures',
-        'model', 'public', 'tests'
-      ];
-    },
+  success: function (profileName) {
+    process.stdout.write('-- Changed profile to ');
+    InteractiveConsole.printInfo(profileName);
+  },
 
-    printFileChange: function (action, path) {
-      process.stdout.write('-- ' + action +  ' ');
-      InteractiveConsole.printInfo(path);
-    },
+  changeProfile: function (name) {
+    configuration.profile = name;
+    fs.unlinkSync(cliProfileRoot + 'configuration.json');
+    fs.writeFileSync(cliProfileRoot + 'configuration.json', JSON.stringify(configuration), { encoding: 'utf8' });
+  },
 
-    getDescription: function () {
-      return 'Removes a lot of files, perfect for a fresh start';
+  getDescription: function () {
+    return 'Change your project wide profile for generating files';
+  }
+};
+
+commands['mup:init'] = {
+  init: function () {},
+  getQuestions: function () {
+    return [
+      {
+        'question' : 'What is the name of your app?',
+        'name' : 'appName'
+      },
+      {
+        'question' : 'What is the ROOT_URL of your app?',
+        'name' : 'rootUrl'
+      },
+      {
+        'question' : 'Should MongoDB be installed on the server? (Y/n)',
+        'name' : 'installMongo'
+      },
+      {
+        'question' : 'Should Node.js be installed on the server? (Y/n)',
+        'name' : 'installNode'
+      }
+    ];
+  },
+  execute: function (userInput) {
+    var commandScope = this;
+
+    InteractiveConsole.print();
+    InteractiveConsole.printInfo('Checking if mup is installed locally...');
+
+    execute('npm ls -g mup', function (response) {
+      if (response.indexOf('empty') > -1) {
+        InteractiveConsole.init();
+
+        InteractiveConsole.showQuestions(
+          [{ 'name' : 'shouldInstall', 'question' : 'It seems that it is not installed, execute following command: npm install -g mup ? (Y/n)' }],
+          function (answers) {
+            if (answers[0].value.toUpperCase() === "Y") {
+              InteractiveConsole.print();
+              InteractiveConsole.printInfo('Installing mup...');
+
+              execute('npm install -g mup', function () {
+                commandScope.createMupFiles(userInput);
+              });
+            } else {
+              commandScope.createMupFiles(userInput);
+            }
+          }
+        );
+      } else {
+        InteractiveConsole.printInfo('It is!');
+        commandScope.createMupFiles(userInput);
+      }
+    });
+  },
+
+  createMupFiles: function (vars) {
+    var objVars = {},
+      mupContent = fs.readFileSync(cliRoot + 'mup/mup.json', { encoding: "utf8" });
+
+    vars.forEach(function (variable) {
+      objVars[variable.name] = variable.value;
+    });
+
+    vars.push({ name: 'setupNode', value: (objVars.installNode.toUpperCase() === 'Y').toString() });
+    vars.push({ name: 'setupMongo', value: (objVars.installMongo.toUpperCase() === 'Y').toString() });
+    vars.push({ name: 'appPath', value: __dirname });
+
+    fs.writeFileSync('./mup.json', FileManager.replaceVariables(mupContent, vars), { encoding: 'utf8' });
+    fs.writeFileSync('./settings.json', fs.readFileSync(cliRoot + 'mup/settings.json', { encoding: 'utf8' }), { encoding: 'utf8' });
+
+    this.success();
+    process.exit(0);
+  },
+
+  success: function () {
+    InteractiveConsole.print();
+    process.stdout.write('-- Created ');
+    InteractiveConsole.printInfo('mup.json');
+    process.stdout.write('-- Created ');
+    InteractiveConsole.printInfo('settings.json');
+    InteractiveConsole.printInfo('-- Initialized Meteor Up Deployment Files');
+    InteractiveConsole.print();
+    InteractiveConsole.print('Please add the server details found in mup.json!');
+    InteractiveConsole.print();
+  },
+
+  getDescription: function () {
+    return 'Initialize your deployment process with Meteor Up';
+  }
+};
+
+commands['mup:deploy'] = {
+  init: function () {},
+  getQuestions: function () {
+    return [{ 'name' : 'reallyDeploy', 'question' : 'Do you really want to deploy? (Y/n)' }];
+  },
+  execute: function (userInput) {
+    if (userInput[0].value.toUpperCase() !== 'Y') {
+      process.exit(0);
     }
 
+    if (!fs.existsSync('./mup.json')) {
+      InteractiveConsole.printError('No mup.json found, please execute mup:init', function () {
+        process.exit(0);
+      });
+    } else {
+      InteractiveConsole.print();
+      InteractiveConsole.printInfo('Deploying application...');
+
+      execute('mup deploy', function (stdout, stderr, error) {
+        if (stderr) {
+          InteractiveConsole.print(stderr);
+          process.exit(0);
+        } else {
+          InteractiveConsole.printInfo('Successfully deployed the application!');
+        }
+      });
+    }
+  },
+  getDescription: function () {
+    return 'Deploy your Meteor Application with Meteor Up';
   }
 };
 
@@ -432,13 +570,13 @@ if (!fs.existsSync('.meteor')) {
   Errors.executeWithinMeteorProject();
 }
 
-configuration = JSON.parse(fs.readFileSync(cliRoot + 'configuration.json', { encoding: "utf8" }));
+configuration = JSON.parse(fs.readFileSync(cliProfileRoot + 'configuration.json', { encoding: "utf8" }));
 
 // Fill 'commands' object with all create commands
-fs.readdirSync(cliRoot + '/' + configuration.profile + '/create').forEach(function (createPart) {
+fs.readdirSync(cliProfileRoot + '/' + configuration.profile + '/create').forEach(function (createPart) {
   commands['create:' + createPart] = {
     init: function (runnerScope) {
-      this.createPath = cliRoot + '/' + configuration.profile +'/create/' + runnerScope.commandParts[1];
+      this.createPath = cliProfileRoot + '/' + configuration.profile +'/create/' + runnerScope.commandParts[1];
 
       this.configuration = JSON.parse(fs.readFileSync(
         this.createPath + '/configuration.json',
@@ -458,7 +596,7 @@ fs.readdirSync(cliRoot + '/' + configuration.profile + '/create').forEach(functi
     },
     getDescription: function () {
       return fs.readFileSync(
-        cliRoot + '/' + configuration.profile + '/create/' + createPart + '/info.txt',
+        cliProfileRoot + '/' + configuration.profile + '/create/' + createPart + '/info.txt',
         { encoding: "utf8" }
       ).replace('\n', '');
     }
