@@ -8,7 +8,7 @@
   "files" : [
     {
       "template" : "test.coffee",
-      "path" : "tests/mocha-web-velocity/__testName__Test.coffee"
+      "path" : "tests/mocha/__testName__Test.coffee"
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "files" : [
+    {
+      "template" : "home.html",
+      "path" : "client/views/home/home.html"
+    },
+    {
+      "template" : "homeRoute.traceur",
+      "path" : "client/routes/homeRoute.traceur"
+    },
+    {
+      "template" : "layout.html",
+      "path" : "client/views/layouts/layout.html"
+    },
+    {
+      "template" : "routerConfig.traceur",
+      "path" : "client/config/router.traceur"
+    }
+  ]
+}

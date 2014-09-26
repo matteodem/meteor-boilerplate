@@ -404,6 +404,12 @@ commands['change:profile'] = {
     var commandScope = this,
       profileName = userInput[0].value;
 
+    if (configuration.profile === profileName) {
+      InteractiveConsole.print();
+      InteractiveConsole.printInfo("Already using " + profileName + '!');
+      process.exit(0);
+    }
+
     if (this.availableProfiles.indexOf(profileName) === -1) {
       Errors.nonExistentProfile(profileName, commandScope.availableProfiles.join(', '));
     } else {
@@ -415,6 +421,14 @@ commands['change:profile'] = {
         execute('meteor add coffeescript', function () {
           commandScope.success(profileName);
           InteractiveConsole.print('-- Added coffeescript package to project');
+          InteractiveConsole.print();
+          process.exit(0);
+        });
+      } else if (profileName === 'es6' && fs.readFileSync('.meteor/packages', { encoding: 'utf8' }).indexOf('traceur') === -1) {
+        InteractiveConsole.printInfo('Traceur package missing!');
+        execute('meteor add matteodem:traceur', function () {
+          commandScope.success(profileName);
+          InteractiveConsole.print('-- Added traceur package to project');
           InteractiveConsole.print();
           process.exit(0);
         });
