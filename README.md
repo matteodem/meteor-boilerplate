@@ -34,15 +34,26 @@ empty project, use the provided command to get rid off all the code you don't ne
 node meteor-boilerplate reset:project
 ```
 
-### Coffeescript support
+### Available profiles
 
-For all our coffeescript lovers, you can change to a coffeescript configuration for file generation like this.
+* coffee (coffeescript, Unfancy JavaScript)
+* es6 (traceur, Traceur is a JavaScript.next-to-JavaScript-of-today compiler)
 
+You can change your profile like that
 ```sh
 node meteor-boilerplate change:profile coffee
 ```
 
-Also use the ```reset:project``` command to start off with coffeescript files.
+Also use the ```reset:project``` command to start off with blank files according to your profile.
+
+### Deployments
+
+Support for [Meteor Up](https://github.com/arunoda/meteor-up) is integrate, use following commands to set up your deployment process.
+
+```sh
+node meteor-boilerplate mup:init # walks you through the setup process
+node meteor-boilerplate mup:deploy # deploys to server
+```
 
 ### Packages used
 
