@@ -48,7 +48,7 @@ Also use the ```reset:project``` command to start off with blank files according
 
 ### Deployments
 
-Support for [Meteor Up](https://github.com/arunoda/meteor-up) is integrate, use following commands to set up your deployment process.
+Support for [Meteor Up](https://github.com/arunoda/meteor-up) is integrated, use following commands to set up your deployment process.
 
 ```sh
 node meteor-boilerplate mup:init # walks you through the setup process
