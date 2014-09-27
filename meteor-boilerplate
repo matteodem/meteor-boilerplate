@@ -465,7 +465,7 @@ commands['mup:init'] = {
         'name' : 'appName'
       },
       {
-        'question' : 'What is the ROOT_URL of your app?',
+        'question' : 'What is the ROOT_URL of your app on the server?',
         'name' : 'rootUrl'
       },
       {
@@ -587,7 +587,11 @@ if (!fs.existsSync('.meteor')) {
 configuration = JSON.parse(fs.readFileSync(cliProfileRoot + 'configuration.json', { encoding: "utf8" }));
 
 // Fill 'commands' object with all create commands
-fs.readdirSync(cliProfileRoot + '/' + configuration.profile + '/create').forEach(function (createPart) {
+fs.readdirSync(cliProfileRoot + configuration.profile + '/create').forEach(function (createPart) {
+  if (createPart.indexOf('.') === 0) {
+    return;
+  }
+
   commands['create:' + createPart] = {
     init: function (runnerScope) {
       this.createPath = cliProfileRoot + '/' + configuration.profile +'/create/' + runnerScope.commandParts[1];
@@ -610,7 +614,7 @@ fs.readdirSync(cliProfileRoot + '/' + configuration.profile + '/create').forEach
     },
     getDescription: function () {
       return fs.readFileSync(
-        cliProfileRoot + '/' + configuration.profile + '/create/' + createPart + '/info.txt',
+        cliProfileRoot + configuration.profile + '/create/' + createPart + '/info.txt',
         { encoding: "utf8" }
       ).replace('\n', '');
     }
