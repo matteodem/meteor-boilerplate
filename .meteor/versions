@@ -31,17 +31,16 @@ id-map@1.0.0
 iron:core@0.3.4
 iron:dynamic-template@0.4.1
 iron:layout@0.4.1
-iron:router@0.9.3
+iron:router@0.9.4
 jquery@1.0.0
 json@1.0.0
 less@1.0.9
 livedata@1.0.10
 localstorage@1.0.0
 logging@1.0.3
-matteodem:traceur@1.0.0
 meteor-platform@1.1.1
 meteor@1.1.1
-mike:mocha@0.3.9
+mike:mocha@0.3.11
 minifiers@1.1.0
 minimongo@1.0.3
 mobile-status-bar@1.0.0
@@ -72,6 +71,6 @@ ui@1.0.3
 underscore@1.0.0
 url@1.0.0
 velocity:core@0.2.14
-velocity:html-reporter@0.2.2
+velocity:html-reporter@0.2.3
 webapp-hashing@1.0.0
 webapp@1.1.2
