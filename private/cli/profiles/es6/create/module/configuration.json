@@ -11,8 +11,8 @@
       "path" : "client/modules/__moduleName__/__moduleName__.html"
     },
     {
-      "template" : "module.traceur",
-      "path" : "client/modules/__moduleName__/__moduleName__.traceur"
+      "template" : "module.next.js",
+      "path" : "client/modules/__moduleName__/__moduleName__.next.js"
     },
     {
       "template" : "module.less",

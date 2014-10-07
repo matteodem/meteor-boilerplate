@@ -5,16 +5,16 @@
       "path" : "client/views/home/home.html"
     },
     {
-      "template" : "homeRoute.traceur",
-      "path" : "client/routes/homeRoute.traceur"
+      "template" : "homeRoute.next.js",
+      "path" : "client/routes/homeRoute.next.js"
     },
     {
       "template" : "layout.html",
       "path" : "client/views/layouts/layout.html"
     },
     {
-      "template" : "routerConfig.traceur",
-      "path" : "client/config/router.traceur"
+      "template" : "routerConfig.next.js",
+      "path" : "client/config/router.next.js"
     }
   ]
 }

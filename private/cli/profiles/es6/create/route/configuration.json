@@ -11,8 +11,8 @@
   ],
   "files" : [
     {
-      "template" : "route.traceur",
-      "path" : "client/routes/__routeName__Route.traceur"
+      "template" : "route.next.js",
+      "path" : "client/routes/__routeName__Route.next.js"
     }
   ]
 }

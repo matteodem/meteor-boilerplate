@@ -7,16 +7,16 @@
   ],
   "files" : [
     {
-      "template" : "model.js",
-      "path" : "model/__modelName__.js"
+      "template" : "model.next.js",
+      "path" : "model/__modelName__.next.js"
     },
     {
-      "template" : "subscription.js",
-      "path" : "client/subscriptions/__modelName__Sub.js"
+      "template" : "subscription.next.js",
+      "path" : "client/subscriptions/__modelName__Sub.next.js"
     },
     {
-      "template" : "publication.js",
-      "path" : "server/publications/__modelName__Pub.js"
+      "template" : "publication.next.js",
+      "path" : "server/publications/__modelName__Pub.next.js"
     }
   ]
 }

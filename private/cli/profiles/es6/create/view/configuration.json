@@ -11,8 +11,8 @@
       "path" : "client/views/__viewName__/__viewName__.html"
     },
     {
-      "template" : "view.traceur",
-      "path" : "client/views/__viewName__/__viewName__.traceur"
+      "template" : "view.next.js",
+      "path" : "client/views/__viewName__/__viewName__.next.js"
     }
   ]
 }

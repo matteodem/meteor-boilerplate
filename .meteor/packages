@@ -16,4 +16,5 @@ raix:handlebar-helpers
 nooitaf:semantic-ui
 velocity:html-reporter
 mike:mocha
+mquandalle:harmony
 
