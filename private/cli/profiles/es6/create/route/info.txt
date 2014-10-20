@@ -1,1 +1,0 @@
-Route Controller with Iron Router

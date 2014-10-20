@@ -1,0 +1,18 @@
+{
+  "variables" : [
+    {
+      "name" : "routeName",
+      "description" : "What's the group name of your routes?"
+    },
+    {
+      "name" : "routePath",
+      "description" : "What's the path of your first route? (e.g. /blog/:_id/view)"
+    }
+  ],
+  "files" : [
+    {
+      "template" : "route.next.js",
+      "path" : "routes/__routeName__Routes.next.js"
+    }
+  ]
+}

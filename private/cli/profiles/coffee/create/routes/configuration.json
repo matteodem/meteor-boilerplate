@@ -2,11 +2,11 @@
   "variables" : [
     {
       "name" : "routeName",
-      "description" : "What's the name of your route?"
+      "description" : "What's the group name of your routes?"
     },
     {
       "name" : "routePath",
-      "description" : "What's the path of your route? (e.g. /blog/:_id/view)"
+      "description" : "What's the path of your first route? (e.g. /blog/:_id/view)"
     }
   ],
   "files" : [
