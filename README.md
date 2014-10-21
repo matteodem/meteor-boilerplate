@@ -1,7 +1,5 @@
 # meteor-boilerplate
 
-[![Meteor Boilerplate](http://content.screencast.com/users/MatteoDem/folders/Jing/media/87719ed4-96a6-449c-8ebf-fef95a7d4700/00000040.png)](http://boilerplate.meteor.com/)
-
 This boilerplate is here to give you a starting point for your meteor projects, with a console tool to ease up some tasks. Here's what you get with it.
 
 * meteor-boilerplate console tool, for scaffolding files and more
