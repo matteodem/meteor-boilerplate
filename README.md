@@ -1,13 +1,14 @@
 # meteor-boilerplate
 
-This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks. Here's what you get
-with it.
+[![Meteor Boilerplate](http://content.screencast.com/users/MatteoDem/folders/Jing/media/87719ed4-96a6-449c-8ebf-fef95a7d4700/00000040.png)](http://boilerplate.meteor.com/)
+
+This boilerplate is here to give you a starting point for your meteor projects, with a console tool to ease up some tasks. Here's what you get with it.
 
 * meteor-boilerplate console tool, for scaffolding files and more
-* Helpful packages included, for example [Iron Router](https://github.com/EventedMind/iron-router) and [Velocity](https://github.com/xolvio/velocity)
-* Given folder structure to keep code clean
+* Essential atmosphere packages included, like [Iron Router](https://github.com/EventedMind/iron-router) and [Velocity](https://github.com/xolvio/velocity)
+* Profile support for ES6 and Coffeescript
 
-The boilerplate looks like following: [boilerplate.meteor.com](http://boilerplate.meteor.com)
+The boilerplate looks like following: [boilerplate.meteor.com](http://boilerplate.meteor.com). Have a look at [starthacking](http://starthacking.meteor.com/) for a project created with this boilerplate.
 
 ## How to install
 
@@ -21,8 +22,8 @@ meteor
 ## How to use
 ```sh
 node meteor-boilerplate # Lists all possible commands
-node meteor-boilerplate create:route # Interactive console for command
-node meteor-boilerplate create:route login /login # Executes it immediately
+node meteor-boilerplate create:module # Interactive console for command
+node meteor-boilerplate create:module loginBox # Executes it immediately
 ```
 
 ### Removing default code
@@ -80,7 +81,6 @@ client/ 				# Client folder
     compatibility/      # Libraries which create a global variable
     config/             # Configuration files (on the client)
 	lib/                # Library files that get executed first
-    routes/             # All routes(*)
     startup/            # Javascript files on Meteor.startup()
     stylesheets         # LESS files
     subscriptions/      # Collection subscriptions(*)
@@ -90,6 +90,7 @@ client/ 				# Client folder
 model/  				# Model files, for each Meteor.Collection(*)
 private/                # Private files
 public/                 # Public files
+routes/                 # All routes(*)
 server/					# Server folder
     fixtures/           # Meteor.Collection fixtures defined
     lib/                # Server side library folder
@@ -100,9 +101,6 @@ meteor-boilerplate		# Command line tool
 ```
 
 (*) = the command line tool creates files in these folders
-
-## Projects created with this boilerplate
-[starthacking](http://starthacking.meteor.com/) - A simple micro page to find useful programming resources
 
 ## Other Awesome Boilerplates
 
