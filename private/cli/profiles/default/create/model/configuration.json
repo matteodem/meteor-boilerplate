@@ -2,7 +2,7 @@
   "variables" : [
     {
       "name" : "modelName",
-      "description" : "What's your model called (Meteor.Collection)?"
+      "description" : "What's your model called (Mongo.Collection)?"
     }
   ],
   "files" : [

@@ -1,4 +1,4 @@
-__modelName__ = new Meteor.Collection('__modelName__',
+__modelName__ = new Mongo.Collection('__modelName__',
   schema: new SimpleSchema(
     title:
       type: String

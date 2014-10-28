@@ -1,1 +1,1 @@
-Creates a new Meteor.Collection with a Collection2 Schema
+Creates a new Mongo.Collection with a Collection2 Schema

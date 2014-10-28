@@ -1,6 +1,6 @@
 // Not possible to use .traceur, since they don't allow global variables yet
 
-export var __modelName__ = new Meteor.Collection('__modelName__'/*, {
+export var __modelName__ = new Mongo.Collection('__modelName__'/*, {
   schema: new SimpleSchema({
     title: {
       type: String
