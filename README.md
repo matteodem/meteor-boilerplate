@@ -3,7 +3,7 @@
 This boilerplate is here to give you a starting point for your meteor projects, with a console tool to ease up some tasks. Here's what you get with it.
 
 * meteor-boilerplate console tool, for scaffolding files and more
-* Essential atmosphere packages included, like [Iron Router](https://github.com/EventedMind/iron-router) and [Velocity](https://github.com/xolvio/velocity)
+* Essential atmosphere packages included, like [Iron Router](https://github.com/EventedMind/iron-router)
 * Profile support for ES6 and Coffeescript
 
 The boilerplate looks like following: [boilerplate.meteor.com](http://boilerplate.meteor.com). Have a look at [starthacking](http://starthacking.meteor.com/) for a project created with this boilerplate.
@@ -60,15 +60,12 @@ node meteor-boilerplate mup:deploy # deploys to server
 * less
 * jquery
 * underscore
-* handlebar-helpers
-* iron-router
 * accounts-password
 * accounts-ui
-* iron-router-progress
-* semantic-ui
-* collection2
-* velocity-html-reporter
-* mocha-web-velocity
+* aldeed:collection2
+* iron:router
+* raix:handlebar-helpers
+* nooitaf:semantic-ui-less
 
 The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).
 
@@ -94,7 +91,6 @@ server/					# Server folder
     lib/                # Server side library folder
     publications/       # Collection publications(*)
     startup/            # On server startup
-tests/					# Velocity test files, can be run with mocha(*)
 meteor-boilerplate		# Command line tool
 ```
 
