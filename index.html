@@ -49,51 +49,34 @@
         <h1>
 <a name="meteor-boilerplate" class="anchor" href="#meteor-boilerplate"><span class="octicon octicon-link"></span></a>meteor-boilerplate</h1>
 
-<p>This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks. Here's what you get
-with it.</p>
+<p>This boilerplate is here to give you a starting point for your meteor projects, with a console tool to ease up some tasks. Here's what you get with it.</p>
 
 <ul>
 <li>meteor-boilerplate console tool, for scaffolding files and more</li>
-<li>Helpful packages included, for example <a href="https://github.com/EventedMind/iron-router">Iron Router</a> and <a href="https://github.com/xolvio/velocity">Velocity</a>
+<li>Essential atmosphere packages included, like <a href="https://github.com/EventedMind/iron-router">Iron Router</a>
 </li>
-<li>Given folder structure to keep code clean</li>
-</ul><p>The boilerplate looks like following: <a href="http://boilerplate.meteor.com">boilerplate.meteor.com</a></p>
+<li>Profile support for ES6 and Coffeescript</li>
+</ul>
+
+<p>The boilerplate looks like following: <a href="http://boilerplate.meteor.com">boilerplate.meteor.com</a>. Have a look at <a href="http://starthacking.meteor.com/">starthacking</a> for a project created with this boilerplate.</p>
 
 <h2>
 <a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install</h2>
 
 <p>First, <a href="https://github.com/matteodem/meteor-boilerplate/zipball/master">download</a> and unpack the boilerplate archive.</p>
 
-<pre><code># Assuming meteor and meteorite are already installed
-cd /path/to/project/
-mrt install
+<div class="highlight highlight-sh"><pre><span class="c"># Assuming meteor is already installed</span>
+<span class="nb">cd</span> /path/to/project/
 meteor
-</code></pre>
+</pre></div>
 
 <h2>
 <a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
 
-<pre><code>node meteor-boilerplate # Lists all possible commands
-</code></pre>
-
-<h3>
-<a name="packages-used" class="anchor" href="#packages-used"><span class="octicon octicon-link"></span></a>Packages used</h3>
-
-<ul>
-<li>standard-app-packages</li>
-<li>less</li>
-<li>jquery</li>
-<li>underscore</li>
-<li>handlebar-helpers</li>
-<li>iron-router</li>
-<li>accounts-password</li>
-<li>accounts-ui</li>
-<li>iron-router-progress</li>
-<li>semantic-ui</li>
-<li>collection2</li>
-<li>velocity-html-reporter</li>
-<li>mocha-web-velocity</li>
-</ul><p>The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).</p>
+<div class="highlight highlight-sh"><pre>node meteor-boilerplate <span class="c"># Lists all possible commands</span>
+node meteor-boilerplate create:module <span class="c"># Interactive console for command</span>
+node meteor-boilerplate create:module loginBox <span class="c"># Executes it immediately</span>
+</pre></div>
 
 <h3>
 <a name="removing-default-code" class="anchor" href="#removing-default-code"><span class="octicon octicon-link"></span></a>Removing default code</h3>
@@ -105,14 +88,46 @@ empty project, use the provided command to get rid off all the code you don't ne
 </pre></div>
 
 <h3>
-<a name="coffeescript-support" class="anchor" href="#coffeescript-support"><span class="octicon octicon-link"></span></a>Coffeescript support</h3>
+<a name="available-profiles" class="anchor" href="#available-profiles"><span class="octicon octicon-link"></span></a>Available profiles</h3>
 
-<p>For all our coffeescript lovers, you can change to a coffeescript configuration for file generation like this.</p>
+<ul>
+<li>coffee (coffeescript, Unfancy JavaScript)</li>
+<li>es6 (traceur, Traceur is a JavaScript.next-to-JavaScript-of-today compiler)</li>
+</ul>
+
+<p>You can change your profile like that</p>
 
 <div class="highlight highlight-sh"><pre>node meteor-boilerplate change:profile coffee
 </pre></div>
 
-<p>Also use the <code>reset:project</code> command to start off with coffeescript files.</p>
+<p>Also use the <code>reset:project</code> command to start off with blank files according to your profile.</p>
+
+<h3>
+<a name="deployments" class="anchor" href="#deployments"><span class="octicon octicon-link"></span></a>Deployments</h3>
+
+<p>Support for <a href="https://github.com/arunoda/meteor-up">Meteor Up</a> is integrated, use following commands to set up your deployment process.</p>
+
+<div class="highlight highlight-sh"><pre>node meteor-boilerplate mup:init <span class="c"># walks you through the setup process</span>
+node meteor-boilerplate mup:deploy <span class="c"># deploys to server</span>
+</pre></div>
+
+<h3>
+<a name="packages-used" class="anchor" href="#packages-used"><span class="octicon octicon-link"></span></a>Packages used</h3>
+
+<ul>
+<li>standard-app-packages</li>
+<li>less</li>
+<li>jquery</li>
+<li>underscore</li>
+<li>accounts-password</li>
+<li>accounts-ui</li>
+<li>aldeed:collection2</li>
+<li>iron:router</li>
+<li>raix:handlebar-helpers</li>
+<li>nooitaf:semantic-ui-less</li>
+</ul>
+
+<p>The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).</p>
 
 <h3>
 <a name="folder-structure" class="anchor" href="#folder-structure"><span class="octicon octicon-link"></span></a>Folder structure</h3>
@@ -121,7 +136,6 @@ empty project, use the provided command to get rid off all the code you don't ne
     compatibility/      # Libraries which create a global variable
     config/             # Configuration files (on the client)
     lib/                # Library files that get executed first
-    routes/             # All routes(*)
     startup/            # Javascript files on Meteor.startup()
     stylesheets         # LESS files
     subscriptions/      # Collection subscriptions(*)
@@ -131,21 +145,16 @@ empty project, use the provided command to get rid off all the code you don't ne
 model/                  # Model files, for each Meteor.Collection(*)
 private/                # Private files
 public/                 # Public files
+routes/                 # All routes(*)
 server/                 # Server folder
     fixtures/           # Meteor.Collection fixtures defined
     lib/                # Server side library folder
     publications/       # Collection publications(*)
     startup/            # On server startup
-tests/                  # Velocity test files, can be run with mocha(*)
 meteor-boilerplate      # Command line tool
 </code></pre>
 
 <p>(*) = the command line tool creates files in these folders</p>
-
-<h2>
-<a name="projects-created-with-this-boilerplate" class="anchor" href="#projects-created-with-this-boilerplate"><span class="octicon octicon-link"></span></a>Projects created with this boilerplate</h2>
-
-<p><a href="http://starthacking.meteor.com/">starthacking</a> - A simple micro page to find useful programming resources</p>
 
 <h2>
 <a name="other-awesome-boilerplates" class="anchor" href="#other-awesome-boilerplates"><span class="octicon octicon-link"></span></a>Other Awesome Boilerplates</h2>
@@ -159,7 +168,9 @@ meteor-boilerplate      # Command line tool
 <a href="https://github.com/BeDifferential/meteor-boilerplate">meteor-boilerplate</a> by BeDifferential (CoffeeScript)</li>
 <li>
 <a href="https://github.com/EventedMind/em">em</a> by EventedMind (Boilerplate &amp; Scaffolding)</li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>This boilerplate has an MIT License, see the LICENSE.txt for more information.</p>
