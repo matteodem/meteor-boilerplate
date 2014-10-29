@@ -1,6 +1,4 @@
-Router.map(function () {
-  // Home Route
-  this.route('home', {
-    path :  '/'
-  });
+// Home Route
+Router.route('/', function () {
+  this.render('home');
 });
