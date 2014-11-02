@@ -13,3 +13,7 @@ aldeed:collection2
 iron:router
 raix:handlebar-helpers
 nooitaf:semantic-ui-less
+matteodem:easy-security
+audit-argument-checks
+fastclick
+

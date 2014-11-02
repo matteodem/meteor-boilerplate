@@ -15,8 +15,6 @@ Template.home.helpers({
       { 'name' : 'less', 'path' : 'http://lesscss.org/' },
       { 'name' : 'jQuery', 'path' : 'http://jquery.com/' },
       { 'name' : 'Underscore', 'path' : 'http://underscorejs.org/' },
-      { 'name' : 'Handlebar Helpers', 'path' : 'https://github.com/raix/Meteor-handlebar-helpers' },
-      { 'name' : 'Iron Router Progress', 'path' : 'https://github.com/Multiply/iron-router-progress' },
       { 'name' : 'Accounts UI & Password', 'path' : 'http://docs.meteor.com/#accountsui' },
       { 'name' : 'Velocity', 'path' : 'https://github.com/xolvio/velocity' }
     ];
