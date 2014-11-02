@@ -56,16 +56,15 @@ node meteor-boilerplate mup:deploy # deploys to server
 
 ### Packages used
 
-* standard-app-packages
+[Following packages](https://github.com/matteodem/meteor-boilerplate/blob/master/.meteor/packages) are used, some of them are:
+
+* iron:router
+* aldeed:collection2
 * less
 * jquery
 * underscore
-* accounts-password
-* accounts-ui
-* aldeed:collection2
-* iron:router
-* raix:handlebar-helpers
 * nooitaf:semantic-ui-less
+* accounts-password & accounts-ui
 
 The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).
 
