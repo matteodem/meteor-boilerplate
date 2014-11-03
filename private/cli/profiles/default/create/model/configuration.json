@@ -8,7 +8,7 @@
   "files" : [
     {
       "template" : "model.js",
-      "path" : "model/__modelName__.js"
+      "path" : "models/__modelName__.js"
     },
     {
       "template" : "subscription.js",

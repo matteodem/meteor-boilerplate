@@ -8,7 +8,7 @@
   "files" : [
     {
       "template" : "model.coffee",
-      "path" : "model/__modelName__.coffee"
+      "path" : "models/__modelName__.coffee"
     },
     {
       "template" : "subscription.coffee",
