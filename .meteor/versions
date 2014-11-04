@@ -12,6 +12,10 @@ binary-heap@1.0.1
 blaze-tools@1.0.1
 blaze@2.0.3
 boilerplate-generator@1.0.1
+browser-policy-common@1.0.1
+browser-policy-content@1.0.2
+browser-policy-framing@1.0.2
+browser-policy@1.0.2
 callback-hook@1.0.1
 check@1.0.2
 coffeescript@1.0.4
@@ -43,6 +47,7 @@ less@1.0.11
 livedata@1.0.11
 localstorage@1.0.1
 logging@1.0.5
+manuelschoebel:ms-seo@0.4.1
 matteodem:easy-security@0.1.1
 meteor-platform@1.2.0
 meteor@1.1.3

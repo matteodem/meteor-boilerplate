@@ -2,27 +2,44 @@
 
 This boilerplate is here to give you a starting point for your meteor projects, with a console tool to ease up some tasks. Here's what you get with it.
 
-* meteor-boilerplate console tool, for scaffolding files and more
-* Essential atmosphere packages included, like [Iron Router](https://github.com/EventedMind/iron-router)
-* Profile support for ES6 and Coffeescript
+
+
+<!-- toc -->
+
+* [How to use](#how-to-use)
+  * [Console tool](#console-tool)
+  * [Removing default code](#removing-default-code)
+  * [Available profiles (cofeescript and es6)](#available-profiles-cofeescript-and-es6)
+  * [Deployments](#deployments)
+  * [SEO and other concerns](#seo-and-other-concerns)
+* [Structure](#structure)
+  * [Packages used](#packages-used)
+  * [Folder structure](#folder-structure)
+* [Other Awesome Boilerplates](#other-awesome-boilerplates)
+* [License](#license)
+
+<!-- toc stop -->
+
 
 The boilerplate looks like following: [boilerplate.meteor.com](http://boilerplate.meteor.com). Have a look at [starthacking](http://starthacking.meteor.com/) for a project created with this boilerplate.
 
-## How to install
+## How to use
 
-First, [download](https://github.com/matteodem/meteor-boilerplate/zipball/master) and unpack the boilerplate archive.
 ```sh
 # Assuming meteor is already installed
-cd /path/to/project/
+git clone https://github.com/matteodem/meteor-boilerplate.git appName && cd appName
 meteor
 ```
 
-## How to use
+### Console tool
+
 ```sh
 node meteor-boilerplate # Lists all possible commands
 node meteor-boilerplate create:module # Interactive console for command
 node meteor-boilerplate create:module loginBox # Executes it immediately
 ```
+
+You can create models, views, change profiles and reset the project with the console tool (see below).
 
 ### Removing default code
 
@@ -33,7 +50,7 @@ empty project, use the provided command to get rid off all the code you don't ne
 node meteor-boilerplate reset:project
 ```
 
-### Available profiles
+### Available profiles (cofeescript and es6)
 
 * coffee (coffeescript, Unfancy JavaScript)
 * es6 (traceur, Traceur is a JavaScript.next-to-JavaScript-of-today compiler)
@@ -53,6 +70,26 @@ Support for [Meteor Up](https://github.com/arunoda/meteor-up) is integrated, use
 node meteor-boilerplate mup:init # walks you through the setup process
 node meteor-boilerplate mup:deploy # deploys to server
 ```
+
+### SEO and other concerns
+
+_Meteor can not do SEO._ This statement is only partially true, since there is a package called [ms-seo](https://github.com/DerMambo/ms-seo), which
+has a lot of neat little tricks to help web crawlers notice your site the way you want them to. This boilerplate also adds constants under
+__client/lib/constants.js__ for the app. Change SEO settings in the routes like that.
+
+```javascript
+Router.route('/about', function () {
+  this.render('about');
+  // Using the app constants
+  SEO.set({ title: 'About -' + Meteor.App.NAME, og: {...} });
+});
+```
+
+Security enforcing packages like [audit-argument-checks](https://docs.meteor.com/#/full/auditargumentchecks),
+[browser-policy](https://atmospherejs.com/meteor/browser-policy) and [matteodem:easy-security](https://github.com/matteodem/meteor-easy-security) 
+have also been added.
+
+## Structure
 
 ### Packages used
 

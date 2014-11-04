@@ -371,7 +371,7 @@ commands['reset:project'] = {
   deletableFolders: function () {
     return [
       'client/views', 'client/modules', 'client/modules', 'client/stylesheets',
-      'client/routes', 'client/config', 'client/subscriptions', 'client/startup',
+      'client/routes', 'client/config', 'client/startup',
       'server/publications', 'server/startup', 'server/fixtures',
       'model', 'public', 'tests'
     ];

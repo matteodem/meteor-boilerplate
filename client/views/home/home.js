@@ -20,12 +20,12 @@ Template.home.helpers({
   },
   'consoleCommand' : function () {
     return [
-      { 'command' : 'change:profile', 'description' : 'Change script profile to coffeescript if wished.' },
+      { 'command' : 'change:profile', 'description' : 'Change script profile to coffeescript or es6 Harmony if wished.' },
       { 'command' : 'create:view', 'description' : 'Creates a folder under client/views with html, less and javascript files.' },
       { 'command' : 'create:module', 'description' : 'Similiar to a view, but under client/modules and for re-usable components' },
       { 'command' : 'create:layout', 'description' : 'Creates a layout template which yields your content, used by iron-router' },
       { 'command' : 'create:common', 'description' : 'Creates a simple html file under client/views/common' },
-      { 'command' : 'create:route', 'description' : 'Creates a route javascript file under client/routes' },
+      { 'command' : 'create:routes', 'description' : 'Creates a group of routes under routes/' },
       { 'command' : 'create:model', 'description' : 'Creates a model with files in model/, client/subscriptions and server/publications' },
       { 'command' : 'create:less', 'description' : 'Creates a less stylesheet in client/stylesheets' },
       { 'command' : 'create:test', 'description' : 'Creates a velocity test file under tests' },
@@ -46,10 +46,11 @@ Template.home.helpers({
   'folder' : function () {
     return [
       { 'root' : 'client', 'children' :
-        ['compatibility', 'config', ' lib', ' routes', ' startup', ' stylesheets', 'subscriptions',
+        ['compatibility', 'config', ' lib', ' startup', ' stylesheets',
           'modules', 'views']
       },
       { 'root' : 'model' },
+      { 'root' : 'routes' },
       { 'root' : 'private' },
       { 'root' : 'server', 'children' : ['fixtures', 'lib', 'publications', 'startup'] },
       { 'root' : 'public' },
