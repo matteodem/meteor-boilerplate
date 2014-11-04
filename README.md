@@ -73,7 +73,9 @@ node meteor-boilerplate mup:deploy # deploys to server
 
 ### SEO and other concerns
 
-_Meteor can not do SEO._ This statement is only partially true, since there is a package called [ms-seo](https://github.com/DerMambo/ms-seo), which
+> Meteor can not do SEO 
+
+This statement is only partially true, since there is a package called [ms-seo](https://github.com/DerMambo/ms-seo), which
 has a lot of neat little tricks to help web crawlers notice your site the way you want them to. This boilerplate also adds constants under
 __client/lib/constants.js__ for the app. Change SEO settings in the routes like that.
 
