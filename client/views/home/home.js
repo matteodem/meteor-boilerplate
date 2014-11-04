@@ -15,8 +15,7 @@ Template.home.helpers({
       { 'name' : 'less', 'path' : 'http://lesscss.org/' },
       { 'name' : 'jQuery', 'path' : 'http://jquery.com/' },
       { 'name' : 'Underscore', 'path' : 'http://underscorejs.org/' },
-      { 'name' : 'Accounts UI & Password', 'path' : 'http://docs.meteor.com/#accountsui' },
-      { 'name' : 'Velocity', 'path' : 'https://github.com/xolvio/velocity' }
+      { 'name' : 'Accounts UI & Password', 'path' : 'http://docs.meteor.com/#accountsui' }
     ];
   },
   'consoleCommand' : function () {
