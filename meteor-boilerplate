@@ -608,7 +608,14 @@ fs.readdirSync(cliProfileRoot + configuration.profile + '/create').forEach(funct
       });
     },
     execute: function (userInput) {
+      var funcScope = this;
       FileManager.processFiles(this.createPath, userInput, this.configuration.files, function () {
+        if (funcScope.configuration.notice) {
+          InteractiveConsole.print(
+            FileManager.replaceVariables(funcScope.configuration.notice, userInput)
+          );
+        }
+
         process.exit(0);
       });
     },

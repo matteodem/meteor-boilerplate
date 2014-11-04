@@ -11,12 +11,9 @@
       "path" : "models/__modelName__.js"
     },
     {
-      "template" : "subscription.js",
-      "path" : "client/subscriptions/__modelName__Sub.js"
-    },
-    {
       "template" : "publication.js",
       "path" : "server/publications/__modelName__Pub.js"
     }
-  ]
+  ],
+  "notice" : "Dont forget to add Meteor.subscribe('__modelName__'); to your route!"
 }

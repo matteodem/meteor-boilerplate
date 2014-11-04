@@ -1,1 +1,0 @@
-Meteor.subscribe '__modelName__'

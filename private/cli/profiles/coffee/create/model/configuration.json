@@ -11,12 +11,9 @@
       "path" : "models/__modelName__.coffee"
     },
     {
-      "template" : "subscription.coffee",
-      "path" : "client/subscriptions/__modelName__Sub.coffee"
-    },
-    {
       "template" : "publication.coffee",
       "path" : "server/publications/__modelName__Pub.coffee"
     }
-  ]
+  ],
+  "notice" : "Dont forget to add Meteor.subscribe('__modelName__'); to your route!"
 }

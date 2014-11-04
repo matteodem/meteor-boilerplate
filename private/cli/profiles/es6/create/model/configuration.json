@@ -11,12 +11,9 @@
       "path" : "models/__modelName__.next.js"
     },
     {
-      "template" : "subscription.next.js",
-      "path" : "client/subscriptions/__modelName__Sub.next.js"
-    },
-    {
       "template" : "publication.next.js",
       "path" : "server/publications/__modelName__Pub.next.js"
     }
-  ]
+  ],
+  "notice" : "Dont forget to add Meteor.subscribe('__modelName__'); to your route!"
 }
