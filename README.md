@@ -116,7 +116,6 @@ client/ 				# Client folder
 	lib/                # Library files that get executed first
     startup/            # Javascript files on Meteor.startup()
     stylesheets         # LESS files
-    subscriptions/      # Collection subscriptions(*)
     modules/            # Meant for components, such as form and more(*)
 	views/			    # Contains all views(*)
 	    common/         # General purpose html templates
