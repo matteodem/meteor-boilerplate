@@ -1,4 +1,6 @@
-__modelName__ = new Mongo.Collection('__modelName__',
+root = exports ? this
+
+root.__modelName__ = new Mongo.Collection('__modelName__',
   schema: new SimpleSchema(
     title:
       type: String
@@ -14,7 +16,7 @@ __modelName__ = new Mongo.Collection('__modelName__',
 
 # Collection2 already does schema checking
 # Add custom permission rules if needed
-__modelName__.allow(
+root.__modelName__.allow(
   insert : -> true
 
   update : -> true

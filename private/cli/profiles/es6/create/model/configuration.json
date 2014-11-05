@@ -15,5 +15,5 @@
       "path" : "server/publications/__modelName__Pub.next.js"
     }
   ],
-  "notice" : "Dont forget to add Meteor.subscribe('__modelName__'); to your route!"
+  "notice" : "Dont forget to add Meteor.subscribe('__modelName__') to your route!"
 }
