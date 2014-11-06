@@ -5,4 +5,4 @@ user_admin:
 user_test:
   email: test@test.com
   username: test
-  password: test
+  password: testtest

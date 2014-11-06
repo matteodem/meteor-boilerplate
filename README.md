@@ -2,8 +2,6 @@
 
 This boilerplate is here to give you a starting point for your meteor projects, with a console tool to ease up some tasks. Here's what you get with it.
 
-
-
 <!-- toc -->
 
 * [How to use](#how-to-use)
@@ -97,13 +95,32 @@ have also been added.
 
 [Following packages](https://github.com/matteodem/meteor-boilerplate/blob/master/.meteor/packages) are used, some of them are:
 
-* iron:router
-* aldeed:collection2
-* less
-* jquery
-* underscore
-* nooitaf:semantic-ui-less
-* accounts-password & accounts-ui
+* Meteor Core
+  * standard-app-packages
+* Routing
+  * iron:router
+  * zimme:iron-router-active
+* Collections
+  * aldeed:collection2
+  * dburles:collection-helpers
+* Accounts
+  * accounts-password
+  * useraccounts:semantic-ui
+* UI and UX
+  * fastclick
+  * natestrauser:animate-css
+  * nooitaf:semantic-ui-less
+* Security
+  * browser-policy
+  * audit-argument-checks
+  * matteodem:easy-security
+* SEO
+  * manuelschoebel:ms-seo
+* Development
+  * less
+  * jquery
+  * underscore
+  * raix:handlebar-helpers
 
 The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).
 

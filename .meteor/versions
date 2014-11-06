@@ -19,6 +19,7 @@ check@1.0.2
 coffeescript@1.0.4
 ctl-helper@1.0.4
 ctl@1.0.2
+dburles:collection-helpers@1.0.1
 ddp@1.0.11
 deps@1.0.5
 ejson@1.0.4
@@ -59,8 +60,6 @@ nooitaf:semantic-ui-less@0.19.3
 npm-bcrypt@0.7.7
 observe-sequence@1.0.3
 ordered-dict@1.0.1
-percolate:momentum@0.6.1
-percolate:velocityjs@1.0.0
 raix:handlebar-helpers@0.1.3
 random@1.0.1
 reactive-dict@1.0.4
