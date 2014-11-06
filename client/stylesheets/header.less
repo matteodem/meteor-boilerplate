@@ -1,5 +1,5 @@
-@import '../../stylesheets/variables.less';
-@import '../../stylesheets/lib/elements.less';
+@import 'variables';
+@import 'lib/elements';
 
 
 .header-wrapper {
@@ -7,7 +7,7 @@
     height: 450px;
     background-position: 100% 100%;
     transition: height 0.8s;
-        color: @secondaryFontColor;
+    color: @secondaryFontColor;
 
     .ui.header {
         font-size: 3em;
@@ -21,10 +21,10 @@
     .resize.button {
         margin-top: 40px;
         font-size: 1.5em;
-    }
 
-    .angle.icon {
-        color: @secondaryFontColor;
+        .icon {
+            color: @secondaryFontColor;
+        }
     }
 
     a:hover {
@@ -36,3 +36,15 @@
     }
 }
 
+#main .login-wrapper {
+    max-width: @loginFormWidth;
+    margin: 2em auto 0 auto;
+    color: @secondaryFontColor;
+
+    .at-form {
+        padding: 1em;
+        background-color: rgba(0, 0,0, 0.5);
+        border-radius: 0.4em;
+        .ui.form .at-input.field > label { color: @secondaryFontColor; }
+    }
+}

@@ -8,7 +8,6 @@ less
 jquery
 underscore
 accounts-password
-accounts-ui
 aldeed:collection2
 iron:router
 raix:handlebar-helpers
@@ -19,4 +18,7 @@ fastclick
 zimme:iron-router-active
 manuelschoebel:ms-seo
 browser-policy
+useraccounts:semantic-ui
+natestrauser:animate-css
+percolate:momentum
 

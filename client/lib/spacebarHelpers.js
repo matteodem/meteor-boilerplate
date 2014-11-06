@@ -1,4 +1,4 @@
-UI.registerHelper('debug', function (optionalValue) {
+Template.registerHelper('debug', function (optionalValue) {
   if (typeof console !== "undefined" || typeof console.log !== "undefined") {
     console.log("Current Context");
     console.log("====================");
@@ -20,4 +20,8 @@ UI.registerHelper('debug', function (optionalValue) {
   }
 
   return '';
+});
+
+Template.registerHelper('constant', function (what) {
+  return Meteor.App[what.toUpperCase()];
 });
