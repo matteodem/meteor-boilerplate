@@ -93,8 +93,6 @@ have also been added.
 
 ### Packages used
 
-[Following packages](https://github.com/matteodem/meteor-boilerplate/blob/master/.meteor/packages) are used, some of them are:
-
 * Meteor Core
   * standard-app-packages
 * Routing
