@@ -1,1 +1,0 @@
-Views, used with routes for displaying content

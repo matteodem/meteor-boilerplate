@@ -1,1 +1,0 @@
-Velocity test file for verifying app logic

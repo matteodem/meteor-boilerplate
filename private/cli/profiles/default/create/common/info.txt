@@ -1,1 +1,0 @@
-Simple templates (for example a title or footer)
