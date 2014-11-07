@@ -157,8 +157,8 @@
   "reset" : {
     "default" : {
       "remove" : [
-        "models/*", "client/compatibility/*", "client/modules/*",
-        "client/stylesheets/*", "client/views/*", "routes/*"
+        "models", "client/compatibility", "client/modules",
+        "client/stylesheets", "client/views", "routes"
       ],
       "files" : [
         "private/templates/reset/home.html",
