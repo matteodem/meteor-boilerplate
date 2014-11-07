@@ -157,14 +157,16 @@
   "reset" : {
     "default" : {
       "remove" : [
-        "models", "client/compatibility", "client/modules",
-        "client/stylesheets", "client/views", "routes"
+        "models", "client/modules",
+        "client/stylesheets/home.less", "client/stylesheets/header.less",
+        "client/stylesheets/main.less", "client/views", "routes"
       ],
       "files" : [
         "private/templates/reset/home.html",
         "private/templates/reset/layout.html",
         "private/templates/reset/routerConfig.js",
-        "private/templates/reset/mainRoutes.js"
+        "private/templates/reset/mainRoutes.js",
+        "private/templates/reset/main.less"
       ]
     },
     "es6" : {
@@ -172,7 +174,8 @@
         "private/templates/reset/home.html",
         "private/templates/reset/layout.html",
         "private/templates/reset/routerConfig.next.js",
-        "private/templates/reset/mainRoutes.next.js"
+        "private/templates/reset/mainRoutes.next.js",
+        "private/templates/reset/main.less"
       ]
     },
     "coffee" : {
@@ -180,7 +183,8 @@
         "private/templates/reset/home.html",
         "private/templates/reset/layout.html",
         "private/templates/reset/routerConfig.coffee",
-        "private/templates/reset/mainRoutes.coffee"
+        "private/templates/reset/mainRoutes.coffee",
+        "private/templates/reset/main.less"
       ]
     }
   }
