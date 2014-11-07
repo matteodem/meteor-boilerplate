@@ -1,7 +1,7 @@
 // General styles, e. g. for the body tag
 @import 'helpers.less';
 @import 'variables.less';
-@import 'lib/elements.less';
+@import '../lib/elements.less';
 
 /* -------------------
     Main Content
@@ -43,7 +43,7 @@ a {
     Footer
    ------------------- */
 .padding-wrapper.footer {
-    border-radius: 0px;
+    .border-radius(0px);
 
     a:hover {
         color: @secondaryLinkHoverColor;

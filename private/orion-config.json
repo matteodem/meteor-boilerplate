@@ -1,0 +1,187 @@
+{
+  "generate" : {
+    "view" : {
+      "default" : {
+        "desc" : "Views, used with routes for displaying content",
+        "variables" : [
+          {
+            "name" : "viewName",
+            "desc" : "What's the name of your view?"
+          }
+        ],
+        "files" : [
+          "private/templates/html/view.html",
+          "private/templates/js/view.js"
+        ]
+      },
+      "es6" : {
+        "files" : [
+          "private/templates/html/view.html",
+          "private/templates/js/view.next.js"
+        ]
+      },
+      "coffee" : {
+        "files" : [
+          "private/templates/html/view.html",
+          "private/templates/coffee/view.coffee"
+        ]
+      }
+    },
+    "routes" : {
+      "default" : {
+        "desc" : "Create a group of routes with Iron Router",
+        "variables" : [
+          {
+            "name" : "routeName",
+            "desc" : "What's the group name of your routes?"
+          },
+          {
+            "name" : "routePath",
+            "desc" : "What's the path of your first route? (e.g. /blog/:_id/view)"
+          }
+        ],
+        "files" : [
+          "private/templates/js/route.js"
+        ]
+      },
+      "es6" : {
+        "files" : [
+          "private/templates/coffee/route.coffee"
+        ]
+      },
+      "coffee" : {
+        "files" : [
+          "private/templates/js/route.next.js"
+        ]
+      }
+    },
+    "model" : {
+      "default" : {
+        "desc" : "Creates a new Mongo.Collection with a Collection2 Schema",
+        "variables" : {
+          "name" : "modelName",
+          "desc" : "What's your model called (Mongo.Collection)?"
+        },
+        "files" : [
+          "private/templates/js/model.js",
+          "private/templates/js/publication.js"
+        ],
+        "notice" : "Dont forget to add Meteor.subscribe('__modelName__'); to your route!"
+      },
+      "es6" : {
+        "files" : [
+          "private/templates/js/model.next.js",
+          "private/templates/js/publication.next.js"
+        ]
+      },
+      "coffee" : {
+        "files" : [
+          "private/templates/coffee/model.coffee",
+          "private/templates/coffee/publication.coffee"
+        ]
+      }
+    },
+    "module" : {
+      "default" : {
+        "desc" : "Self working components such as a searchbar or a form",
+        "variables" : [
+          {
+            "name" : "moduleName",
+            "desc" : "What's the name of your module?"
+          }
+        ],
+        "files" : [
+          "private/templates/html/module.html",
+          "private/templates/js/module.js",
+          "private/templates/less/module.less"
+        ]
+      },
+      "es6" : {
+        "files" : [
+          "private/templates/html/module.html",
+          "private/templates/js/module.next.js",
+          "private/templates/less/module.less"
+        ]
+      },
+      "coffee" : {
+        "files" : [
+          "private/templates/html/module.html",
+          "private/templates/coffee/module.coffee",
+          "private/templates/less/module.less"
+        ]
+      }
+    },
+    "less" : {
+      "default" : {
+        "desc" : "Less Stylesheet for general and additional styles",
+        "variables" : [
+          {
+            "name" : "stylesheetName",
+            "desc" : "What's the name of your stylesheet?"
+          }
+        ],
+        "files" : [
+          "private/templates/less/stylesheet.less"
+        ]
+      }
+    },
+    "layout" : {
+      "default" : {
+        "desc" : "Iron Layout template which yields your content",
+        "variables" : [
+          {
+            "name" : "layoutName",
+            "desc" : "What's the name of your layout?"
+          }
+        ],
+        "files" : [
+          "private/templates/html/layout.html"
+        ]
+      }
+    },
+    "common" : {
+      "default" : {
+        "desc" : "Simple templates without any logic (e.g title or footer)",
+        "variables" : [
+          {
+            "name" : "commonViewName",
+            "desc" : "What's the name of your common view?"
+          }
+        ],
+        "files" : [
+          "private/templates/html/common.html"
+        ]
+      }
+    }
+  },
+  "reset" : {
+    "default" : {
+      "remove" : [
+        "models/*", "client/compatibility/*", "client/modules/*",
+        "client/stylesheets/*", "client/views/*", "routes/*"
+      ],
+      "files" : [
+        "private/templates/reset/home.html",
+        "private/templates/reset/layout.html",
+        "private/templates/reset/routerConfig.js",
+        "private/templates/reset/mainRoutes.js"
+      ]
+    },
+    "es6" : {
+      "files" : [
+        "private/templates/reset/home.html",
+        "private/templates/reset/layout.html",
+        "private/templates/reset/routerConfig.next.js",
+        "private/templates/reset/mainRoutes.next.js"
+      ]
+    },
+    "coffee" : {
+      "files" : [
+        "private/templates/reset/home.html",
+        "private/templates/reset/layout.html",
+        "private/templates/reset/routerConfig.coffee",
+        "private/templates/reset/mainRoutes.coffee"
+      ]
+    }
+  }
+}

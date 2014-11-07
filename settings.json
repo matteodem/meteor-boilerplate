@@ -1,6 +1,6 @@
 {
     "orion-cli": {
-        "currentProfile": "default",
-        "generateConfig": "private/generateConfig.json"
+        "profile": "default",
+        "config": "private/orion-config.json"
     }
 }
