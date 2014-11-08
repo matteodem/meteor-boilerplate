@@ -5,7 +5,7 @@ Template.home.helpers({
       { 'text' : 'Has a console tool', 'icon' : 'terminal', 'path' : '#console-tool' },
       { 'text' : 'Embraces HTML5', 'icon' : 'html5', 'color' : 'hover-orange', 'path' : '#html5' },
       { 'text' : 'Provides a structure', 'icon' : 'folder', 'path' : '#structure' }
-    ]
+    ];
   },
   'package' : function () {
     return [
@@ -55,7 +55,7 @@ Template.home.helpers({
       { 'root' : 'server', 'children' : ['fixtures', 'lib', 'publications', 'startup'] },
       { 'root' : 'public' },
       { 'root' : 'meteor-boilerplate' }
-    ]
+    ];
   }
 });
 
