@@ -4,8 +4,9 @@ This boilerplate is here to give you a starting point for your meteor projects, 
 
 <!-- toc -->
 
+* [Installing with orion-cli](#installing-with-orion-cli)
 * [How to use](#how-to-use)
-  * [Console tool](#console-tool)
+  * [Generating files](#generating-files)
   * [Removing default code](#removing-default-code)
   * [Available profiles (cofeescript and es6)](#available-profiles-cofeescript-and-es6)
   * [Deployments](#deployments)
@@ -18,26 +19,35 @@ This boilerplate is here to give you a starting point for your meteor projects, 
 
 <!-- toc stop -->
 
-
 The boilerplate looks like following: [boilerplate.meteor.com](http://boilerplate.meteor.com). Have a look at [starthacking](http://starthacking.meteor.com/) for a project created with this boilerplate.
+
+## Installing with orion-cli
+
+```bash
+npm install -g orion-cli
+```
+
+This will install the [orion-cli](https://github.com/matteodem/orion-cli) tool, which can be used for scaffolding files with different profiles.
+You can still clone the repository, which doesn't give you the profile and scaffolding support.
 
 ## How to use
 
 ```sh
 # Assuming meteor is already installed
-git clone https://github.com/matteodem/meteor-boilerplate.git appName && cd appName
-meteor
+orion create appName
+cd appName && meteor
 ```
 
-### Console tool
+### Generating files
+
+With orion-cli you can scaffold files based on your configuration that you've got.
 
 ```sh
-node meteor-boilerplate # Lists all possible commands
-node meteor-boilerplate create:module # Interactive console for command
-node meteor-boilerplate create:module loginBox # Executes it immediately
+orion generate routes
 ```
 
 You can create models, views, change profiles and reset the project with the console tool (see below).
+
 
 ### Removing default code
 
@@ -45,7 +55,7 @@ There's already a lot of predefined code in this boilerplate, to show you the po
 empty project, use the provided command to get rid off all the code you don't need.
 
 ```sh
-node meteor-boilerplate reset:project
+orion reset
 ```
 
 ### Available profiles (cofeescript and es6)
@@ -55,19 +65,15 @@ node meteor-boilerplate reset:project
 
 You can change your profile like that
 ```sh
-node meteor-boilerplate change:profile coffee
+orion set-profile coffee
 ```
 
-Also use the ```reset:project``` command to start off with blank files according to your profile.
+Also use the ```reset``` command to start off with blank files according to your profile.
 
 ### Deployments
 
-Support for [Meteor Up](https://github.com/arunoda/meteor-up) is integrated, use following commands to set up your deployment process.
-
-```sh
-node meteor-boilerplate mup:init # walks you through the setup process
-node meteor-boilerplate mup:deploy # deploys to server
-```
+It is highly recommended to use [Meteor Up](https://github.com/arunoda/meteor-up) for easy deployments. 
+Have a look at the repository for more information.
 
 ### SEO and other concerns
 
