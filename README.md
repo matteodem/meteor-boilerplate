@@ -112,6 +112,7 @@ have also been added.
   * useraccounts:semantic-ui
 * UI and UX
   * fastclick
+  * meteorhacks:fast-render
   * natestrauser:animate-css
   * nooitaf:semantic-ui-less
 * Security
