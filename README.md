@@ -11,6 +11,7 @@ This boilerplate is here to give you a starting point for your meteor projects, 
   * [Available profiles (cofeescript and es6)](#available-profiles-cofeescript-and-es6)
   * [Deployments](#deployments)
   * [SEO and other concerns](#seo-and-other-concerns)
+  * [Adding allow rules for external URLs](#adding-allow-rules-for-external-urls)
 * [Structure](#structure)
   * [Packages used](#packages-used)
   * [Folder structure](#folder-structure)
@@ -91,9 +92,18 @@ Router.route('/about', function () {
 });
 ```
 
-Security enforcing packages like [audit-argument-checks](https://docs.meteor.com/#/full/auditargumentchecks),
-[browser-policy](https://atmospherejs.com/meteor/browser-policy) and [matteodem:easy-security](https://github.com/matteodem/meteor-easy-security) 
-have also been added.
+### Adding allow rules for external URLs
+
+The [browser-policy](https://atmospherejs.com/meteor/browser-policy) adds rules to deny all operations from external URLs.
+This helps dealing with clickjacking and other XSS methods used to attack the client. To whitelist a url, add following to 
+__server/config/security.js__
+
+```javascript
+BrowserPolicy.content.allowOriginForAll(YOUR_URL);
+```
+
+Other security enforcing packages like [audit-argument-checks](https://docs.meteor.com/#/full/auditargumentchecks) and 
+[matteodem:easy-security](https://github.com/matteodem/meteor-easy-security) have also been added.
 
 ## Structure
 
