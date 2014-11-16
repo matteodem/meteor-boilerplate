@@ -46,12 +46,12 @@
       },
       "es6" : {
         "files" : [
-          "private/templates/coffee/route.coffee"
+          "private/templates/js/route.next.js"
         ]
       },
       "coffee" : {
         "files" : [
-          "private/templates/js/route.next.js"
+          "private/templates/coffee/route.coffee"
         ]
       }
     },
