@@ -1,7 +1,9 @@
 // { "path" : "models/__modelName__.next.js" }
 
-export var __modelName__ = new Mongo.Collection('__modelName__'/*, {
-  schema: new SimpleSchema({
+export var __modelName__ = new Mongo.Collection('__modelName__');
+
+__modelName__.attachSchema(
+  new SimpleSchema({
     title: {
       type: String
     },
@@ -13,7 +15,7 @@ export var __modelName__ = new Mongo.Collection('__modelName__'/*, {
       denyUpdate: true
     }
   })
-}*/);
+);
 
 // Collection2 already does schema checking
 // Add custom permission rules if needed

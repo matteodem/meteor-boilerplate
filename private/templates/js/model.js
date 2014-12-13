@@ -1,6 +1,8 @@
 // { "path" : "models/__modelName__.js" }
-__modelName__ = new Mongo.Collection('__modelName__'/*, {
-  schema: new SimpleSchema({
+__modelName__ = new Mongo.Collection('__modelName__');
+
+__modelName__.attachSchema(
+    new SimpleSchema({
     title: {
       type: String
     },
@@ -12,7 +14,7 @@ __modelName__ = new Mongo.Collection('__modelName__'/*, {
       denyUpdate: true
     }
   })
-}*/);
+);
 
 // Collection2 already does schema checking
 // Add custom permission rules if needed

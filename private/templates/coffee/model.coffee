@@ -1,8 +1,10 @@
-# { "path" : "server/publications/__modelName__Pub.coffee" }
+# { "path" : "models/__modelName__.coffee" }
 root = exports ? this
 
-root.__modelName__ = new Mongo.Collection('__modelName__',
-  schema: new SimpleSchema(
+root.__modelName__ = new Mongo.Collection '__modelName__'
+
+root.__modelName__.attachSchema(
+  new SimpleSchema(
     title:
       type: String
 
