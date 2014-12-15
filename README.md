@@ -53,7 +53,7 @@ You can create models, views, change profiles and reset the project with the con
 ### Removing default code
 
 There's already a lot of predefined code in this boilerplate, to show you the possible functionality. However, if you want to start off with an
-empty project, use the provided command to get rid off all the code you don't need.
+empty project use the provided command to get rid off all the code you don't need.
 
 ```sh
 orion reset
@@ -61,6 +61,7 @@ orion reset
 
 ### Available profiles (cofeescript and es6)
 
+* default (Plain Vanilla Javascript)
 * coffee (coffeescript, Unfancy JavaScript)
 * es6 (traceur, Traceur is a JavaScript.next-to-JavaScript-of-today compiler)
 
@@ -78,11 +79,11 @@ Have a look at the repository for more information.
 
 ### SEO and other concerns
 
-> Meteor can not do SEO 
+> Meteor cannot do SEO 
 
 This statement is only partially true, since there is a package called [ms-seo](https://github.com/DerMambo/ms-seo), which
 has a lot of neat little tricks to help web crawlers notice your app the way you want them to. This boilerplate also adds constants under
-__client/lib/constants.js__ for the app. Change SEO settings in the routes like that.
+__client/lib/constants.js__ for the app. Change SEO settings inside the routes like that.
 
 ```javascript
 Router.route('/about', function () {
