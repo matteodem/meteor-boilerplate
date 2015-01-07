@@ -67,10 +67,10 @@ orion reset
 
 You can change your profile like that
 ```sh
-orion set-profile coffee
+orion set-profile
 ```
 
-Also use the ```reset``` command to start off with blank files according to your profile.
+There will be a prompt, where you can enter __coffee__ or any other profile that you have specified. Also use the ```reset``` command to start off with blank files according to your profile.
 
 ### Deployments
 
