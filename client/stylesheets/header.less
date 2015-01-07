@@ -7,11 +7,11 @@
     height: 450px;
     background-position: 100% 100%;
     transition: height 0.8s;
-    color: @secondaryFontColor;
 
     .ui.main.header {
         font-size: 3em;
         padding-top: 160px;
+        color: @secondaryFontColor;
 
         > .sub.header {
             color: @secondaryFontColorVariation;
@@ -24,6 +24,10 @@
 
         .icon {
             color: @secondaryFontColor;
+        }
+
+        &:hover {
+            background-color: inherit !important;
         }
     }
 
@@ -41,6 +45,10 @@
     margin: 2em auto 0 auto;
     color: @secondaryFontColor;
 
+    .at-title .ui.header, label {
+        color: @secondaryFontColor;
+    }
+
     .at-form {
         padding: 1em;
         background-color: rgba(0, 0,0, 0.5);
@@ -51,6 +59,10 @@
     .actions-wrapper {
         max-width: @loginFormWidth / 2;
         margin: 0 auto;
+    }
+    
+    .at-signup-link {
+        margin-top: 0.4em;
     }
 
     .hello {

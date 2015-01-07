@@ -11,8 +11,7 @@ __modelName__.attachSchema(
       type: String
     },
     createdAt: {
-      type: Date,
-      denyUpdate: true
+      type: Date
     }
   })
 );

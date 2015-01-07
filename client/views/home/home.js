@@ -20,16 +20,13 @@ Template.home.helpers({
   },
   'consoleCommand' : function () {
     return [
-      { 'command' : 'change:profile', 'description' : 'Change script profile to coffeescript or es6 Harmony if wished.' },
-      { 'command' : 'create:view', 'description' : 'Creates a folder under client/views with html, less and javascript files.' },
-      { 'command' : 'create:module', 'description' : 'Similiar to a view, but under client/modules and for re-usable components' },
-      { 'command' : 'create:layout', 'description' : 'Creates a layout template which yields your content, used by iron-router' },
-      { 'command' : 'create:common', 'description' : 'Creates a simple html file under client/views/common' },
-      { 'command' : 'create:routes', 'description' : 'Creates a group of routes under routes/' },
-      { 'command' : 'create:model', 'description' : 'Creates a model with files in model/, client/subscriptions and server/publications' },
-      { 'command' : 'create:less', 'description' : 'Creates a less stylesheet in client/stylesheets' },
-      { 'command' : 'create:test', 'description' : 'Creates a velocity test file under tests' },
-      { 'command' : 'reset:project', 'description' : 'Removes all unnecessary files, perfect for a fresh start' }
+      { 'command' : 'view', 'description' : 'Creates a folder under client/views with html, less and javascript files.' },
+      { 'command' : 'module', 'description' : 'Similiar to a view, but under client/modules and for re-usable components' },
+      { 'command' : 'layout', 'description' : 'Creates a layout template which yields your content, used by iron-router' },
+      { 'command' : 'common', 'description' : 'Creates a simple html file under client/views/common' },
+      { 'command' : 'routes', 'description' : 'Creates a group of routes under routes/' },
+      { 'command' : 'model', 'description' : 'Creates a model with files in model/, client/subscriptions and server/publications' },
+      { 'command' : 'less', 'description' : 'Creates a less stylesheet in client/stylesheets' }
     ];
   },
   'semanticElement' : function () {

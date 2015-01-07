@@ -11,7 +11,6 @@ accounts-password
 aldeed:collection2
 iron:router
 raix:handlebar-helpers
-nooitaf:semantic-ui-less
 matteodem:easy-security
 audit-argument-checks
 fastclick
@@ -23,3 +22,4 @@ natestrauser:animate-css
 dburles:collection-helpers
 meteorhacks:fast-render
 
+nooitaf:semantic-ui

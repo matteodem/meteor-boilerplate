@@ -1,6 +1,6 @@
 accounts-base@1.1.3
 accounts-password@1.0.5
-aldeed:collection2@2.3.0
+aldeed:collection2@2.3.1
 aldeed:simple-schema@1.0.3
 application-configuration@1.0.4
 audit-argument-checks@1.0.2
@@ -18,7 +18,7 @@ callback-hook@1.0.2
 check@1.0.3
 chuangbo:cookie@1.1.0
 coffeescript@1.0.5
-dburles:collection-helpers@1.0.1
+dburles:collection-helpers@1.0.2
 ddp@1.0.13
 deps@1.0.6
 ejson@1.0.5
@@ -49,13 +49,13 @@ manuelschoebel:ms-seo@0.4.1
 matteodem:easy-security@0.1.2
 meteor@1.1.4
 meteor-platform@1.2.1
-meteorhacks:fast-render@2.1.2
+meteorhacks:fast-render@2.1.6
 minifiers@1.1.3
 minimongo@1.0.6
 mobile-status-bar@1.0.2
-mongo@1.0.10
+mongo@1.0.11
 natestrauser:animate-css@3.1.2
-nooitaf:semantic-ui-less@0.19.3
+nooitaf:semantic-ui@1.6.1
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 ordered-dict@1.0.2
@@ -69,7 +69,7 @@ routepolicy@1.0.3
 service-configuration@1.0.3
 session@1.0.5
 sha@1.0.2
-softwarerero:accounts-t9n@1.0.4
+softwarerero:accounts-t9n@1.0.5
 spacebars@1.0.4
 spacebars-compiler@1.0.4
 srp@1.0.2
@@ -79,8 +79,8 @@ tracker@1.0.4
 ui@1.0.5
 underscore@1.0.2
 url@1.0.3
-useraccounts:core@1.4.0
-useraccounts:semantic-ui@1.4.0
+useraccounts:core@1.4.1
+useraccounts:semantic-ui@1.4.1
 webapp@1.1.5
 webapp-hashing@1.0.2
 wizonesolutions:underscore-string@1.0.0
