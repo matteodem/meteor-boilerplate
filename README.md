@@ -111,32 +111,32 @@ Other security enforcing packages like [audit-argument-checks](https://docs.mete
 ### Packages used
 
 * Meteor Core
-  * standard-app-packages
+  * meteor-platform
 * Routing
-  * iron:router
-  * zimme:iron-router-active
+  * [iron:router](https://github.com/EventedMind/iron-router)
+  * [zimme:iron-router-active](https://github.com/zimme/meteor-iron-router-active)
 * Collections
-  * aldeed:collection2
-  * dburles:collection-helpers
+  * [aldeed:collection2](https://github.com/aldeed/meteor-collection2)
+  * [dburles:collection-helpers](https://github.com/dburles/meteor-collection-helpers)
 * Accounts
-  * accounts-password
-  * useraccounts:semantic-ui
+  * [accounts-password](https://github.com/meteor/meteor/tree/devel/packages/accounts-password)
+  * [useraccounts:semantic-ui](https://github.com/meteor-useraccounts/semantic-ui)
 * UI and UX
-  * fastclick
-  * meteorhacks:fast-render
-  * natestrauser:animate-css
-  * nooitaf:semantic-ui-less
+  * [fastclick](https://github.com/meteor/meteor/tree/devel/packages/fastclick)
+  * [meteorhacks:fast-render](https://github.com/meteorhacks/fast-render)
+  * [natestrauser:animate-css](https://github.com/nate-strauser/meteor-animate-css/)
+  * [nooitaf:semantic-ui](https://github.com/nooitaf/meteor-semantic-ui)
 * Security
-  * browser-policy
-  * audit-argument-checks
-  * matteodem:easy-security
+  * [browser-policy](https://github.com/meteor/meteor/tree/devel/packages/browser-policy)
+  * [audit-argument-checks](https://github.com/meteor/meteor/tree/devel/packages/audit-argument-checks)
+  * [matteodem:easy-security](https://github.com/matteodem/meteor-easy-security)
 * SEO
-  * manuelschoebel:ms-seo
+  * [manuelschoebel:ms-seo](https://github.com/DerMambo/ms-seo)
 * Development
-  * less
-  * jquery
-  * underscore
-  * raix:handlebar-helpers
+  * [less](https://github.com/meteor/meteor/tree/devel/packages/less)
+  * [jquery](https://github.com/meteor/meteor/tree/devel/packages/jquery)
+  * [underscore](https://github.com/meteor/meteor/tree/devel/packages/underscore)
+  * [raix:handlebar-helpers](https://github.com/raix/Meteor-handlebar-helpers)
 
 The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).
 
