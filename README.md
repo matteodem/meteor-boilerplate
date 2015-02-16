@@ -34,6 +34,10 @@ You can still clone the repository, which doesn't give you the profile and scaff
 ## How to use
 
 ```sh
+# (Optionnal) if you have a proxy
+export http_proxy=http://myproxy.net:myport
+```
+```sh
 # Assuming meteor is already installed
 orion create appName
 cd appName && meteor
