@@ -47,8 +47,8 @@ manuelschoebel:ms-seo@0.4.1
 matteodem:easy-security@0.1.4
 meteor@1.1.6
 meteor-platform@1.2.2
-meteorhacks:fast-render@2.3.1
-meteorhacks:inject-data@1.2.2
+meteorhacks:fast-render@2.3.2
+meteorhacks:inject-data@1.2.3
 meteorhacks:picker@1.0.2
 minifiers@1.1.5
 minimongo@1.0.8
