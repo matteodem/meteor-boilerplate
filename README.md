@@ -59,7 +59,7 @@ empty project use the provided command to get rid off all the code you don't nee
 orion reset
 ```
 
-### Available profiles (cofeescript and es6)
+### Available profiles (coffeescript and es6)
 
 * default (Plain Vanilla Javascript)
 * coffee (coffeescript, Unfancy JavaScript)
