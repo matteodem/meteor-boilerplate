@@ -1,55 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640">
-
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-
-    <script type="text/javascript" src="javascripts/modernizr.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#main_content').headsmart()
-      })
-    </script>
+    <meta charset="UTF-8">
     <title>Meteor Boilerplate by matteodem</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
-    <a id="forkme_banner" href="https://github.com/matteodem/meteor-boilerplate">View on GitHub</a>
-    <div class="shell">
+    <section class="page-header">
+      <h1 class="project-name">Meteor Boilerplate</h1>
+      <h2 class="project-tagline">A boilerplate for meteorjs projects</h2>
+      <a href="https://github.com/matteodem/meteor-boilerplate" class="btn">View on GitHub</a>
+      <a href="https://github.com/matteodem/meteor-boilerplate/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/matteodem/meteor-boilerplate/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-      <header>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <h1>Meteor Boilerplate</h1>
-            <h2>A boilerplate for meteorjs projects</h2>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-      </header>
-
-      <section id="downloads">
-        <span class="inner">
-          <a href="https://github.com/matteodem/meteor-boilerplate/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/matteodem/meteor-boilerplate/tarball/master" class="tgz"><em>download</em> .TGZ</a>
-        </span>
-      </section>
-
-
-      <span class="banner-fix"></span>
-
-
-      <section id="main_content">
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="meteor-boilerplate" class="anchor" href="#meteor-boilerplate" aria-hidden="true"><span class="octicon octicon-link"></span></a>meteor-boilerplate</h1>
 
-<p>This boilerplate is here to give you a starting point for your meteor projects, with a console tool to ease up some tasks. Here's what you get with it.</p>
+<p>This boilerplate is here to give you a starting point for your meteor projects, with a console tool to ease up some tasks. Essential atmosphere packages are included to give you features like routing and collection schemas out-of-the-box.  </p>
 
 
 
@@ -64,6 +37,7 @@
 <li><a href="#available-profiles-cofeescript-and-es6">Available profiles (cofeescript and es6)</a></li>
 <li><a href="#deployments">Deployments</a></li>
 <li><a href="#seo-and-other-concerns">SEO and other concerns</a></li>
+<li><a href="#adding-allow-rules-for-external-urls">Adding allow rules for external URLs</a></li>
 </ul>
 </li>
 <li>
@@ -93,9 +67,9 @@ You can still clone the repository, which doesn't give you the profile and scaff
 <h2>
 <a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h2>
 
-<div class="highlight highlight-sh"><pre><span class="pl-c"><span class="pl-pdc">#</span> Assuming meteor is already installed</span>
+<div class="highlight highlight-sh"><pre><span class="pl-c"># Assuming meteor is already installed</span>
 orion create appName
-<span class="pl-sf">cd</span> appName <span class="pl-ko">&amp;&amp;</span> meteor</pre></div>
+<span class="pl-c1">cd</span> appName <span class="pl-k">&amp;&amp;</span> meteor</pre></div>
 
 <h3>
 <a id="generating-files" class="anchor" href="#generating-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generating files</h3>
@@ -110,23 +84,24 @@ orion create appName
 <a id="removing-default-code" class="anchor" href="#removing-default-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Removing default code</h3>
 
 <p>There's already a lot of predefined code in this boilerplate, to show you the possible functionality. However, if you want to start off with an
-empty project, use the provided command to get rid off all the code you don't need.</p>
+empty project use the provided command to get rid off all the code you don't need.</p>
 
 <div class="highlight highlight-sh"><pre>orion reset</pre></div>
 
 <h3>
-<a id="available-profiles-cofeescript-and-es6" class="anchor" href="#available-profiles-cofeescript-and-es6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available profiles (cofeescript and es6)</h3>
+<a id="available-profiles-coffeescript-and-es6" class="anchor" href="#available-profiles-coffeescript-and-es6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available profiles (coffeescript and es6)</h3>
 
 <ul>
+<li>default (Plain Vanilla Javascript)</li>
 <li>coffee (coffeescript, Unfancy JavaScript)</li>
 <li>es6 (traceur, Traceur is a JavaScript.next-to-JavaScript-of-today compiler)</li>
 </ul>
 
 <p>You can change your profile like that</p>
 
-<div class="highlight highlight-sh"><pre>orion <span class="pl-sf">set</span>-profile coffee</pre></div>
+<div class="highlight highlight-sh"><pre>orion <span class="pl-c1">set</span>-profile</pre></div>
 
-<p>Also use the <code>reset</code> command to start off with blank files according to your profile.</p>
+<p>There will be a prompt, where you can enter <strong>coffee</strong> or any other profile that you have specified. Also use the <code>reset</code> command to start off with blank files according to your profile.</p>
 
 <h3>
 <a id="deployments" class="anchor" href="#deployments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deployments</h3>
@@ -138,22 +113,30 @@ Have a look at the repository for more information.</p>
 <a id="seo-and-other-concerns" class="anchor" href="#seo-and-other-concerns" aria-hidden="true"><span class="octicon octicon-link"></span></a>SEO and other concerns</h3>
 
 <blockquote>
-<p>Meteor can not do SEO </p>
+<p>Meteor cannot do SEO </p>
 </blockquote>
 
 <p>This statement is only partially true, since there is a package called <a href="https://github.com/DerMambo/ms-seo">ms-seo</a>, which
 has a lot of neat little tricks to help web crawlers notice your app the way you want them to. This boilerplate also adds constants under
-<strong>client/lib/constants.js</strong> for the app. Change SEO settings in the routes like that.</p>
+<strong>client/lib/constants.js</strong> for the app. Change SEO settings inside the routes like that.</p>
 
-<div class="highlight highlight-javascript"><pre>Router.route(<span class="pl-s1"><span class="pl-pds">'</span>/about<span class="pl-pds">'</span></span>, <span class="pl-s">function</span> () {
-  <span class="pl-v">this</span>.render(<span class="pl-s1"><span class="pl-pds">'</span>about<span class="pl-pds">'</span></span>);
-  <span class="pl-c"><span class="pl-pdc">//</span> Using the app constants</span>
-  SEO.set({ title<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span>About -<span class="pl-pds">'</span></span> <span class="pl-ko">+</span> Meteor.App.NAME, og<span class="pl-ko">:</span> {...} });
+<div class="highlight highlight-javascript"><pre>Router.route(<span class="pl-s"><span class="pl-pds">'</span>/about<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+  <span class="pl-v">this</span>.render(<span class="pl-s"><span class="pl-pds">'</span>about<span class="pl-pds">'</span></span>);
+  <span class="pl-c">// Using the app constants</span>
+  <span class="pl-c1">SEO</span>.set({ title<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>About -<span class="pl-pds">'</span></span> <span class="pl-k">+</span> Meteor.App.NAME, og<span class="pl-k">:</span> {...} });
 });</pre></div>
 
-<p>Security enforcing packages like <a href="https://docs.meteor.com/#/full/auditargumentchecks">audit-argument-checks</a>,
-<a href="https://atmospherejs.com/meteor/browser-policy">browser-policy</a> and <a href="https://github.com/matteodem/meteor-easy-security">matteodem:easy-security</a> 
-have also been added.</p>
+<h3>
+<a id="adding-allow-rules-for-external-urls" class="anchor" href="#adding-allow-rules-for-external-urls" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding allow rules for external URLs</h3>
+
+<p>The <a href="https://atmospherejs.com/meteor/browser-policy">browser-policy</a> adds rules to deny all operations from external URLs.
+This helps dealing with clickjacking and other XSS methods used to attack the client. To whitelist a url, add following to 
+<strong>server/config/security.js</strong></p>
+
+<div class="highlight highlight-javascript"><pre>BrowserPolicy.<span class="pl-c1">content</span>.allowOriginForAll(<span class="pl-c1">YOUR_URL</span>);</pre></div>
+
+<p>Other security enforcing packages like <a href="https://docs.meteor.com/#/full/auditargumentchecks">audit-argument-checks</a> and 
+<a href="https://github.com/matteodem/meteor-easy-security">matteodem:easy-security</a> have also been added.</p>
 
 <h2>
 <a id="structure" class="anchor" href="#structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Structure</h2>
@@ -165,60 +148,60 @@ have also been added.</p>
 <li>Meteor Core
 
 <ul>
-<li>standard-app-packages</li>
+<li>meteor-platform</li>
 </ul>
 </li>
 <li>Routing
 
 <ul>
-<li>iron:router</li>
-<li>zimme:iron-router-active</li>
+<li><a href="https://github.com/EventedMind/iron-router">iron:router</a></li>
+<li><a href="https://github.com/zimme/meteor-iron-router-active">zimme:iron-router-active</a></li>
 </ul>
 </li>
 <li>Collections
 
 <ul>
-<li>aldeed:collection2</li>
-<li>dburles:collection-helpers</li>
+<li><a href="https://github.com/aldeed/meteor-collection2">aldeed:collection2</a></li>
+<li><a href="https://github.com/dburles/meteor-collection-helpers">dburles:collection-helpers</a></li>
 </ul>
 </li>
 <li>Accounts
 
 <ul>
-<li>accounts-password</li>
-<li>useraccounts:semantic-ui</li>
+<li><a href="https://github.com/meteor/meteor/tree/devel/packages/accounts-password">accounts-password</a></li>
+<li><a href="https://github.com/meteor-useraccounts/semantic-ui">useraccounts:semantic-ui</a></li>
 </ul>
 </li>
 <li>UI and UX
 
 <ul>
-<li>fastclick</li>
-<li>meteorhacks:fast-render</li>
-<li>natestrauser:animate-css</li>
-<li>nooitaf:semantic-ui-less</li>
+<li><a href="https://github.com/meteor/meteor/tree/devel/packages/fastclick">fastclick</a></li>
+<li><a href="https://github.com/meteorhacks/fast-render">meteorhacks:fast-render</a></li>
+<li><a href="https://github.com/nate-strauser/meteor-animate-css/">natestrauser:animate-css</a></li>
+<li><a href="https://github.com/Semantic-Org/Semantic-UI-Meteor/">semantic:ui</a></li>
 </ul>
 </li>
 <li>Security
 
 <ul>
-<li>browser-policy</li>
-<li>audit-argument-checks</li>
-<li>matteodem:easy-security</li>
+<li><a href="https://github.com/meteor/meteor/tree/devel/packages/browser-policy">browser-policy</a></li>
+<li><a href="https://github.com/meteor/meteor/tree/devel/packages/audit-argument-checks">audit-argument-checks</a></li>
+<li><a href="https://github.com/matteodem/meteor-easy-security">matteodem:easy-security</a></li>
 </ul>
 </li>
 <li>SEO
 
 <ul>
-<li>manuelschoebel:ms-seo</li>
+<li><a href="https://github.com/DerMambo/ms-seo">manuelschoebel:ms-seo</a></li>
 </ul>
 </li>
 <li>Development
 
 <ul>
-<li>less</li>
-<li>jquery</li>
-<li>underscore</li>
-<li>raix:handlebar-helpers</li>
+<li><a href="https://github.com/meteor/meteor/tree/devel/packages/less">less</a></li>
+<li><a href="https://github.com/meteor/meteor/tree/devel/packages/jquery">jquery</a></li>
+<li><a href="https://github.com/meteor/meteor/tree/devel/packages/underscore">underscore</a></li>
+<li><a href="https://github.com/raix/Meteor-handlebar-helpers">raix:handlebar-helpers</a></li>
 </ul>
 </li>
 </ul>
@@ -269,23 +252,16 @@ meteor-boilerplate      # Command line tool
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>This boilerplate has an MIT License, see the LICENSE.txt for more information.</p>
-      </section>
 
-      <footer>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <p>this project by <a href="https://github.com/matteodem">matteodem</a> can be found on <a href="https://github.com/matteodem/meteor-boilerplate">GitHub</a></p>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
-        <span class="octocat"></span>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/matteodem/meteor-boilerplate">Meteor Boilerplate</a> is maintained by <a href="https://github.com/matteodem">matteodem</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
 
-    </div>
+    </section>
 
-              <script type="text/javascript">
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -298,3 +274,4 @@ meteor-boilerplate      # Command line tool
 
   </body>
 </html>
+
