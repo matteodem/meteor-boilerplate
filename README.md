@@ -125,7 +125,7 @@ Other security enforcing packages like [audit-argument-checks](https://docs.mete
   * [fastclick](https://github.com/meteor/meteor/tree/devel/packages/fastclick)
   * [meteorhacks:fast-render](https://github.com/meteorhacks/fast-render)
   * [natestrauser:animate-css](https://github.com/nate-strauser/meteor-animate-css/)
-  * [nooitaf:semantic-ui](https://github.com/nooitaf/meteor-semantic-ui)
+  * [semantic:ui](https://github.com/Semantic-Org/Semantic-UI-Meteor/)
 * Security
   * [browser-policy](https://github.com/meteor/meteor/tree/devel/packages/browser-policy)
   * [audit-argument-checks](https://github.com/meteor/meteor/tree/devel/packages/audit-argument-checks)
