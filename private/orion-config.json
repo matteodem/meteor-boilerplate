@@ -189,5 +189,8 @@
         "private/templates/reset/main.less"
       ]
     }
+  },
+  "packages": {
+    "coffee": ["coffeescript"]
   }
 }
