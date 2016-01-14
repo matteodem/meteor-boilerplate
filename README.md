@@ -45,7 +45,7 @@ With orion-cli you can scaffold files based on your configuration that you've go
 orion generate routes
 ```
 
-You can create models, views, change profiles and reset the project with the console tool (see below).
+You can create components, models, change profiles and reset the project with the console tool (see below).
 
 
 ### Removing default code
@@ -127,9 +127,6 @@ Other security enforcing packages like [audit-argument-checks](https://docs.mete
 * Security
   * [browser-policy](https://github.com/meteor/meteor/tree/devel/packages/browser-policy)
   * [audit-argument-checks](https://github.com/meteor/meteor/tree/devel/packages/audit-argument-checks)
-  * [matteodem:easy-security](https://github.com/matteodem/meteor-easy-security)
-* SEO
-  * [manuelschoebel:ms-seo](https://github.com/DerMambo/ms-seo)
 * Development
   * [less](https://github.com/meteor/meteor/tree/devel/packages/less)
   * [jquery](https://github.com/meteor/meteor/tree/devel/packages/jquery)
@@ -148,8 +145,8 @@ client/ 				# Client folder
     startup/            # Javascript files on Meteor.startup()
     stylesheets         # LESS files
     modules/            # Meant for components, such as form and more(*)
-	views/			    # Contains all views(*)
-	    common/         # General purpose html templates
+	components/			# Contains all components(*)
+	    common/         # General purpose html components
 model/  				# Model files, for each Meteor.Collection(*)
 private/                # Private files
 public/                 # Public files

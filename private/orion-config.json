@@ -1,35 +1,29 @@
 {
   "generate" : {
-    "view" : {
+    "component" : {
       "default" : {
-        "desc" : "Views, used with routes for displaying content",
+        "desc" : "Component, used with routes for displaying content",
         "variables" : [
           {
-            "name" : "viewName",
-            "desc" : "What's the name of your view?"
+            "name" : "componentName",
+            "desc" : "What's the name of your component?"
           }
         ],
         "files" : [
-          "private/templates/html/view.html",
-          "private/templates/js/view.js"
-        ]
-      },
-      "es6" : {
-        "files" : [
-          "private/templates/html/view.html",
-          "private/templates/js/view.next.js"
+          "private/templates/html/component.html",
+          "private/templates/js/component.js"
         ]
       },
       "coffee" : {
         "files" : [
-          "private/templates/html/view.html",
-          "private/templates/coffee/view.coffee"
+          "private/templates/html/component.html",
+          "private/templates/coffee/component.coffee"
         ]
       }
     },
     "routes" : {
       "default" : {
-        "desc" : "Create a group of routes with Iron Router",
+        "desc" : "Create a group of routes with Flow Router",
         "variables" : [
           {
             "name" : "routeName",
@@ -42,11 +36,6 @@
         ],
         "files" : [
           "private/templates/js/route.js"
-        ]
-      },
-      "es6" : {
-        "files" : [
-          "private/templates/js/route.next.js"
         ]
       },
       "coffee" : {
@@ -70,12 +59,6 @@
         ],
         "notice" : "Dont forget to add Meteor.subscribe('__modelName__'); to your route!"
       },
-      "es6" : {
-        "files" : [
-          "private/templates/js/model.next.js",
-          "private/templates/js/publication.next.js"
-        ]
-      },
       "coffee" : {
         "files" : [
           "private/templates/coffee/model.coffee",
@@ -95,13 +78,6 @@
         "files" : [
           "private/templates/html/module.html",
           "private/templates/js/module.js",
-          "private/templates/less/module.less"
-        ]
-      },
-      "es6" : {
-        "files" : [
-          "private/templates/html/module.html",
-          "private/templates/js/module.next.js",
           "private/templates/less/module.less"
         ]
       },
@@ -129,7 +105,7 @@
     },
     "layout" : {
       "default" : {
-        "desc" : "Iron Layout template which yields your content",
+        "desc" : "Layout template which yields your content",
         "variables" : [
           {
             "name" : "layoutName",
@@ -146,8 +122,8 @@
         "desc" : "Simple templates without any logic (e.g title or footer)",
         "variables" : [
           {
-            "name" : "commonViewName",
-            "desc" : "What's the name of your common view?"
+            "name" : "commonComponentName",
+            "desc" : "What's the name of your common component?"
           }
         ],
         "files" : [
@@ -161,22 +137,13 @@
       "remove" : [
         "models", "client/modules",
         "client/stylesheets/home.less", "client/stylesheets/header.less",
-        "client/stylesheets/main.less", "client/views", "routes", "client/config/router.js"
+        "client/stylesheets/main.less", "client/components", "routes", "client/config/router.js"
       ],
       "files" : [
         "private/templates/reset/home.html",
         "private/templates/reset/layout.html",
         "private/templates/reset/routerConfig.js",
         "private/templates/reset/mainRoutes.js",
-        "private/templates/reset/main.less"
-      ]
-    },
-    "es6" : {
-      "files" : [
-        "private/templates/reset/home.html",
-        "private/templates/reset/layout.html",
-        "private/templates/reset/routerConfig.next.js",
-        "private/templates/reset/mainRoutes.next.js",
         "private/templates/reset/main.less"
       ]
     },

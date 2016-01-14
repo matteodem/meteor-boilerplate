@@ -5,6 +5,6 @@ import loadUsers from './loaders/users.js';
 setupBrowserPolicy(BrowserPolicy);
 
 Meteor.startup(() => {
-  //loadFixtures();
-  //loadUsers();
+  loadUsers();
+  //loadFixtures([{ foo: 'bar' }], myCollection);
 });

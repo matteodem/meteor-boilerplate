@@ -26,13 +26,13 @@ random
 ejson
 spacebars
 check
+reactive-dict
 
 flemay:less-autoprefixer
 aldeed:collection2
 kadira:flow-router
 kadira:blaze-layout
 raix:handlebar-helpers
-matteodem:easy-security
 useraccounts:semantic-ui
 natestrauser:animate-css
 dburles:collection-helpers
