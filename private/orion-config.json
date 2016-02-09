@@ -1,29 +1,30 @@
 {
   "generate" : {
-    "component" : {
+    "view" : {
       "default" : {
-        "desc" : "Component, used with routes for displaying content",
+        "desc" : "Views, used with routes for displaying content",
         "variables" : [
           {
-            "name" : "componentName",
-            "desc" : "What's the name of your component?"
+            "name" : "viewName",
+            "desc" : "What's the name of your view?"
           }
         ],
         "files" : [
-          "private/templates/html/component.html",
-          "private/templates/js/component.js"
+          "private/templates/html/view.html",
+          "private/templates/js/view.js"
         ]
       },
+
       "coffee" : {
         "files" : [
-          "private/templates/html/component.html",
-          "private/templates/coffee/component.coffee"
+          "private/templates/html/view.html",
+          "private/templates/coffee/view.coffee"
         ]
       }
     },
     "routes" : {
       "default" : {
-        "desc" : "Create a group of routes with Flow Router",
+        "desc" : "Create a group of routes with Iron Router",
         "variables" : [
           {
             "name" : "routeName",
@@ -105,7 +106,7 @@
     },
     "layout" : {
       "default" : {
-        "desc" : "Layout template which yields your content",
+        "desc" : "Iron Layout template which yields your content",
         "variables" : [
           {
             "name" : "layoutName",
@@ -122,8 +123,8 @@
         "desc" : "Simple templates without any logic (e.g title or footer)",
         "variables" : [
           {
-            "name" : "commonComponentName",
-            "desc" : "What's the name of your common component?"
+            "name" : "commonViewName",
+            "desc" : "What's the name of your common view?"
           }
         ],
         "files" : [
@@ -135,15 +136,16 @@
   "reset" : {
     "default" : {
       "remove" : [
-        "models", "client/modules",
-        "client/stylesheets/home.less", "client/stylesheets/header.less",
-        "client/stylesheets/main.less", "client/components", "routes", "client/config/router.js"
+        "client/components",
+        "client/stylesheets/main.less",
+        "universal/routes/",
+        "client/entry.js"
       ],
       "files" : [
         "private/templates/reset/home.html",
         "private/templates/reset/layout.html",
-        "private/templates/reset/routerConfig.js",
         "private/templates/reset/mainRoutes.js",
+        "private/templates/reset/entry.js",
         "private/templates/reset/main.less"
       ]
     },
@@ -151,7 +153,6 @@
       "files" : [
         "private/templates/reset/home.html",
         "private/templates/reset/layout.html",
-        "private/templates/reset/routerConfig.coffee",
         "private/templates/reset/mainRoutes.coffee",
         "private/templates/reset/main.less"
       ]

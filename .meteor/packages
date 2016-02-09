@@ -11,9 +11,10 @@ session                 # Client-side reactive dictionary for your app
 jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
 
-standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
+
+# Core Packages
 
 underscore
 accounts-password
@@ -28,11 +29,12 @@ spacebars
 check
 reactive-dict
 
+# Community Packages
+
 flemay:less-autoprefixer
 aldeed:collection2
 kadira:flow-router
 kadira:blaze-layout
-raix:handlebar-helpers
 useraccounts:semantic-ui
 natestrauser:animate-css
 dburles:collection-helpers
@@ -40,3 +42,6 @@ meteorhacks:fast-render
 johnantoni:meteor-normalize
 ostrio:templatehelpers
 semantic:ui-css
+standard-minifier-css
+standard-minifier-js
+simple:dev-error-overlay

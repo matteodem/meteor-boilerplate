@@ -10,7 +10,7 @@ export default function (Template) {
     },
     'package' : function () {
       return [
-        { 'name' : 'Iron Router', 'path' : 'https://github.com/EventedMind/iron-router' },
+        { 'name' : 'Flow Router', 'path' : 'https://github.com/kadirahq/flow-router' },
         { 'name' : 'Collection2', 'path' : 'https://github.com/aldeed/meteor-collection2' },
         { 'name' : 'Semantic UI', 'path' : 'http://semantic-ui.com/' },
         { 'name' : 'less', 'path' : 'http://lesscss.org/' },
@@ -21,10 +21,9 @@ export default function (Template) {
     },
     'consoleCommand' : function () {
       return [
-        { 'command' : 'view', 'description' : 'Creates a folder under client/views with html, less and javascript files.' },
-        { 'command' : 'module', 'description' : 'Similiar to a view, but under client/modules and for re-usable components' },
-        { 'command' : 'layout', 'description' : 'Creates a layout template which yields your content, used by iron-router' },
-        { 'command' : 'common', 'description' : 'Creates a simple html file under client/views/common' },
+        { 'command' : 'component', 'description' : 'Creates a component under client/components with html, less and javascript files.' },
+        { 'command' : 'layout', 'description' : 'Creates a layout component which yields your content, used by iron-router' },
+        { 'command' : 'common', 'description' : 'Creates a simple html component under client/components/common' },
         { 'command' : 'routes', 'description' : 'Creates a group of routes under routes/' },
         { 'command' : 'model', 'description' : 'Creates a model with files in model/, client/subscriptions and server/publications' },
         { 'command' : 'less', 'description' : 'Creates a less stylesheet in client/stylesheets' }
@@ -43,16 +42,11 @@ export default function (Template) {
     },
     'folder' : function () {
       return [
-        { 'root' : 'client', 'children' :
-          ['compatibility', 'config', ' lib', ' startup', ' stylesheets',
-            'modules', 'views']
-        },
-        { 'root' : 'model' },
-        { 'root' : 'routes' },
+        { 'root' : 'client', 'children' : ['stylesheets', 'components'] },
+        { 'root' : 'universal', 'children': ['models', 'routes'] },
         { 'root' : 'private' },
-        { 'root' : 'server', 'children' : ['fixtures', 'lib', 'publications', 'startup'] },
-        { 'root' : 'public' },
-        { 'root' : 'meteor-boilerplate' }
+        { 'root' : 'server', 'children' : ['config', 'loaders'] },
+        { 'root' : 'public' }
       ];
     }
   });
