@@ -20,8 +20,6 @@ This boilerplate is here to give you a starting point for your meteor projects, 
 
 <!-- toc stop -->
 
-The boilerplate looks like following: [boilerplate.meteor.com](http://boilerplate.meteor.com). Have a look at [starthacking](http://starthacking.meteor.com/) for a project created with this boilerplate.
-
 ## Installing with orion-cli
 
 ```bash
