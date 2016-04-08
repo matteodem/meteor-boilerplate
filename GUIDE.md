@@ -65,8 +65,7 @@ __server/config/security.js__
 BrowserPolicy.content.allowOriginForAll(YOUR_URL);
 ```
 
-Other security enforcing packages like [audit-argument-checks](https://docs.meteor.com/#/full/auditargumentchecks) and 
-[matteodem:easy-security](https://github.com/matteodem/meteor-easy-security) have also been added.
+Other security enforcing packages like [audit-argument-checks](https://docs.meteor.com/#/full/auditargumentchecks) have also been added.
 
 ## Structure
 
