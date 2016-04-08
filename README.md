@@ -9,4 +9,4 @@ $ orion create myApp
 $ cd myApp && meteor
 ```
 
-Read through the [GUIDE.md]() or checkout the repository boilerplate locally for more information.
+Read through the [GUIDE.md](https://github.com/matteodem/meteor-boilerplate/blob/master/GUIDE.md) or checkout the repository boilerplate locally for more information.
