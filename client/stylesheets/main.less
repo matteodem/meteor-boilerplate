@@ -1,15 +1,14 @@
 // General styles, e. g. for the body tag
 @import 'helpers';
 @import 'variables';
-@import 'lib/elements';
 
 /* -------------------
     Main Content
    ------------------- */
 
 body, #main {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
     color: @primaryFontColor;
     font-family: 'Fauna One', serif;
@@ -43,7 +42,7 @@ a {
     Footer
    ------------------- */
 .padding-wrapper.footer {
-    .border-radius(0px);
+    border-radius: 0;
 
     a:hover {
         color: @secondaryLinkHoverColor;

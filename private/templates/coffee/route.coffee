@@ -1,3 +1,4 @@
 # { "path" : "routes/__routeName__Route.coffee" }
-Router.route '__routePath__', ->
-  this.render '__routeName__'
+FlowRouter.route '__routePath__', {
+  action: -> BlazeLayout.render 'basicLayout', { content: '__routeName__' }
+}

@@ -1,5 +1,10 @@
-// { "path" : "routes/mainRoutes.js" }
-Router.route('/', function () {
-  this.render('home');
-  SEO.set({ title: 'Home -' + Meteor.App.NAME });
-});
+// { "path" : "universal/routes/mainRoutes.js" }
+export default function () {
+  FlowRouter.route('/', {
+    action() {
+      BlazeLayout.render('basicLayout', {
+        content: 'home'
+      });
+    }
+  });
+}

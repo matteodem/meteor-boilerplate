@@ -1,5 +1,5 @@
-# { "path" : "routes/mainRoutes.coffee" }
+# { "path" : "universal/routes/mainRoutes.coffee" }
 
-Router.route '/', ->
+FlowRoute.route '/', ->
   this.render 'home'
   SEO.set { title: "Home - #{Meteor.App.NAME}" }

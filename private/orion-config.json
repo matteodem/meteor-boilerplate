@@ -14,12 +14,7 @@
           "private/templates/js/view.js"
         ]
       },
-      "es6" : {
-        "files" : [
-          "private/templates/html/view.html",
-          "private/templates/js/view.next.js"
-        ]
-      },
+
       "coffee" : {
         "files" : [
           "private/templates/html/view.html",
@@ -44,11 +39,6 @@
           "private/templates/js/route.js"
         ]
       },
-      "es6" : {
-        "files" : [
-          "private/templates/js/route.next.js"
-        ]
-      },
       "coffee" : {
         "files" : [
           "private/templates/coffee/route.coffee"
@@ -70,12 +60,6 @@
         ],
         "notice" : "Dont forget to add Meteor.subscribe('__modelName__'); to your route!"
       },
-      "es6" : {
-        "files" : [
-          "private/templates/js/model.next.js",
-          "private/templates/js/publication.next.js"
-        ]
-      },
       "coffee" : {
         "files" : [
           "private/templates/coffee/model.coffee",
@@ -95,13 +79,6 @@
         "files" : [
           "private/templates/html/module.html",
           "private/templates/js/module.js",
-          "private/templates/less/module.less"
-        ]
-      },
-      "es6" : {
-        "files" : [
-          "private/templates/html/module.html",
-          "private/templates/js/module.next.js",
           "private/templates/less/module.less"
         ]
       },
@@ -159,24 +136,16 @@
   "reset" : {
     "default" : {
       "remove" : [
-        "models", "client/modules",
-        "client/stylesheets/home.less", "client/stylesheets/header.less",
-        "client/stylesheets/main.less", "client/views", "routes", "client/config/router.js"
+        "client/components",
+        "client/stylesheets/main.less",
+        "universal/routes/",
+        "client/entry.js"
       ],
       "files" : [
         "private/templates/reset/home.html",
         "private/templates/reset/layout.html",
-        "private/templates/reset/routerConfig.js",
         "private/templates/reset/mainRoutes.js",
-        "private/templates/reset/main.less"
-      ]
-    },
-    "es6" : {
-      "files" : [
-        "private/templates/reset/home.html",
-        "private/templates/reset/layout.html",
-        "private/templates/reset/routerConfig.next.js",
-        "private/templates/reset/mainRoutes.next.js",
+        "private/templates/reset/entry.js",
         "private/templates/reset/main.less"
       ]
     },
@@ -184,7 +153,6 @@
       "files" : [
         "private/templates/reset/home.html",
         "private/templates/reset/layout.html",
-        "private/templates/reset/routerConfig.coffee",
         "private/templates/reset/mainRoutes.coffee",
         "private/templates/reset/main.less"
       ]

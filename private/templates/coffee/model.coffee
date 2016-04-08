@@ -1,4 +1,4 @@
-# { "path" : "models/__modelName__.coffee" }
+# { "path" : "universal/models/__modelName__.coffee" }
 root = exports ? this
 
 root.__modelName__ = new Mongo.Collection '__modelName__'
