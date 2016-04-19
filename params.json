@@ -1,7 +1,7 @@
 {
   "name": "Meteor Boilerplate",
   "tagline": "A boilerplate for meteorjs projects",
-  "body": "# meteor-boilerplate\r\n\r\nThis boilerplate is here to give you a simple starting point for your meteor projects.\r\n\r\n```sh\r\n# Assuming meteor is already installed\r\n$ npm install -g orion-cli\r\n$ orion create myApp\r\n$ cd myApp && meteor\r\n```\r\n\r\nRead through the [GUIDE.md](https://github.com/matteodem/meteor-boilerplate/blob/master/GUIDE.md) or checkout the repository boilerplate locally for more information.\r\n",
+  "body": "# meteor-boilerplate\r\n\r\nThis boilerplate is here to give you a simple starting point for your meteor projects.\r\n\r\n```sh\r\n# Assuming meteor is already installed\r\n$ npm install -g orion-cli\r\n$ orion create myApp\r\n$ cd myApp && meteor\r\n```\r\n\r\nRead through the [GUIDE.md](https://github.com/matteodem/meteor-boilerplate/blob/master/GUIDE.md) or checkout the repository locally for more information.\r\n",
   "google": "UA-45133006-1",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
