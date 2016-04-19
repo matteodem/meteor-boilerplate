@@ -5,7 +5,7 @@
     <title>Meteor Boilerplate by matteodem</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
@@ -20,238 +20,16 @@
 
     <section class="main-content">
       <h1>
-<a id="meteor-boilerplate" class="anchor" href="#meteor-boilerplate" aria-hidden="true"><span class="octicon octicon-link"></span></a>meteor-boilerplate</h1>
+<a id="meteor-boilerplate" class="anchor" href="#meteor-boilerplate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>meteor-boilerplate</h1>
 
-<p>This boilerplate is here to give you a starting point for your meteor projects, with a console tool to ease up some tasks. Essential atmosphere packages are included to give you features like routing and collection schemas out-of-the-box.  </p>
+<p>This boilerplate is here to give you a simple starting point for your meteor projects.</p>
 
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Assuming meteor is already installed</span>
+$ npm install -g orion-cli
+$ orion create myApp
+$ <span class="pl-c1">cd</span> myApp <span class="pl-k">&amp;&amp;</span> meteor</pre></div>
 
-
-<ul>
-<li><a href="#installing-with-orion-cli">Installing with orion-cli</a></li>
-<li>
-<a href="#how-to-use">How to use</a>
-
-<ul>
-<li><a href="#generating-files">Generating files</a></li>
-<li><a href="#removing-default-code">Removing default code</a></li>
-<li><a href="#available-profiles-cofeescript-and-es6">Available profiles (cofeescript and es6)</a></li>
-<li><a href="#deployments">Deployments</a></li>
-<li><a href="#seo-and-other-concerns">SEO and other concerns</a></li>
-<li><a href="#adding-allow-rules-for-external-urls">Adding allow rules for external URLs</a></li>
-</ul>
-</li>
-<li>
-<a href="#structure">Structure</a>
-
-<ul>
-<li><a href="#packages-used">Packages used</a></li>
-<li><a href="#folder-structure">Folder structure</a></li>
-</ul>
-</li>
-<li><a href="#other-awesome-boilerplates">Other Awesome Boilerplates</a></li>
-<li><a href="#license">License</a></li>
-</ul>
-
-
-
-<p>The boilerplate looks like following: <a href="http://boilerplate.meteor.com">boilerplate.meteor.com</a>. Have a look at <a href="http://starthacking.meteor.com/">starthacking</a> for a project created with this boilerplate.</p>
-
-<h2>
-<a id="installing-with-orion-cli" class="anchor" href="#installing-with-orion-cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing with orion-cli</h2>
-
-<div class="highlight highlight-bash"><pre>npm install -g orion-cli</pre></div>
-
-<p>This will install the <a href="https://github.com/matteodem/orion-cli">orion-cli</a> tool, which can be used for scaffolding files with different profiles.
-You can still clone the repository, which doesn't give you the profile and scaffolding support.</p>
-
-<h2>
-<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h2>
-
-<div class="highlight highlight-sh"><pre><span class="pl-c"># Assuming meteor is already installed</span>
-orion create appName
-<span class="pl-c1">cd</span> appName <span class="pl-k">&amp;&amp;</span> meteor</pre></div>
-
-<h3>
-<a id="generating-files" class="anchor" href="#generating-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generating files</h3>
-
-<p>With orion-cli you can scaffold files based on your configuration that you've got.</p>
-
-<div class="highlight highlight-sh"><pre>orion generate routes</pre></div>
-
-<p>You can create models, views, change profiles and reset the project with the console tool (see below).</p>
-
-<h3>
-<a id="removing-default-code" class="anchor" href="#removing-default-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Removing default code</h3>
-
-<p>There's already a lot of predefined code in this boilerplate, to show you the possible functionality. However, if you want to start off with an
-empty project use the provided command to get rid off all the code you don't need.</p>
-
-<div class="highlight highlight-sh"><pre>orion reset</pre></div>
-
-<h3>
-<a id="available-profiles-coffeescript-and-es6" class="anchor" href="#available-profiles-coffeescript-and-es6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available profiles (coffeescript and es6)</h3>
-
-<ul>
-<li>default (Plain Vanilla Javascript)</li>
-<li>coffee (coffeescript, Unfancy JavaScript)</li>
-<li>es6 (traceur, Traceur is a JavaScript.next-to-JavaScript-of-today compiler)</li>
-</ul>
-
-<p>You can change your profile like that</p>
-
-<div class="highlight highlight-sh"><pre>orion <span class="pl-c1">set</span>-profile</pre></div>
-
-<p>There will be a prompt, where you can enter <strong>coffee</strong> or any other profile that you have specified. Also use the <code>reset</code> command to start off with blank files according to your profile.</p>
-
-<h3>
-<a id="deployments" class="anchor" href="#deployments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deployments</h3>
-
-<p>It is highly recommended to use <a href="https://github.com/arunoda/meteor-up">Meteor Up</a> for easy deployments. 
-Have a look at the repository for more information.</p>
-
-<h3>
-<a id="seo-and-other-concerns" class="anchor" href="#seo-and-other-concerns" aria-hidden="true"><span class="octicon octicon-link"></span></a>SEO and other concerns</h3>
-
-<blockquote>
-<p>Meteor cannot do SEO </p>
-</blockquote>
-
-<p>This statement is only partially true, since there is a package called <a href="https://github.com/DerMambo/ms-seo">ms-seo</a>, which
-has a lot of neat little tricks to help web crawlers notice your app the way you want them to. This boilerplate also adds constants under
-<strong>client/lib/constants.js</strong> for the app. Change SEO settings inside the routes like that.</p>
-
-<div class="highlight highlight-javascript"><pre>Router.route(<span class="pl-s"><span class="pl-pds">'</span>/about<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
-  <span class="pl-v">this</span>.render(<span class="pl-s"><span class="pl-pds">'</span>about<span class="pl-pds">'</span></span>);
-  <span class="pl-c">// Using the app constants</span>
-  <span class="pl-c1">SEO</span>.set({ title<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>About -<span class="pl-pds">'</span></span> <span class="pl-k">+</span> Meteor.App.NAME, og<span class="pl-k">:</span> {...} });
-});</pre></div>
-
-<h3>
-<a id="adding-allow-rules-for-external-urls" class="anchor" href="#adding-allow-rules-for-external-urls" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding allow rules for external URLs</h3>
-
-<p>The <a href="https://atmospherejs.com/meteor/browser-policy">browser-policy</a> adds rules to deny all operations from external URLs.
-This helps dealing with clickjacking and other XSS methods used to attack the client. To whitelist a url, add following to 
-<strong>server/config/security.js</strong></p>
-
-<div class="highlight highlight-javascript"><pre>BrowserPolicy.<span class="pl-c1">content</span>.allowOriginForAll(<span class="pl-c1">YOUR_URL</span>);</pre></div>
-
-<p>Other security enforcing packages like <a href="https://docs.meteor.com/#/full/auditargumentchecks">audit-argument-checks</a> and 
-<a href="https://github.com/matteodem/meteor-easy-security">matteodem:easy-security</a> have also been added.</p>
-
-<h2>
-<a id="structure" class="anchor" href="#structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Structure</h2>
-
-<h3>
-<a id="packages-used" class="anchor" href="#packages-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>Packages used</h3>
-
-<ul>
-<li>Meteor Core
-
-<ul>
-<li>meteor-platform</li>
-</ul>
-</li>
-<li>Routing
-
-<ul>
-<li><a href="https://github.com/EventedMind/iron-router">iron:router</a></li>
-<li><a href="https://github.com/zimme/meteor-iron-router-active">zimme:iron-router-active</a></li>
-</ul>
-</li>
-<li>Collections
-
-<ul>
-<li><a href="https://github.com/aldeed/meteor-collection2">aldeed:collection2</a></li>
-<li><a href="https://github.com/dburles/meteor-collection-helpers">dburles:collection-helpers</a></li>
-</ul>
-</li>
-<li>Accounts
-
-<ul>
-<li><a href="https://github.com/meteor/meteor/tree/devel/packages/accounts-password">accounts-password</a></li>
-<li><a href="https://github.com/meteor-useraccounts/semantic-ui">useraccounts:semantic-ui</a></li>
-</ul>
-</li>
-<li>UI and UX
-
-<ul>
-<li><a href="https://github.com/meteor/meteor/tree/devel/packages/fastclick">fastclick</a></li>
-<li><a href="https://github.com/meteorhacks/fast-render">meteorhacks:fast-render</a></li>
-<li><a href="https://github.com/nate-strauser/meteor-animate-css/">natestrauser:animate-css</a></li>
-<li><a href="https://github.com/Semantic-Org/Semantic-UI-Meteor/">semantic:ui</a></li>
-</ul>
-</li>
-<li>Security
-
-<ul>
-<li><a href="https://github.com/meteor/meteor/tree/devel/packages/browser-policy">browser-policy</a></li>
-<li><a href="https://github.com/meteor/meteor/tree/devel/packages/audit-argument-checks">audit-argument-checks</a></li>
-<li><a href="https://github.com/matteodem/meteor-easy-security">matteodem:easy-security</a></li>
-</ul>
-</li>
-<li>SEO
-
-<ul>
-<li><a href="https://github.com/DerMambo/ms-seo">manuelschoebel:ms-seo</a></li>
-</ul>
-</li>
-<li>Development
-
-<ul>
-<li><a href="https://github.com/meteor/meteor/tree/devel/packages/less">less</a></li>
-<li><a href="https://github.com/meteor/meteor/tree/devel/packages/jquery">jquery</a></li>
-<li><a href="https://github.com/meteor/meteor/tree/devel/packages/underscore">underscore</a></li>
-<li><a href="https://github.com/raix/Meteor-handlebar-helpers">raix:handlebar-helpers</a></li>
-</ul>
-</li>
-</ul>
-
-<p>The "insecure" and "autopublish" packages are removed by default (they make your app vulnerable).</p>
-
-<h3>
-<a id="folder-structure" class="anchor" href="#folder-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Folder structure</h3>
-
-<pre><code>client/                 # Client folder
-    compatibility/      # Libraries which create a global variable
-    config/             # Configuration files (on the client)
-    lib/                # Library files that get executed first
-    startup/            # Javascript files on Meteor.startup()
-    stylesheets         # LESS files
-    modules/            # Meant for components, such as form and more(*)
-    views/              # Contains all views(*)
-        common/         # General purpose html templates
-model/                  # Model files, for each Meteor.Collection(*)
-private/                # Private files
-public/                 # Public files
-routes/                 # All routes(*)
-server/                 # Server folder
-    fixtures/           # Meteor.Collection fixtures defined
-    lib/                # Server side library folder
-    publications/       # Collection publications(*)
-    startup/            # On server startup
-meteor-boilerplate      # Command line tool
-</code></pre>
-
-<p>(*) = the command line tool creates files in these folders</p>
-
-<h2>
-<a id="other-awesome-boilerplates" class="anchor" href="#other-awesome-boilerplates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other Awesome Boilerplates</h2>
-
-<ul>
-<li>
-<a href="https://github.com/SachaG/Void">Void</a> by Sacha Greif</li>
-<li>
-<a href="https://github.com/jamesdwilson/meteor-jw-opinionated-skeleton">meteor-jw-opinionated-skeleton</a> by jamesdwilson (CoffeeScript)</li>
-<li>
-<a href="https://github.com/BeDifferential/meteor-boilerplate">meteor-boilerplate</a> by BeDifferential (CoffeeScript)</li>
-<li>
-<a href="https://github.com/EventedMind/em">em</a> by EventedMind (Boilerplate &amp; Scaffolding)</li>
-</ul>
-
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-
-<p>This boilerplate has an MIT License, see the LICENSE.txt for more information.</p>
+<p>Read through the <a href="https://github.com/matteodem/meteor-boilerplate/blob/master/GUIDE.md">GUIDE.md</a> or checkout the repository boilerplate locally for more information.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/matteodem/meteor-boilerplate">Meteor Boilerplate</a> is maintained by <a href="https://github.com/matteodem">matteodem</a>.</span>
@@ -274,4 +52,3 @@ meteor-boilerplate      # Command line tool
 
   </body>
 </html>
-
