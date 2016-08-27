@@ -1,24 +1,24 @@
 {
   "generate" : {
-    "view" : {
+    "component" : {
       "default" : {
-        "desc" : "Views, used with routes for displaying content",
+        "desc" : "Components, used with routes for displaying content",
         "variables" : [
           {
-            "name" : "viewName",
-            "desc" : "What's the name of your view?"
+            "name" : "componentName",
+            "desc" : "What's the name of your component?"
           }
         ],
         "files" : [
-          "private/templates/html/view.html",
-          "private/templates/js/view.js"
+          "private/templates/html/component.html",
+          "private/templates/js/component.js"
         ]
       },
 
       "coffee" : {
         "files" : [
-          "private/templates/html/view.html",
-          "private/templates/coffee/view.coffee"
+          "private/templates/html/component.html",
+          "private/templates/coffee/component.coffee"
         ]
       }
     },
@@ -32,7 +32,7 @@
           },
           {
             "name" : "routePath",
-            "desc" : "What's the path of your first route? (e.g. /blog/:_id/view)"
+            "desc" : "What's the path of your first route? (e.g. /blog/:_id/component)"
           }
         ],
         "files" : [
@@ -123,8 +123,8 @@
         "desc" : "Simple templates without any logic (e.g title or footer)",
         "variables" : [
           {
-            "name" : "commonViewName",
-            "desc" : "What's the name of your common view?"
+            "name" : "commonComponentName",
+            "desc" : "What's the name of your common component?"
           }
         ],
         "files" : [

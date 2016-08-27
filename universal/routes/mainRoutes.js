@@ -1,6 +1,6 @@
 import { renderBasic, renderSlim } from './helpers.js';
 
-export default function () {
+export default function (FlowRouter) {
   FlowRouter.route('/', {
     action: () => renderBasic('home')
   });

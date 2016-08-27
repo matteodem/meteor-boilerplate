@@ -3,6 +3,6 @@ import createMainRoutes from '../universal/routes/mainRoutes';
 import createHome from './components/home/home';
 import createHeader from './components/header/header';
 
-createMainRoutes();
+createMainRoutes(FlowRouter);
 createHome(Template);
 createHeader(Template);
