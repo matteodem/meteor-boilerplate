@@ -1,0 +1,24 @@
+{
+  "name": "meteor-boilerplate",
+  "version": "1.0.0",
+  "description": "This boilerplate is here to give you a simple starting point for your meteor projects.",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^0.8.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "meteor",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matteodem/meteor-boilerplate.git"
+  },
+  "author": "Matteo De Micheli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matteodem/meteor-boilerplate/issues"
+  },
+  "homepage": "https://github.com/matteodem/meteor-boilerplate#readme"
+}
