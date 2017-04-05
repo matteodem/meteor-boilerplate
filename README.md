@@ -3,6 +3,10 @@
 This boilerplate is here to give you a simple starting point for your meteor projects.
 
 ```sh
+# (Optionnal) if you have a proxy
+export http_proxy=http://myproxy.net:myport
+```
+```sh
 # Assuming meteor is already installed
 $ npm install -g orion-cli
 $ orion create myApp
