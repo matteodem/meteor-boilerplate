@@ -4,6 +4,7 @@
   "description": "This boilerplate is here to give you a simple starting point for your meteor projects.",
   "main": "index.js",
   "dependencies": {
+    "babel-runtime": "^6.23.0",
     "bcrypt": "^0.8.7"
   },
   "devDependencies": {},
