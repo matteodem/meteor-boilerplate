@@ -5,11 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "bcrypt": "^0.8.7"
+    "bcrypt": "^0.8.7",
+    "tachyons": "^4.7.4"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "meteor",
+    "start": "meteor --settings settings.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

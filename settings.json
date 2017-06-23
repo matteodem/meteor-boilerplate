@@ -1,4 +1,8 @@
 {
+    "public": {
+        "name": "meteor boilerplate",
+        "description": "A boilerplate for meteorjs projects"
+    },
     "orion-cli": {
         "profile": "default",
         "config": "private/orion-config.json"

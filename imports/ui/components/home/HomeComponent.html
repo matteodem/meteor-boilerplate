@@ -1,0 +1,42 @@
+<template name="home">
+  <!-- TODO: abstract into components -->
+  <div class="ph4 pv5 bg-bluetoviolet black-50">
+    <h1 class="f-headline pv2 mv0 font-poppins mw5">{{ settings.name }}</h1>
+    <div class="f2 mt2 font-roboto-slab black-60">{{ settings.description }}</div>
+
+    <div class="f1">
+      <i class="ion-arrow-down-a icon"></i>
+    </div>
+  </div>
+
+  <div class="ph4 pv5 bg-washed-blue dark-gray">
+    <div class="font-roboto-slab f2 lh-copy">
+      Built for <a href="https://www.meteor.com/">meteor</a>, conforms to the <a href="https://standardjs.com/">standard guide</a>
+      and applies functional styling with <a href="http://tachyons.io/">tachyons</a>. Uses <a href="http://blazejs.org">blaze</a> by default, but
+      can be easily changed to <a href="https://www.meteor.com/tutorials">whatever you like</a>.
+    </div>
+  </div>
+
+  <div class="ph4 pv5 bg-washed-green">
+    <div class="tc">
+      <div class="dib dim ttu f4 br3 bg-purple near-white pa4 pointer b font-roboto">
+        <a href="https://github.com/matteodem/meteor-boilerplate#meteor-boilerplate" class="reset-link">
+          Let me check it out
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ph4 pv5 bg-washed-blue mid-gray">
+    <div class="font-roboto-slab f2 lh-copy">
+      Not convinced?
+      Check out <a href="https://github.com/matteodem/meteor-boilerplate#articles">why</a> I like this stack.
+    </div>
+  </div>
+
+  <div class="ph4 pv3 bg-dark-gray near-white">
+    <div class="font-roboto-slab f4 lh-copy">
+      made by <a class="near-white hover-light-silver" href="http://matteodem.ch/">matteodem</a>
+    </div>
+  </div>
+</template>
