@@ -2,7 +2,7 @@
   "generate" : {
     "component" : {
       "default" : {
-        "desc" : "Components, used with routes for displaying content",
+        "desc" : "Create UI Components with BlazeJS",
         "variables" : [
           {
             "name" : "componentName",
@@ -13,18 +13,11 @@
           "private/templates/html/component.html",
           "private/templates/js/component.js"
         ]
-      },
-
-      "coffee" : {
-        "files" : [
-          "private/templates/html/component.html",
-          "private/templates/coffee/component.coffee"
-        ]
       }
     },
     "routes" : {
       "default" : {
-        "desc" : "Create a group of routes with Iron Router",
+        "desc" : "Create a group of routes with Flow Router",
         "variables" : [
           {
             "name" : "routeName",
@@ -37,11 +30,6 @@
         ],
         "files" : [
           "private/templates/js/route.js"
-        ]
-      },
-      "coffee" : {
-        "files" : [
-          "private/templates/coffee/route.coffee"
         ]
       }
     },
@@ -59,54 +47,11 @@
           "private/templates/js/publication.js"
         ],
         "notice" : "Dont forget to add Meteor.subscribe('__modelName__'); to your route!"
-      },
-      "coffee" : {
-        "files" : [
-          "private/templates/coffee/model.coffee",
-          "private/templates/coffee/publication.coffee"
-        ]
-      }
-    },
-    "module" : {
-      "default" : {
-        "desc" : "Self working components such as a searchbar or a form",
-        "variables" : [
-          {
-            "name" : "moduleName",
-            "desc" : "What's the name of your module?"
-          }
-        ],
-        "files" : [
-          "private/templates/html/module.html",
-          "private/templates/js/module.js",
-          "private/templates/less/module.less"
-        ]
-      },
-      "coffee" : {
-        "files" : [
-          "private/templates/html/module.html",
-          "private/templates/coffee/module.coffee",
-          "private/templates/less/module.less"
-        ]
-      }
-    },
-    "less" : {
-      "default" : {
-        "desc" : "Less Stylesheet for general and additional styles",
-        "variables" : [
-          {
-            "name" : "stylesheetName",
-            "desc" : "What's the name of your stylesheet?"
-          }
-        ],
-        "files" : [
-          "private/templates/less/stylesheet.less"
-        ]
       }
     },
     "layout" : {
       "default" : {
-        "desc" : "Iron Layout template which yields your content",
+        "desc" : "Layout Component which yields your content",
         "variables" : [
           {
             "name" : "layoutName",
@@ -117,48 +62,22 @@
           "private/templates/html/layout.html"
         ]
       }
-    },
-    "common" : {
-      "default" : {
-        "desc" : "Simple templates without any logic (e.g title or footer)",
-        "variables" : [
-          {
-            "name" : "commonComponentName",
-            "desc" : "What's the name of your common component?"
-          }
-        ],
-        "files" : [
-          "private/templates/html/common.html"
-        ]
-      }
     }
   },
   "reset" : {
     "default" : {
       "remove" : [
-        "client/components",
-        "client/stylesheets/main.less",
-        "universal/routes/",
-        "client/entry.js"
+        "imports"
       ],
       "files" : [
-        "private/templates/reset/home.html",
-        "private/templates/reset/layout.html",
+        "private/templates/reset/uiIndex.js",
+        "private/templates/reset/routesIndex.js",
         "private/templates/reset/mainRoutes.js",
-        "private/templates/reset/entry.js",
-        "private/templates/reset/main.less"
-      ]
-    },
-    "coffee" : {
-      "files" : [
-        "private/templates/reset/home.html",
+        "private/templates/reset/HomeComponent.html",
+        "private/templates/reset/HomeComponent.js",
         "private/templates/reset/layout.html",
-        "private/templates/reset/mainRoutes.coffee",
-        "private/templates/reset/main.less"
+        "private/templates/reset/index.scss"
       ]
     }
-  },
-  "packages": {
-    "coffee": ["coffeescript"]
   }
 }

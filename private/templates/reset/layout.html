@@ -1,6 +1,6 @@
-<!-- { "path" : "client/components/layouts/basic.html" } -->
-<template name="basicLayout">
-  <div id="main" class="site-wrapper">
-    {{> Template.dynamic template=content}}
+<!-- { "path" : "imports/ui/components/layout/main.html" } -->
+<template name="mainLayout">
+  <div>
+    {{> yield}}
   </div>
 </template>

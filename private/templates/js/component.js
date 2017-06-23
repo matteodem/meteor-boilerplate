@@ -1,9 +1,12 @@
-// { "path" : "client/components/__componentName__/__componentName__.js" }
-// TODO: call this in entry file
-export default function (Template) {
-  Template['__componentName__'].helpers({
-  })
+// { "path" : "imports/ui/components/__componentName__/__componentName__Component.js" }
+import { Template } from 'meteor/templating'
 
-  Template['__componentName__'].events({
-  })
-}
+import './__componentName__Component.html'
+
+// TODO: import() in routes file
+
+Template.__componentName__.helpers({
+})
+
+Template.__componentName__.events({
+})

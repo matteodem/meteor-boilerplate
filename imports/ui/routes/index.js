@@ -1,1 +1,1 @@
-import './mainRoutes'
+import './MainRoutes'
