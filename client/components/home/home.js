@@ -6,7 +6,7 @@ export default function (Template) {
         { 'text' : 'Has a console tool', 'icon' : 'terminal', 'path' : '#console-tool' },
         { 'text' : 'Embraces HTML5', 'icon' : 'html5', 'color' : 'hover-orange', 'path' : '#html5' },
         { 'text' : 'Provides a structure', 'icon' : 'folder', 'path' : '#structure' }
-      ];
+      ]
     },
     'package' : function () {
       return [
@@ -17,7 +17,7 @@ export default function (Template) {
         { 'name' : 'jQuery', 'path' : 'http://jquery.com/' },
         { 'name' : 'Underscore', 'path' : 'http://underscorejs.org/' },
         { 'name' : 'Accounts UI & Password', 'path' : 'http://docs.meteor.com/#accountsui' }
-      ];
+      ]
     },
     'consoleCommand' : function () {
       return [
@@ -27,7 +27,7 @@ export default function (Template) {
         { 'command' : 'routes', 'description' : 'Creates a group of routes under routes/' },
         { 'command' : 'model', 'description' : 'Creates a model with files in model/, client/subscriptions and server/publications' },
         { 'command' : 'less', 'description' : 'Creates a less stylesheet in client/stylesheets' }
-      ];
+      ]
     },
     'semanticElement' : function () {
       return [
@@ -35,10 +35,10 @@ export default function (Template) {
         { 'what' : 'One column', 'withBootstrap' : 'col-md-1', 'withSemanticUI' : 'one wide column' },
         { 'what' : 'Vertical Menu / Navigation', 'withBootstrap' : 'nav nav-pills', 'withSemanticUI' : 'ui vertical menu' }
 
-      ];
+      ]
     },
     'bootstrapCode' : function () {
-      return '<div class="btn btn-primary btn-lg"></div>';
+      return '<div class="btn btn-primary btn-lg"></div>'
     },
     'folder' : function () {
       return [
@@ -47,25 +47,25 @@ export default function (Template) {
         { 'root' : 'private' },
         { 'root' : 'server', 'children' : ['config', 'loaders'] },
         { 'root' : 'public' }
-      ];
+      ]
     }
-  });
+  })
 
   Template.home.rendered = function () {
     // @see: http://stackoverflow.com/questions/5284814/jquery-scroll-to-div
     $('a[href*=#]:not([href=#])').click(function () {
       if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        var target = $(this.hash)
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']')
         if (target.length) {
           $('html, body').animate({
             scrollTop: target.offset().top
-          }, 1000);
-          return false;
+          }, 1000)
+          return false
         }
       }
 
-      return true;
-    });
-  };
+      return true
+    })
+  }
 }

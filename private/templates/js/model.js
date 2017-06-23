@@ -1,6 +1,6 @@
 // { "path" : "universal/models/__modelName__.js" }
 
-const __modelName__ = new Mongo.Collection('__modelName__');
+const __modelName__ = new Mongo.Collection('__modelName__')
 
 __modelName__.attachSchema(
     new SimpleSchema({
@@ -15,7 +15,7 @@ __modelName__.attachSchema(
       denyUpdate: true
     }
   })
-);
+)
 
 // Collection2 already does schema checking
 if (Meteor.isServer) {
@@ -23,7 +23,7 @@ if (Meteor.isServer) {
     insert : () => false,
     update : () => false,
     remove : () => false
-  });
+  })
 }
 
-export default __modelName__;
+export default __modelName__

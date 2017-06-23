@@ -2,6 +2,6 @@
 // TODO: call this in entry file
 export default function () {
   Meteor.publish('__modelName__', function () {
-    return __modelName__.find();
-  });
+    return __modelName__.find()
+  })
 }

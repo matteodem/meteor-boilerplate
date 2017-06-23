@@ -18,6 +18,10 @@ orion create appName
 cd appName && meteor
 ```
 
+## Coding Guidelines
+
+This boilerplate uses the [standard styleguide](standardjs.com).
+
 ### Generating files
 
 With orion-cli you can scaffold files based on your configuration that you've got.
@@ -67,36 +71,9 @@ BrowserPolicy.content.allowOriginForAll(YOUR_URL);
 
 Other security enforcing packages like [audit-argument-checks](https://docs.meteor.com/#/full/auditargumentchecks) have also been added.
 
-## Structure
-
-### Folder structure
-
-```
-client/ 				# Client folder
-    entry.js            # Entry file for client
-    stylesheets         # LESS files
-	components/			# Contains all components(*)
-	    common/         # General purpose html components
-	    layout/         # Layout html components
-universal/              # Universal folder
-    model/  			# Model files, for each Meteor.Collection(*)
-    routes/             # All routes(*)
-private/                # Private files (e.g config, docs)
-public/                 # Public files (e.g images, fonts etc)
-server/					# Server folder
-    entry.js            # Entry file for server
-    config/             # Configuration code
-    loaders/            # Loaders for fixtures, default users
-```
-
-(*) = the command line tool creates files in these folders
-
 ## Other Awesome Boilerplates
 
 - [Void](https://github.com/SachaG/Void) by Sacha Greif
 - [meteor-jw-opinionated-skeleton](https://github.com/jamesdwilson/meteor-jw-opinionated-skeleton) by jamesdwilson (CoffeeScript)
 - [meteor-boilerplate](https://github.com/BeDifferential/meteor-boilerplate) by BeDifferential (CoffeeScript)
 - [em](https://github.com/EventedMind/em) by EventedMind (Boilerplate & Scaffolding)
-
-## License
-This boilerplate has an MIT License, see the LICENSE.txt for more information.
