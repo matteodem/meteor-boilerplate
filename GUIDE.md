@@ -18,16 +18,20 @@ orion create appName
 cd appName && meteor
 ```
 
-## Coding Guidelines
+## Technologies used
 
-This boilerplate uses the [standard styleguide](standardjs.com).
+There's a good explanation on the boilerplate homepage (TODO: link to deployed boilerplate)
+
+## Why this stack?
+
+TODO Explain functional styling and other approaches used in this boilerplate.
 
 ### Generating files
 
 With orion-cli you can scaffold files based on your configuration that you've got.
 
 ```sh
-orion generate routes
+orion generate component
 ```
 
 You can create components, models, change profiles and reset the project with the console tool (see below).
@@ -41,18 +45,6 @@ empty project use the provided command to get rid off all the code you don't nee
 ```sh
 orion reset
 ```
-
-### Available profiles
-
-* default (ES2015 Javascript)
-* coffee (coffeescript, Unfancy JavaScript)
-
-You can change your profile like that
-```sh
-orion set-profile
-```
-
-There will be a prompt, where you can enter __coffee__ or any other profile that you have specified. Also use the ```reset``` command to start off with blank files according to your profile.
 
 ### Deployments
 
