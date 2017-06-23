@@ -10,10 +10,9 @@ I've tried to use technologies that have been helpful these past few years for p
 Here are some links  that explain or explore technologies and approaches that can be used with this boilerplate.
 
 * [Rationalizing functional css](https://marcelosomers.com/writing/rationalizing-functional-css/) (with tachyons)
-* [Mobile first](https://www.lukew.com/ff/entry.asp?933)
 * [An open letter regarding semicolons](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) (standardjs has no semicolons)
 * [Meteor Testing Guide](https://guide.meteor.com/testing.html)
-* [Meteor Testing Guide](https://guide.meteor.com/testing.html)
+* [Mobile first](https://www.lukew.com/ff/entry.asp?933)
 
 Regarding frontend libraries this boilerplate isn't very opinionated. This project uses blaze by default, but it's easy to
  change to other popular frontend libraries such as [React](https://www.meteor.com/tutorials/react/creating-an-app) or [Vue](https://github.com/Akryum/vue-meteor).
