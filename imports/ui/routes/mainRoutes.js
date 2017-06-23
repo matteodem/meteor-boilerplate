@@ -12,16 +12,3 @@ FlowRouter.route('/', {
     ]
   },
 })
-
-FlowRouter.notFound = {
-  title: '404: Page not found',
-  action() {
-    this.render('mainLayout', 'notFound')
-  },
-  waitOn() {
-    return [
-      import('../components/layout/main.html'),
-      import('../components/notFound/NotFoundComponent.html'),
-    ]
-  },
-}
