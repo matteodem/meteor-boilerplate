@@ -1,8 +1,8 @@
-import setupBrowserPolicy from '../imports/config/SecurityConfig.js'
-import loadFixtures from '../imports/loaders/FixturesLoader.js'
-import loadUsers from '../imports/loaders/UsersLoader.js'
+import { Meteor } from 'meteor/meteor'
 
-setupBrowserPolicy(BrowserPolicy)
+import '../imports/config/SecurityConfig.js'
+import loadUsers from '../imports/loaders/UsersLoader.js'
+//import loadFixtures from '../imports/loaders/FixturesLoader.js'
 
 Meteor.startup(() => {
   loadUsers()

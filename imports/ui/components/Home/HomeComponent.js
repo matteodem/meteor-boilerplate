@@ -8,7 +8,7 @@ import '../base/Button.html'
 import './HomeComponent.html'
 
 Template.Home.helpers({
-  settings() {
+  settings () {
     return Meteor.settings.public
   },
 })

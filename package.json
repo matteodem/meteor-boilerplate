@@ -8,9 +8,15 @@
     "bcrypt": "^0.8.7",
     "tachyons": "^4.7.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^4.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
   "scripts": {
     "start": "meteor --settings settings.json",
+    "lint": "eslint 'client/*.js' 'server/*.js' 'imports/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
