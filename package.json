@@ -16,8 +16,8 @@
   },
   "scripts": {
     "start": "meteor --settings settings.json",
-    "lint": "eslint 'client/*.js' 'server/*.js' 'imports/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --ignore-pattern '*.test.js' 'client/*.js' 'server/*.js' 'imports/**/*.js'",
+    "test": "meteor test --port 4400 --driver-package=practicalmeteor:mocha"
   },
   "repository": {
     "type": "git",
