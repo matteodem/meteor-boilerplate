@@ -9,6 +9,7 @@
     "tachyons": "^4.7.4"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "eslint": "^4.0.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-promise": "^3.5.0",
