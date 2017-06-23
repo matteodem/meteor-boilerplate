@@ -67,7 +67,7 @@
   "reset" : {
     "default" : {
       "remove" : [
-        "imports"
+        "imports/ui"
       ],
       "files" : [
         "private/templates/reset/uiIndex.js",
