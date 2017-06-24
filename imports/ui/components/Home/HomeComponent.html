@@ -1,0 +1,39 @@
+<template name="Home">
+  {{#ContentContainer containerClasses="bg-bluetoviolet black-50" }}
+    <h1 class="f-headline-l f1 pv2 mv0 font-poppins mw5">meteor boilerplate</h1>
+    <div class="f2-l f3 mt2 font-roboto-slab">A boilerplate for meteor projects</div>
+
+    <div class="f1">
+      <i class="ion-arrow-down-a icon"></i>
+    </div>
+  {{/ContentContainer}}
+
+  {{#ContentContainer containerClasses="bg-washed-blue dark-gray" }}
+    <div class="font-roboto-slab f2-l f3 lh-copy">
+      Built for {{#Link href="https://www.meteor.com/"}}meteor{{/Link}}, conforms to the {{#Link href="https://standardjs.com/"}}standard guide{{/Link}}
+      and applies functional styling with {{#Link href="http://tachyons.io/"}}tachyons{{/Link}}. Uses {{#Link href="http://blazejs.org/"}}blaze{{/Link}} by default, but
+      can be easily changed to {{#Link href="https://www.meteor.com/tutorials"}}whatever you like{{/Link}}.
+    </div>
+  {{/ContentContainer}}
+
+  {{#ContentContainer containerClasses="bg-washed-green" }}
+    <div class="tc">
+      {{#Button href="https://github.com/matteodem/meteor-boilerplate#meteor-boilerplate"}}
+        Check it out
+      {{/Button}}
+    </div>
+  {{/ContentContainer}}
+
+  {{#ContentContainer containerClasses="bg-washed-blue mid-gray" }}
+    <div class="font-roboto-slab f2-l f3 lh-copy">
+      Not convinced?
+      Check out {{#Link href="https://github.com/matteodem/meteor-boilerplate/blob/master/GUIDE.md#why-this-stack"}}why{{/Link}} this stack makes sense.
+    </div>
+  {{/ContentContainer}}
+
+  <div class="ph4 pv3 bg-dark-gray near-white">
+    <div class="font-roboto-slab f4 lh-copy">
+      made by <a class="near-white hover-light-silver no-underline" href="http://matteodem.ch/">matteodem</a>
+    </div>
+  </div>
+</template>

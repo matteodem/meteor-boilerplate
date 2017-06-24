@@ -5,12 +5,21 @@
   "main": "index.js",
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "bcrypt": "^0.8.7"
+    "tachyons": "^4.7.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^4.0.0",
+    "babel-eslint": "^7.2.3",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
   "scripts": {
-    "start": "meteor",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "meteor --settings settings.json",
+    "test": "meteor test --port 4400 --driver-package=practicalmeteor:mocha",
+    "lint": "eslint --ignore-pattern '*.test.js' 'client/*.js' 'server/*.js' 'imports/**/*.js'",
+    "test-cli": "meteor test --once --driver-package=dispatch:mocha",
+    "cli": "npm run lint && npm run test-cli"
   },
   "repository": {
     "type": "git",

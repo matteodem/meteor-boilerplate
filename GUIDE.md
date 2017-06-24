@@ -1,95 +1,35 @@
 # Guide
 
-## Installing with orion-cli
+## What's in here?
 
-```bash
-npm install -g orion-cli
-```
+Everything that's explained on the [boilerplate homepage](http://meteor-boilerplate.surge.sh/) and
 
-This will install the [orion-cli](https://github.com/matteodem/orion-cli) tool, which can be used for scaffolding files with different profiles.
-You can still clone the repository, which doesn't give you the profile and scaffolding support.
+* Linting with eslint (`meteor npm run lint`)
+* Full-Stack Testing (`meteor npm run test`)
+* Continuous Integration with Travis
 
-## How to use
+## Why this stack?
 
-```sh
-npm install -g orion-cli
-# Assuming meteor is already installed
-orion create appName
-cd appName && meteor
-```
+I've tried to use technologies that have been helpful these past few years for projects that I've worked on. 
+Here are some links that explain or explore technologies and approaches that can be used with this boilerplate.
 
-### Generating files
+* [Rationalizing functional css](https://marcelosomers.com/writing/rationalizing-functional-css/) (with tachyons)
+* [An open letter regarding semicolons](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) (standardjs has no semicolons)
+* [Meteor Testing Guide](https://guide.meteor.com/testing.html)
+* [Mobile first](https://www.lukew.com/ff/entry.asp?933)
 
-With orion-cli you can scaffold files based on your configuration that you've got.
+Regarding frontend libraries this boilerplate isn't very opinionated. This project uses blaze by default, but it's easy to
+ change to other popular frontend libraries such as [React](https://www.meteor.com/tutorials/react/creating-an-app) or [Vue](https://github.com/Akryum/vue-meteor).
 
-```sh
-orion generate routes
-```
+## Generating files
 
-You can create components, models, change profiles and reset the project with the console tool (see below).
-
-
-### Removing default code
-
-There's already a lot of predefined code in this boilerplate, to show you the possible functionality. However, if you want to start off with an
-empty project use the provided command to get rid off all the code you don't need.
+With [orion-cli](https://github.com/matteodem/orion-cli) you can scaffold files based on the configuration of the boilerplate.
 
 ```sh
-orion reset
+orion generate component
 ```
 
-### Available profiles
-
-* default (ES2015 Javascript)
-* coffee (coffeescript, Unfancy JavaScript)
-
-You can change your profile like that
-```sh
-orion set-profile
-```
-
-There will be a prompt, where you can enter __coffee__ or any other profile that you have specified. Also use the ```reset``` command to start off with blank files according to your profile.
-
-### Deployments
-
-It is highly recommended to use [Meteor Up](https://github.com/arunoda/meteor-up) for easy deployments. 
-Have a look at the repository for more information.
-
-### Adding allow rules for external URLs
-
-The [browser-policy](https://atmospherejs.com/meteor/browser-policy) adds rules to deny all operations from external URLs.
-This helps dealing with clickjacking and other XSS methods used to attack the client. To whitelist a url, add following to 
-__server/config/security.js__
-
-```javascript
-BrowserPolicy.content.allowOriginForAll(YOUR_URL);
-```
-
-Other security enforcing packages like [audit-argument-checks](https://docs.meteor.com/#/full/auditargumentchecks) have also been added.
-
-## Structure
-
-### Folder structure
-
-```
-client/ 				# Client folder
-    entry.js            # Entry file for client
-    stylesheets         # LESS files
-	components/			# Contains all components(*)
-	    common/         # General purpose html components
-	    layout/         # Layout html components
-universal/              # Universal folder
-    model/  			# Model files, for each Meteor.Collection(*)
-    routes/             # All routes(*)
-private/                # Private files (e.g config, docs)
-public/                 # Public files (e.g images, fonts etc)
-server/					# Server folder
-    entry.js            # Entry file for server
-    config/             # Configuration code
-    loaders/            # Loaders for fixtures, default users
-```
-
-(*) = the command line tool creates files in these folders
+You can create components, models etc. and reset the project with the console tool (see below).
 
 ## Other Awesome Boilerplates
 
@@ -97,6 +37,3 @@ server/					# Server folder
 - [meteor-jw-opinionated-skeleton](https://github.com/jamesdwilson/meteor-jw-opinionated-skeleton) by jamesdwilson (CoffeeScript)
 - [meteor-boilerplate](https://github.com/BeDifferential/meteor-boilerplate) by BeDifferential (CoffeeScript)
 - [em](https://github.com/EventedMind/em) by EventedMind (Boilerplate & Scaffolding)
-
-## License
-This boilerplate has an MIT License, see the LICENSE.txt for more information.

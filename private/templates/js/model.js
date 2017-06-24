@@ -1,8 +1,9 @@
-// { "path" : "universal/models/__modelName__.js" }
+// { "path" : "imports/models/__modelName__Collection.js" }
+import { Mongo } from 'meteor/mongo'
 
-const __modelName__ = new Mongo.Collection('__modelName__');
+const __modelName__Collection = new Mongo.Collection('__modelName__')
 
-__modelName__.attachSchema(
+__modelName__Collection.attachSchema(
     new SimpleSchema({
     title: {
       type: String
@@ -15,15 +16,13 @@ __modelName__.attachSchema(
       denyUpdate: true
     }
   })
-);
+)
 
 // Collection2 already does schema checking
-if (Meteor.isServer) {
-  __modelName__.allow({
-    insert : () => false,
-    update : () => false,
-    remove : () => false
-  });
-}
+__modelName__Collection.allow({
+  insert : () => false,
+  update : () => false,
+  remove : () => false
+})
 
-export default __modelName__;
+export default __modelName__Collection
