@@ -1,13 +1,17 @@
 # Guide
 
-## Technologies used
+## What's in here?
 
-There's a good overview on the [boilerplate homepage](http://meteor-boilerplate.surge.sh/).
+Everything that's explained on the [boilerplate homepage](http://meteor-boilerplate.surge.sh/) and
+
+* Linting with eslint (`meteor npm run lint`)
+* Full-Stack Testing (`meteor npm run test`)
+* Continuous Integration with Travis
 
 ## Why this stack?
 
 I've tried to use technologies that have been helpful these past few years for projects that I've worked on. 
-Here are some links  that explain or explore technologies and approaches that can be used with this boilerplate.
+Here are some links that explain or explore technologies and approaches that can be used with this boilerplate.
 
 * [Rationalizing functional css](https://marcelosomers.com/writing/rationalizing-functional-css/) (with tachyons)
 * [An open letter regarding semicolons](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) (standardjs has no semicolons)
