@@ -1,0 +1,8 @@
+title: Meteor Boilerplate
+description: A boilerplate for meteorjs projects
+google_analytics: UA-45133006-1
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
