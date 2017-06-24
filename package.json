@@ -18,7 +18,9 @@
   "scripts": {
     "start": "meteor --settings settings.json",
     "lint": "eslint --ignore-pattern '*.test.js' 'client/*.js' 'server/*.js' 'imports/**/*.js'",
-    "test": "meteor test --port 4400 --driver-package=practicalmeteor:mocha"
+    "test": "meteor test --port 4400 --driver-package=practicalmeteor:mocha",
+    "test-cli": "meteor test --port 4400 --once --driver-package=dispatch:mocha",
+    "cli": "npm run lint && npm run test-cli"
   },
   "repository": {
     "type": "git",

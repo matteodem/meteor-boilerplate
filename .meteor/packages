@@ -34,3 +34,4 @@ aldeed:collection2
 simple:dev-error-overlay
 practicalmeteor:chai
 practicalmeteor:mocha
+dispatch:mocha
