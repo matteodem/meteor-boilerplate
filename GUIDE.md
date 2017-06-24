@@ -17,7 +17,7 @@ Here are some links  that explain or explore technologies and approaches that ca
 Regarding frontend libraries this boilerplate isn't very opinionated. This project uses blaze by default, but it's easy to
  change to other popular frontend libraries such as [React](https://www.meteor.com/tutorials/react/creating-an-app) or [Vue](https://github.com/Akryum/vue-meteor).
 
-### Generating files
+## Generating files
 
 With [orion-cli](https://github.com/matteodem/orion-cli) you can scaffold files based on the configuration of the boilerplate.
 
