@@ -4,15 +4,19 @@
   "description": "This boilerplate is here to give you a simple starting point for your meteor projects.",
   "main": "index.js",
   "dependencies": {
-    "babel-runtime": "^6.23.0",
-    "tachyons": "^4.7.4"
+    "babel-runtime": "^6.23.0"
   },
   "devDependencies": {
     "eslint": "^4.0.0",
     "babel-eslint": "^7.2.3",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "@babel/runtime": "^7.20.6",
+    "meteor-node-stubs": "^1.2.5",
+    "svelte": "^3.54.0",
+    "typescript": "^5.5.4",
+    "svelte-preprocess": "^5.1.4"
   },
   "scripts": {
     "start": "meteor --settings settings.json",
