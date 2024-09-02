@@ -10,5 +10,5 @@ $ meteor npm install
 $ meteor npm start
 ```
 
-Read through the [GUIDE.md](GUIDE.md) or checkout the [boilerplate online](http://meteor-boilerplate.surge.sh/) for more information.
+Checkout the [boilerplate online](http://meteor-boilerplate.surge.sh/) for more information.
 
