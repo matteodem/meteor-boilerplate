@@ -1,3 +1,1 @@
-.idea/*
-node_modules
-private/build
+node_modules/
