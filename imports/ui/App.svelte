@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
   import { Meteor } from "meteor/meteor";
-  import { LinksCollection } from '../api/links';
-  
+  import { LinksCollection } from "../api/links";
+
   let counter = 0;
   const addToCounter = () => {
     counter += 1;
-  }
-  
+  };
+
   let subIsReady = false;
   $m: {
     const handle = Meteor.subscribe("links.all");
@@ -18,7 +18,6 @@
   $m: links = LinksCollection.find().fetch();
 </script>
 
-
 <div class="container">
   <h1>Welcome to Meteor!</h1>
 
@@ -29,7 +28,9 @@
   {#if subIsReady}
     <ul>
       {#each links as link (link._id)}
-        <li><a href={link.url} target="_blank" rel="noreferrer">{link.title}</a></li>
+        <li>
+          <a href={link.url} target="_blank" rel="noreferrer">{link.title}</a>
+        </li>
       {/each}
     </ul>
   {:else}
